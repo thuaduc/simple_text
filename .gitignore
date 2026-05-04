@@ -1,1 +1,6 @@
 papers
+.vscode
+.claude
+.env
+.DS_Store
+__pycache__
