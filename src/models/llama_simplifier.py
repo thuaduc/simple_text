@@ -118,14 +118,21 @@ class LlamaSimplifier:
                 definitions
             )
         else:
-            # Default: instruction-based prompt with optional few-shot examples
-            prompt = "Simplify the following medical text for a general audience. Use plain language and avoid technical jargon.\n\n"
+            # Default: instruction phrasing adapted from Paper 358 (DASP_0/DASP_1, SARI 43.51)
+            prompt = (
+                "You are a helpful assistant that simplifies biomedical or scientific texts.\n\n"
+                "Task: Simplify the following scientific text for a general audience. "
+                "Use plain language and explain any complex terms or acronyms. "
+                "Ensure that all numbers, results, and facts remain exactly the same. "
+                "Do not paraphrase numerical data or alter the meaning of findings.\n\n"
+            )
             
             if few_shot_examples:
                 for ex in few_shot_examples:
-                    prompt += f"Complex: {ex['complex']}\nSimple: {ex['simple']}\n\n"
+                    prompt += f"Example:\nText: {ex['complex']}\nSimplified: {ex['simple']}\n\n"
+                prompt += "Now do the same for the following:\n"
             
-            prompt += f"Complex: {complex_sentence}\nSimple:"
+            prompt += f"Text: {complex_sentence}\nSimplified:"
         
         # Tokenize
         inputs = self.tokenizer(
@@ -146,14 +153,9 @@ class LlamaSimplifier:
                 eos_token_id=self.tokenizer.eos_token_id
             )
         
-        # Decode
-        full_output = self.tokenizer.decode(outputs[0], skip_special_tokens=True)
-        
-        # Extract the simplified text (everything after the last "Simple:")
-        if "Simple:" in full_output:
-            simplified = full_output.split("Simple:")[-1].strip()
-        else:
-            simplified = full_output.strip()
+        # Decode only the newly generated tokens (exclude the prompt)
+        new_tokens = outputs[0][inputs.input_ids.shape[1]:]
+        simplified = self.tokenizer.decode(new_tokens, skip_special_tokens=True).strip()
         
         # Clean up: take only first sentence/paragraph if multiple generated
         if "\n\n" in simplified:

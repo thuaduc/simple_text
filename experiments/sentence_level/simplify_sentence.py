@@ -21,7 +21,7 @@ def main():
     )
     
     parser.add_argument(
-        'sentence',
+        '--sentence',
         type=str,
         nargs='?',
         help='The sentence to simplify (if not provided, will use an example)'
@@ -43,7 +43,7 @@ def main():
     parser.add_argument(
         '--num_shots',
         type=int,
-        default=3,
+        default=0,
         help='Number of few-shot examples (default: 3, use 0 for zero-shot)'
     )
     
@@ -57,8 +57,16 @@ def main():
     parser.add_argument(
         '--max_tokens',
         type=int,
-        default=256,
+        default=1024,
         help='Maximum tokens to generate (default: 256)'
+    )
+    
+    parser.add_argument(
+        '--prompt_type',
+        type=str,
+        default='default',
+        choices=['default', 'paper358_zero_shot', 'paper358_one_shot'],
+        help='Prompt strategy to use (default: default)'
     )
     
     parser.add_argument(
@@ -88,6 +96,7 @@ def main():
     print("="*80)
     print(f"\nModel: {args.model}")
     print(f"Device: {'CUDA' if torch.cuda.is_available() else 'CPU'}")
+    print(f"Prompt type: {args.prompt_type}")
     print(f"Few-shot examples: {args.num_shots}")
     print(f"Temperature: {args.temperature}")
     print()
@@ -124,7 +133,7 @@ def main():
     
     # Simplify
     print("Simplifying...")
-    simplified = simplifier.simplify(args.sentence, few_shot_examples=few_shot_examples)
+    simplified = simplifier.simplify(args.sentence, few_shot_examples=few_shot_examples, prompt_type=args.prompt_type)
     print()
     
     # Display output
