@@ -4,3 +4,9 @@ papers
 .env
 .DS_Store
 __pycache__
+.venv
+.python-version
+uv.lock
+experiments/*/results/
+*.pyc
+.pytest_cache/
