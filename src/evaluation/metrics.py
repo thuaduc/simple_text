@@ -1,13 +1,24 @@
-"""Evaluation metrics for text simplification."""
+"""Evaluation metrics for text simplification.
+
+Uses the HuggingFace `evaluate` library (tensor2tensor SARI with bugfixes).
+This is the de facto standard used by CLEF SimpleText.
+"""
 
 from typing import List, Dict
 import logging
-
-# Import metrics
-from easse.sari import get_corpus_sari_operation_scores
+import evaluate
 
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
+
+_sari_metric = None
+
+
+def _get_metric():
+    global _sari_metric
+    if _sari_metric is None:
+        _sari_metric = evaluate.load("sari")
+    return _sari_metric
 
 
 def compute_sari(
@@ -17,11 +28,6 @@ def compute_sari(
 ) -> float:
     """
     Compute SARI (System output Against References and Input).
-    
-    SARI measures the quality of simplification by comparing:
-    - Additions: n-grams added in prediction (vs source)
-    - Deletions: n-grams deleted from source
-    - Keeps: n-grams kept from source
     
     Args:
         sources: List of complex input sentences
@@ -34,14 +40,10 @@ def compute_sari(
     logger.info("Computing SARI...")
     
     try:
-        # EASSE API: orig_sents, sys_sents, refs_sents
-        add, keep, delete_score = get_corpus_sari_operation_scores(
-            orig_sents=sources,
-            sys_sents=predictions,
-            refs_sents=references
-        )
-        sari = (add + keep + delete_score) / 3
-        logger.info(f"SARI: {sari:.2f} (Add: {add:.2f}, Keep: {keep:.2f}, Del: {delete_score:.2f})")
+        metric = _get_metric()
+        result = metric.compute(sources=sources, predictions=predictions, references=references)
+        sari = result["sari"]
+        logger.info(f"SARI: {sari:.2f}")
         return sari
     except Exception as e:
         logger.error(f"Error computing SARI: {e}")
@@ -56,76 +58,72 @@ def evaluate_simplification(
     """
     Compute SARI evaluation metric for text simplification.
     
-    Following the evaluation approach from LIS at SimpleText 2025 (Paper 358),
-    which uses only SARI as the primary evaluation metric.
-    
     Args:
         sources: List of complex input sentences
         predictions: List of predicted simplified sentences
         references: List of lists of reference simplifications
     
     Returns:
-        Dictionary with SARI score and component scores
+        Dictionary with SARI score
     """
     logger.info(f"Evaluating {len(predictions)} predictions...")
     
     # Filter out empty predictions or references
-    valid_indices = []
+    valid_sources = []
+    valid_predictions = []
+    valid_references = []
+    
     for i in range(len(predictions)):
-        if predictions[i].strip() and references[i] and any(ref.strip() for ref in references[i]):
-            valid_indices.append(i)
+        refs = references[i] if i < len(references) else []
+        clean_refs = [r for r in refs if r.strip()] if refs else []
+        
+        if predictions[i].strip() and clean_refs:
+            valid_sources.append(sources[i])
+            valid_predictions.append(predictions[i])
+            valid_references.append(clean_refs)
     
-    if len(valid_indices) < len(predictions):
-        logger.warning(f"Filtered out {len(predictions) - len(valid_indices)} empty predictions/references")
-    
-    # Filter data
-    sources_filtered = [sources[i] for i in valid_indices]
-    predictions_filtered = [predictions[i] for i in valid_indices]
-    references_filtered = [references[i] for i in valid_indices]
+    if len(valid_sources) < len(predictions):
+        logger.warning(f"Filtered out {len(predictions) - len(valid_sources)} empty predictions/references")
     
     results = {}
     
-    # Compute SARI
-    sari = compute_sari(sources_filtered, predictions_filtered, references_filtered)
-    results['sari'] = sari
+    if valid_sources:
+        sari = compute_sari(valid_sources, valid_predictions, valid_references)
+        results['sari'] = sari
+    else:
+        results['sari'] = 0.0
+    
+    results['n_evaluated'] = len(valid_sources)
     
     return results
 
 
 def print_results(results: Dict[str, float]):
-    """
-    Print evaluation results in a formatted table.
-    
-    Following the evaluation approach from LIS at SimpleText 2025 (Paper 358).
-    
-    Args:
-        results: Dictionary of metric scores
-    """
+    """Print evaluation results in a formatted table."""
     print("\n" + "="*60)
     print("EVALUATION RESULTS")
     print("="*60)
     
     print(f"\nSARI Score:              {results.get('sari', 0):.4f}")
+    print(f"Sentences evaluated:     {results.get('n_evaluated', 0)}")
     
     print("\n" + "="*60)
     print("\nInterpretation:")
     print("  SARI: 0-100 (higher is better)")
-    print("    - <25: Poor simplification")
-    print("    - 25-35: Acceptable baseline")
-    print("    - 35-42: Good system")
-    print("    - >42: State-of-the-art")
-    print("\n  Reference: LIS at SimpleText 2025 (Paper 358)")
-    print("    - Best result: 43.51 (5th place at CLEF 2025)")
-    print("    - Mistral 7B with zero-shot + definitions")
-    
+    print("    - <30: Poor simplification")
+    print("    - 30-40: Acceptable baseline")
+    print("    - 40-43: Good system (CLEF 2025 top range)")
+    print("    - >43: State-of-the-art")
+    print("\n  CLEF 2025 Task 1.1 top results:")
+    print("    - UM-FHS (GPT-4.1-mini): 43.34")
+    print("    - DS@GT (plan-guided LLaMA 70B): 42.33")
+    print("    - UvA (plan-guided BART): 42.31")
     print("="*60 + "\n")
 
 
 if __name__ == "__main__":
-    # Test the metrics
     print("Testing evaluation metrics...")
     
-    # Sample data
     sources = [
         "We included five trials, in which 1406 infants participated.",
         "The evidence is very uncertain."
@@ -141,10 +139,5 @@ if __name__ == "__main__":
         ["We are uncertain about the evidence.", "The results are unclear."]
     ]
     
-    results = evaluate_simplification(
-        sources,
-        predictions,
-        references
-    )
-    
+    results = evaluate_simplification(sources, predictions, references)
     print_results(results)
