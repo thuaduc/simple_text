@@ -206,7 +206,7 @@ def main():
             'use_curated_examples': args.use_curated_examples,
             'seed': args.seed,
             'timestamp': datetime.now().isoformat(),
-            'evaluation': 'SARI-only (following Paper 358: LIS at SimpleText 2025)'
+            'evaluation': 'SARI, BLEU, BERTScore (automatic metrics)'
         }
     }
     
