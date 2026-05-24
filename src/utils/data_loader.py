@@ -32,7 +32,8 @@ def parse_simple_column(simple_str: str) -> List[str]:
 
 def load_cochrane_sentences(
     split: str = "test",
-    data_dir: str = "cochrane/data"
+    data_dir: str = "cochrane/data",
+    rephrase_only: bool = True,
 ) -> Tuple[List[str], List[List[str]], List[str], List[str]]:
     """
     Load Cochrane sentence-level simplification data.
@@ -40,6 +41,7 @@ def load_cochrane_sentences(
     Args:
         split: One of 'train', 'val', or 'test'
         data_dir: Path to data directory containing CSV files
+        rephrase_only: If True, load rephrase-only subset CSVs
     
     Returns:
         Tuple of (complex_sentences, simple_references, labels, pair_ids)
@@ -48,7 +50,8 @@ def load_cochrane_sentences(
         - labels: List of simplification operation labels
         - pair_ids: List of document IDs
     """
-    csv_path = f"{data_dir}/cochraneauto_sents_{split}.csv"
+    prefix = "cochraneauto_sents_rephrase" if rephrase_only else "cochraneauto_sents"
+    csv_path = f"{data_dir}/{prefix}_{split}.csv"
     
     print(f"Loading data from {csv_path}...")
     df = pd.read_csv(csv_path)
@@ -82,27 +85,25 @@ def load_cochrane_sentences(
 def get_few_shot_examples(
     num_shots: int = 3,
     data_dir: str = "cochrane/data",
-    seed: int = 42
+    seed: int = 42,
+    rephrase_only: bool = True,
 ) -> List[Dict[str, str]]:
     """
-    Select diverse few-shot examples from training data.
-    
-    Selects examples covering different simplification operations:
-    - Rephrase (paraphrase)
-    - Split (one to many sentences)
-    - Delete (remove information)
+    Select few-shot examples from training data.
     
     Args:
         num_shots: Number of examples to select
         data_dir: Path to data directory
         seed: Random seed for reproducibility
+        rephrase_only: If True, sample only from rephrase training data
     
     Returns:
         List of example dictionaries with 'complex' and 'simple' keys
     """
     complex_sents, simple_refs, labels, _ = load_cochrane_sentences(
         split="train",
-        data_dir=data_dir
+        data_dir=data_dir,
+        rephrase_only=rephrase_only,
     )
     
     df = pd.DataFrame({
@@ -110,13 +111,21 @@ def get_few_shot_examples(
         'simple': simple_refs,
         'label': labels
     })
-    
-    # Filter for good examples (has non-empty simple reference)
     df = df[df['simple'].apply(lambda x: len(x) > 0)]
     
-    examples = []
+    if rephrase_only:
+        samples = df.sample(
+            n=min(num_shots, len(df)),
+            random_state=seed,
+        )
+        examples = [
+            {'complex': row['complex'], 'simple': row['simple'][0]}
+            for _, row in samples.iterrows()
+        ]
+        print(f"Selected {len(examples)} rephrase few-shot examples")
+        return examples
     
-    # Try to get diverse examples by operation type
+    examples = []
     target_labels = ['rephrase', 'split', 'delete']
     
     for label in target_labels:
@@ -125,38 +134,28 @@ def get_few_shot_examples(
         
         label_df = df[df['label'] == label]
         if len(label_df) > 0:
-            # Sample one example of this type
             sample = label_df.sample(n=1, random_state=seed + len(examples))
-            
-            complex = sample.iloc[0]['complex']
             simple_list = sample.iloc[0]['simple']
-            
-            # For split operations, join multiple sentences
-            # For others, use the first reference
-            if label == 'split' and len(simple_list) > 1:
-                simple = ' '.join(simple_list)
-            else:
-                simple = simple_list[0] if simple_list else ""
-            
-            if simple:  # Only add if we have a simple version
+            simple = (
+                ' '.join(simple_list)
+                if label == 'split' and len(simple_list) > 1
+                else simple_list[0] if simple_list else ""
+            )
+            if simple:
                 examples.append({
-                    'complex': complex,
+                    'complex': sample.iloc[0]['complex'],
                     'simple': simple
                 })
     
-    # If we still need more examples, sample randomly from rephrase
     while len(examples) < num_shots:
         remaining = num_shots - len(examples)
         rephrase_df = df[df['label'] == 'rephrase']
-        
         if len(rephrase_df) == 0:
             break
-        
         samples = rephrase_df.sample(
             n=min(remaining, len(rephrase_df)),
             random_state=seed + 100 + len(examples)
         )
-        
         for _, row in samples.iterrows():
             simple_list = row['simple']
             if simple_list:

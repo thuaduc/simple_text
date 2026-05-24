@@ -118,21 +118,39 @@ class LlamaSimplifier:
                 definitions
             )
         else:
-            # Default: instruction phrasing adapted from Paper 358 (DASP_0/DASP_1, SARI 43.51)
-            prompt = (
-                "You are a helpful assistant that simplifies biomedical or scientific texts.\n\n"
-                "Task: Simplify the following scientific text for a general audience. "
-                "Use plain language and explain any complex terms or acronyms. "
-                "Ensure that all numbers, results, and facts remain exactly the same. "
-                "Do not paraphrase numerical data or alter the meaning of findings.\n\n"
+            # Default: conservative prompt based on CLEF 2025 winner analysis
+            # Key findings: concise > verbose (THM), zero-shot > one-shot (LIS),
+            # conservative > aggressive (SARI penalizes unwanted changes)
+            system = (
+                "You simplify biomedical sentences. Be conservative. "
+                "Keep the sentence structure when possible. Only change what "
+                "is necessary to make it understandable to a general audience."
             )
             
-            if few_shot_examples:
-                for ex in few_shot_examples:
-                    prompt += f"Example:\nText: {ex['complex']}\nSimplified: {ex['simple']}\n\n"
-                prompt += "Now do the same for the following:\n"
+            user = (
+                "Simplify this biomedical sentence for a lay reader.\n"
+                "Rules:\n"
+                "- Replace medical jargon with plain words\n"
+                "- Remove statistical details (CI, p-values, RR, OR)\n"
+                "- Keep all key facts and numbers\n"
+                "- If already simple, return it unchanged\n"
+                "- Do NOT add new information\n"
+                "- Output ONLY the simplified sentence\n\n"
+                f"Sentence: {complex_sentence}\n"
+                "Simplified:"
+            )
             
-            prompt += f"Text: {complex_sentence}\nSimplified:"
+            # Use chat template if available, otherwise plain prompt
+            if hasattr(self.tokenizer, 'apply_chat_template') and self.tokenizer.chat_template:
+                messages = [
+                    {"role": "system", "content": system},
+                    {"role": "user", "content": user},
+                ]
+                prompt = self.tokenizer.apply_chat_template(
+                    messages, tokenize=False, add_generation_prompt=True
+                )
+            else:
+                prompt = f"{system}\n\n{user}"
         
         # Tokenize
         inputs = self.tokenizer(

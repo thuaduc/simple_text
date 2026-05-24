@@ -77,6 +77,12 @@ def parse_args():
         default=RANDOM_SEED,
         help=f'Random seed for reproducibility (default: {RANDOM_SEED})'
     )
+
+    parser.add_argument(
+        '--all_labels',
+        action='store_true',
+        help='Use full dataset with all operation labels (default: rephrase only)'
+    )
     
     return parser.parse_args()
 
@@ -102,14 +108,18 @@ def main():
     print(f"  4-bit quantization: {args.load_in_4bit}")
     print(f"  Output directory: {args.output_dir}")
     print(f"  Random seed: {args.seed}")
+    print(f"  Dataset: {'all labels' if args.all_labels else 'rephrase only'}")
     print(f"  Device: {'CUDA' if torch.cuda.is_available() else 'CPU'}")
     print()
     
+    rephrase_only = not args.all_labels
+
     # Load test data
     print("Loading test data...")
     complex_sentences, simple_references, labels, pair_ids = load_cochrane_sentences(
         split='test',
-        data_dir=args.data_dir
+        data_dir=args.data_dir,
+        rephrase_only=rephrase_only,
     )
     
     # Optionally limit test size
@@ -131,7 +141,8 @@ def main():
         few_shot_examples = get_few_shot_examples(
             num_shots=args.num_shots,
             data_dir=args.data_dir,
-            seed=args.seed
+            seed=args.seed,
+            rephrase_only=rephrase_only,
         )
         print("Using examples sampled from training data")
     
@@ -204,6 +215,7 @@ def main():
             'batch_size': args.batch_size,
             'load_in_4bit': args.load_in_4bit,
             'use_curated_examples': args.use_curated_examples,
+            'rephrase_only': rephrase_only,
             'seed': args.seed,
             'timestamp': datetime.now().isoformat(),
             'evaluation': 'SARI, BLEU, BERTScore (automatic metrics)'
