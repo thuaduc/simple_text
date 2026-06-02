@@ -10,3 +10,4 @@ uv.lock
 experiments/*/results/
 *.pyc
 .pytest_cache/
+*.egg-info/

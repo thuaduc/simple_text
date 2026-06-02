@@ -4,6 +4,7 @@ import torch
 from transformers import AutoTokenizer, AutoModelForCausalLM
 from typing import List, Dict, Optional
 import logging
+from tqdm import tqdm
 
 from src.config import MODEL_NAME, MAX_NEW_TOKENS, TEMPERATURE
 
@@ -199,15 +200,14 @@ class LlamaSimplifier:
             List of simplified sentences
         """
         simplified = []
-        
-        for i in range(0, len(complex_sentences), batch_size):
-            batch = complex_sentences[i:i + batch_size]
-            logger.info(f"Processing batch {i//batch_size + 1}/{(len(complex_sentences)-1)//batch_size + 1}")
-            
-            for sentence in batch:
-                simplified_sent = self.simplify(sentence, few_shot_examples)
-                simplified.append(simplified_sent)
-        
+        for sentence in tqdm(
+            complex_sentences,
+            desc="Simplifying",
+            unit="sent",
+            mininterval=1.0,
+        ):
+            simplified.append(self.simplify(sentence, few_shot_examples))
+
         return simplified
 
 
