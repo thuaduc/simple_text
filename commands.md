@@ -1,4 +1,14 @@
 ````
+./run.sh          # submits and exits
+# or
+sbatch run.sh
+
+squeue -u $USER   # monitor
+scancel <jobid>   # cancel if needed
+````
+
+
+````
 uv run python experiments/sentence_level/simplify_sentence.py --sentence "Given the evidence from this Cochrane review, the avoidance of nitrous oxide may be reasonable in participants with pre-existing poor pulmonary function or at high risk of postoperative nausea and vomiting." --reference "The avoidance of nitrous oxide may be reasonable in participants with pre-existing poor pulmonary function or at high risk of postoperative nausea and vomiting." --prompt_type "paper358_zero_shot"
 ````
 

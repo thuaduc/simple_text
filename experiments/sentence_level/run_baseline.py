@@ -27,8 +27,8 @@ def parse_args():
     parser.add_argument(
         '--num_shots',
         type=int,
-        default=3,
-        help='Number of few-shot examples (default: 3)'
+        default=0,
+        help='Number of few-shot examples (default: 0, zero-shot)'
     )
     
     parser.add_argument(
@@ -132,26 +132,29 @@ def main():
     
     print(f"Total test examples: {len(complex_sentences)}")
     
-    # Get few-shot examples
-    print(f"\nPreparing {args.num_shots}-shot examples...")
-    if args.use_curated_examples:
-        few_shot_examples = get_curated_examples(num_examples=args.num_shots)
-        print("Using manually curated examples")
+    # Get few-shot examples (skip when zero-shot)
+    few_shot_examples = None
+    if args.num_shots > 0:
+        print(f"\nPreparing {args.num_shots}-shot examples...")
+        if args.use_curated_examples:
+            few_shot_examples = get_curated_examples(num_examples=args.num_shots)
+            print("Using manually curated examples")
+        else:
+            few_shot_examples = get_few_shot_examples(
+                num_shots=args.num_shots,
+                data_dir=args.data_dir,
+                seed=args.seed,
+                rephrase_only=rephrase_only,
+            )
+            print("Using examples sampled from training data")
+
+        print("\nFew-shot examples:")
+        for i, ex in enumerate(few_shot_examples, 1):
+            print(f"\n  Example {i}:")
+            print(f"    Complex: {ex['complex'][:80]}...")
+            print(f"    Simple:  {ex['simple'][:80]}...")
     else:
-        few_shot_examples = get_few_shot_examples(
-            num_shots=args.num_shots,
-            data_dir=args.data_dir,
-            seed=args.seed,
-            rephrase_only=rephrase_only,
-        )
-        print("Using examples sampled from training data")
-    
-    # Display examples
-    print("\nFew-shot examples:")
-    for i, ex in enumerate(few_shot_examples, 1):
-        print(f"\n  Example {i}:")
-        print(f"    Complex: {ex['complex'][:80]}...")
-        print(f"    Simple:  {ex['simple'][:80]}...")
+        print("\nZero-shot mode (no few-shot examples)")
     
     # Initialize model
     print(f"\nInitializing {MODEL_NAME}...")

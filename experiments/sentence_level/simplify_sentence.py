@@ -44,7 +44,7 @@ def main():
         '--num_shots',
         type=int,
         default=0,
-        help='Number of few-shot examples (default: 3, use 0 for zero-shot)'
+        help='Number of few-shot examples (default: 0, zero-shot)'
     )
     
     parser.add_argument(
