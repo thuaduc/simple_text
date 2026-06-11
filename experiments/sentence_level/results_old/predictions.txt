@@ -1,0 +1,667 @@
+Computer reminders generally boosted adherence to processes by about 4.2%, ranging from 0.8% to 18.8%. This improvement was seen for medication ordering (3.3%), vaccinations (3.8%), and test ordering (3.8%).
+In eight comparisons, patients who received the treatment had a median improvement of 2.5% in their condition, with improvements ranging from 1.3% to 4.2%.
+Some treatments had a bigger impact, but no specific reminder or context made a significant difference in how big the impact was.
+More research is needed to find the best design and situations where computer reminders can effectively change doctors' behaviors, not just by trial and error.
+In six clinical trials, the treatment was a type of blood-thinning medication called a vitamin K antagonist. The remaining four trials used a different type called direct oral anticoagulants. Three of these used apixaban, while one used rivaroxaban.
+Using vitamin K antagonists (VKAs) instead of no treatment might slightly lower the chances of death over six months and twelve months, but the exact reduction is uncertain.
+Direct oral anticoagulants (DOACs) might slightly lower the risk of death and blood clots in the lungs and legs, compared to no treatment, but may also increase minor bleeding, at 3 to 6 months, with varying levels of certainty in the evidence.
+We looked at 17 research studies (involving 2505 women) for our review.
+Repeated single embryo transfer was compared to transferring two embryos at once in four studies using embryos at an early stage of development.
+Repeating the treatment could increase a woman's chance of getting pregnant, from around 42% after one try, to between 34% and 46%. (Assuming the treatment being referred to as DET and SET.)
+The rate of miscarriages might be similar in both groups.
+A single embryo transfer (SET) versus double embryo transfer (DET) was compared in 13 studies, 11 looking at transfers at the cleavage stage and three at the blastocyst stage. One study looked at both stages.
+A woman has a 27% to 35% chance of having a baby after one cycle of SET, compared to a 46% chance after one cycle of DET.
+A woman who has a 15% chance of having twins or more after one round of DET might have between 2% and 4% chance after one round of SET.
+The two groups might have similar rates of miscarriage.
+We used four studies with a total of 401 participants, aged 0 to 7 at enrollment. One study is still ongoing.
+The older studies had a higher risk of error, especially due to lack of hiding the information from researchers and incomplete data, compared to the more recent studies.
+We considered the most recent study to be mostly unbiased, but we're unsure how the analysis of only completed studies affected the results.
+Long-term effects of using preventive measures (prophylaxis) can't be determined because all the studied periods were six years or shorter.
+Starting antibiotics that fight staph infections early in a child's life, and continuing for up to 6 years, may reduce the number of times staph infections occur.
+More children with Cystic Fibrosis might have Pseudomonas aeruginosa bacteria after using certain antibiotics for 4 to 6 years. It's unclear if this is just a coincidence or if the type of antibiotic or treatment length affects this. More studies are needed to find out.
+We looked at 24 different studies, which are reported in 28 publications.
+Progestagen generation or type did not clearly affect the risks.
+Higher doses of estrogen may increase the risk of heart attack or stroke.
+Using birth control pills increases the risk of heart attacks or strokes by 1.6 times in women.
+The pill with levonorgestrel and 30 micrograms of estrogen appears to be the safest type of birth control pill when it comes to the risk of blood clots.
+This study with 961 teachers in 8 schools tested an organizational change approach that focused on tasks, combined with stress management training, against no changes.
+Two studies looked at the impact of teacher training along with school-wide coaching, compared to no action at all.
+After 2 years, a study with 59 teachers in 43 schools found no noticeable impact on job-related anxiety or depression. (Results were from low-quality evidence)
+The study with 77 teachers in 18 schools found no significant impact on burnout levels or emotional regulation skills of teachers, based on low-quality evidence, after six months.
+A study tested a program that offered performance bonuses, job promotion chances, and mentoring to teachers in 34 schools. This was compared to 300 other schools.
+The authors shared results from just one group of people out of four, which raises concern about a possible bias in the information presented.
+Organizational changes can possibly help teachers feel better and stay in their jobs longer. However, the evidence is not very strong.
+We should study more about how changes in school organization can improve teacher's well-being.
+These studies should use a specific method for complex treatments, divide participants into groups randomly, and include a large number of people.
+Two studies with a total of 288 people were included in this review.
+One study found no significant difference between unfractionated heparin and low molecular weight heparin for preventing deep vein thrombosis (DVT), but the evidence was based on a small number of participants.
+No one in either group experienced bleeding.
+The study didn't explain how participants were chosen, so it's unclear if there might be an unfair influence in the results.
+Heparin did not significantly reduce the risk of blood clots in the lungs compared to a placebo (134 participants, low-certainty evidence).
+Bleeding happened in fewer than 10 people out of every 100 in both treatment groups, but the study didn't provide exact numbers (evidence with low certainty).
+No study examined the use of mechanical preventive measures.
+Two studies with different treatments were used in this review, but there's not enough evidence to determine the best method for preventing blood clots in people having lower limb amputation.
+More big, reliable studies are needed.
+Seven studies were used, four of them provided useful information about 472 children with asthma, aged 1 to 18 years old, who were hospitalized in pediatric wards.
+No significant difference was found in additional asthma treatment needs, using inhalers every four hours or more, asthma symptoms, lung function, or withdrawals for any reason.
+Adding nebulized anticholinergics to short-acting asthma drugs didn't help reduce hospital stay or improve other treatment responses in children hospitalized with a severe asthma attack.
+No study has been done in ICUs to determine what to do for children who are about to fail breathing on their own.
+Healthcare providers should not use medicines called anticholinergics when treating children in the hospital for acute asthma, in line with current guidelines from both national and international health organizations.
+We looked at 220 studies.
+Most studies come from China or the USA (together about half), and some are from Italy (approximately 1 in 10).
+People with COVID-19 often have other heart and metabolic health problems, and they often experience heart complications.
+We will update this review and perform a detailed analysis on a specific group of high-quality studies.
+Four studies with 136 participants each were used.
+In two studies, lamivudine was compared to HBIg, but not used together.
+No significant differences were found in any comparisons or results.
+This study didn't find clear proof from random experiments for preventing HBV reinfection in people with chronic HBV after liver transplantation.
+Large studies comparing long-term use of multiple drugs together to each drug used alone (especially the newer ones) are needed.
+Two studies were found that divided 119 participants into groups.
+Both studies showed some improvement in vision with Ginkgo biloba, but the results couldn't be combined together.
+Side effects and quality of life for people with AMD were not discussed.
+Research hasn't found evidence yet that taking Ginkgo biloba extract helps prevent AMD from getting worse.
+Future studies on Ginkgo biloba extract for Age-Related Macular Degeneration should be bigger and longer to give a clearer picture of its impact.
+We looked at 35 studies, with a total of 13,872 adult participants.
+Using combined studies, it was found that using nitrous oxide methods increased the likelihood of developing collapsed lungs (by about 57%), but had no impact on hospital death rate, lung infections, heart attacks, strokes, severe nausea and vomiting, blood clots, wound infections, or hospital stay length.
+The studies' results were strong for most outcomes, but results for pneumonia and severe vomiting were not as reliable.
+Both studies found that using nitrous oxide methods did not reduce the time spent in the ICU.
+Avoiding nitrous oxide might be a good choice for people with bad lung function before the surgery or those who are at a higher risk of feeling sick and vomiting after the surgery.
+We looked at three studies that included four treatments for people who had both a stroke and anxiety, with a total of 196 participants.
+This study randomly assigned 81 people with both anxiety and depression to receive either paroxetine (a medication), paroxetine with psychotherapy, or standard care.
+The evidence was weak.
+More well-designed studies (using a sugar pill or sham therapy) are needed to test the effectiveness of drugs and psychological treatments.
+Two studies looked at the effect of supplements, along with nutritional advice, versus just advice or no action at all.
+Two of the trials enrolled only children.
+In three studies, the risk of bias was mostly low, but in one study, it was hard to tell.
+People taking supplements or following dietary advice alone didn't show a noticeable change in weight, height, or body size compared to each other. Other nutrition or growth indicators also remained the same.
+There were no noticeable differences in body size, lung capacity, digestive side effects, or activity levels between the groups.
+There's good evidence that weight and height changes can be linked to diet in children aged 2-15, but the evidence is less clear for overall calories, fat, and protein intake due to missing diet diaries after treatment.
+Giving extra calories through mouth supplements doesn't offer extra help in feeding moderately malnourished children with cystic fibrosis. Dietary advice and monitoring alone are enough.
+We looked at 17 studies, which had a total of 1025 participants. 12 of these studies had been published, with 567 participants, and 5 studies had not been published, with 458 participants.
+Sixteen studies looked at betahistine versus placebo, involving 953 people in total.
+According to our evaluation, the evidence for both improvements and side effects was generally low, based on the GRADE system.
+In 11 studies, more patients treated with betahistine reported reduced vertigo symptoms compared to those given a placebo.
+This result might not be completely reliable due to a high degree of variation among the studies involved.
+In the study, common side effects included stomach problems and headaches, but serious health issues were uncommon and happened rarely. There was no significant difference in the number of side effects between the group using betahistine and the placebo group. About 16% of participants using betahistine experienced side effects, while 15% of those using a placebo did. (12 studies with 819 participants were involved.)
+Around 16% of patients in both the betahistine and placebo groups left the studies before they ended (481 participants; eight studies).
+Betahistine might help reduce vertigo symptoms in people with vertigo of various causes, but the evidence is not very strong.
+Betahistine is usually well-handled and has a low chance of causing side effects.
+All studies had problems with their methods, which increased the possibility of unreliable results.
+We found the evidence for all main results to be of very poor quality, due to a high risk of bias, unreliable results, and potential bias in published studies.
+This study gave either anabolic steroid shots or placebo shots to 29 frail elderly women, and the steroid shots were given weekly until they left the hospital or for four weeks, whichever happened first.
+The study found that there was little difference in the number of people who needed higher care or died between the two groups. One person in the control group died, with 8 out of 15 in the first group and 10 out of 14 in the second group. However, the results were not clear-cut, as the study had low quality evidence. No significant differences were found regarding time to independent mobility or individual adverse events.
+This study compared giving anabolic steroid injections every three weeks for six months or just daily protein supplements in 40 lean elderly women, for a year after surgery.
+This study suggests that using anabolic steroids might slightly lower the risk of becoming dependent or dying within 6 to 12 months, but the results could also indicate no difference or even an increased risk. At 12 months, there was one less dependent or dead person in the steroid group compared to the control group, but the difference wasn't statistically significant.
+The trial did not find any difference in negative side effects between the groups.
+At one year, there was no significant difference in death rates between the two groups in the combined data from the two trials. (2 deaths in one group vs 3 deaths in the other group)
+Anabolic steroids, used alone or with nutritional supplements after hip fracture surgery in older adults, do not have clear benefits or risks on patient recovery or potential side effects, based on the current research.
+We found three studies with a high risk of error. These studies looked at using a veno-venous bypass versus not using one. In total, 65 people used it, while 66 did not.
+There was no difference in the need for dialysis or blood transfusions between the two groups.
+We found one study with a higher risk of error that tested a procedure called percutaneous (20 people) versus open technique (19 people) for a method called veno-venous bypass.
+Survival of the patient or transplant was not mentioned.
+There was no difference in complications from a type of heart procedure called veno-venous bypass, between the two groups.
+The percutaneous technique group took 59 minutes less on average compared to the other group.
+All participants experienced failure in one or more organs.
+In two studies, 189 people with severe acute pancreatitis were randomly assigned to receive Continuous Veno-Venous Hemfiltration (CVVH) or not. 97 people received CVVH, while 92 did not.
+One study with 30 people with severe acute pancreatitis was done. Half received a high-volume treatment called continuous veno-venous hemofiltration (CVVH), while the other half received a standard CVVH treatment.
+High-volume continuous renal replacement therapy might not significantly reduce in-hospital death rates compared to standard therapy (in 30 participants from one study, evidence is of low certainty).
+The evidence suggests that using high-volume CVVH might not increase the risk of complications compared to standard CVVH, but the findings are very unclear due to limited data from one study involving 30 participants.
+The evidence is usually not very certain.
+CVVH may or may not lower the risk of death in patients with severe acute pancreatitis, as the evidence is not clear.
+Using a method called CVVH may shorten the time spent in the ICU and the hospital, as well as lower overall hospital costs, but the evidence supporting this is uncertain.
+It's unclear if using a lot of fluid in CVVH is better, the same, or worse than standard CVVH for patients with severe acute pancreatitis.
+Twenty-three studies involved 2467 participants.
+In two studies, people who received a placebo (fake treatment) had more severe withdrawal symptoms and dropped out more often compared to those who received methadone.
+Different studies use different methods to measure outcomes, making it hard to combine their results for a summary analysis.
+The evidence for all reported results is very uncertain.
+We don't know if suctioning the windpipe affects the occurrence of MAS and its related problems in weak newborns delivered by MSAF.
+We used 11 studies with participants switching groups and 1 study with different groups, involving a total of 194 people.
+One study used a technique called autogenic drainage, five studies used traditional chest physiotherapy, nine studies used a method called positive expiratory pressure (PEP), one of those studies changed the water pressure between the arms, three studies used oscillating PEP, two studies focused on exercise, and two studies used high-frequency chest wall oscillation (HFCWO).
+The evidence was rated as uncertain because the study was short, had few participants, and had a high risk of bias in most areas.
+Five studies found that using ACTs (like coughing) helped clear radioactive tracers faster than the control group. Another study showed no improvement when using PEP, possibly because coughing was not allowed during the PEP intervention. (55 participants in total)
+The certainty of evidence shows that anti-clotting drugs have little impact on the body's removal of radioactive substances.
+This review suggests that certain medications called ACTs might help clear mucus in people with CF, at least in the short term.
+We couldn't determine long-term effects of airway clearance treatments in people with CF because all studies only looked at short-term results.
+We found 12 regular clinical trials and one trial that wasn't quite a regular one, with a total of 6923 participants. Six of these studies focused on heart surgery (3359 participants), and seven studied thoracic surgery (3564 participants).
+We couldn't combine the information due to differences in comparisons and insufficient data.
+In heart surgery, 71 patients had blood clots (VTE) that caused symptoms, among 3040 participants across four studies.
+Using pneumatic compression stockings along with unfractionated heparin during cardiac surgery appears to lower the risk of symptomatic blood clots by 61%, compared to using heparin alone (1.5% versus 4.0%).
+Major bleeding occurred more often in the study with vitamin K antagonists (11.3%) compared to platelet inhibitors (1.6%).
+In thoracic surgery, 15 patients developed blood clots in their lungs, among 2890 participants from six different studies.
+In a major study, the rate of serious blood clots (VTE) was 0.7% for those given unfractionated heparin, compared to none for the inactive group. This means the risk was about 7 times higher with heparin.
+Two studies found no clear difference in the risk of major bleeding between fixed-dose low molecular weight heparin and weight-adjusted low molecular weight heparin, or between unfractionated heparin and low molecular weight heparin. The exact risk percentages varied, but no definitive conclusion could be drawn.
+The effectiveness and safety of using thromboprophylaxis (blood clot prevention) during heart and chest surgery is not well-established.
+We looked at 11 clinical trials with 13,627 participants, where the average age at the start ranged from 51.5 to 74.2 years.
+The follow-up period lasted anywhere from four weeks to three and a half years.
+Using RI or ACE inhibitors did not affect all-cause death, heart attack, or serious adverse events, but there was a slightly higher rate of withdrawal due to adverse effects with RIs, based on several studies with thousands of participants. The evidence for these findings is low to moderate in certainty.
+Studies suggest that using Renin Inhibitors can lower systolic blood pressure by around 1.72 mmHg more than ACE inhibitors, and diastolic blood pressure by around 1.18 mmHg more, but these findings may be biased rather than representing a true effect.
+Large, long-term studies are needed to compare the effects of Renin Inhibitors (RIs) with ACE inhibitors, focusing on health problems (morbidity) and death (mortality), as well as their ability to lower blood pressure.
+One study showed improved lung function when using ciprofloxacin to treat a lung infection, but our analysis didn't find the same result.
+None of the studies were likely biased because participants didn't know which treatment they received, which could affect results related to quality of life.
+We didn't find strong evidence that using an oral antibiotic for pseudomonas infections is better or worse than another treatment for flare-ups or long-term management of the infection caused by P. aeruginosa.
+Until more trials with enough participants are done, the best treatment should be chosen based on any available non-experimental evidence, the patient's specific health situation, the effectiveness of drugs against local illnesses, and the patient's personal preference.
+We found 15 studies on a treatment called ICBI, which were carried out in different places and with 3917 participants.
+There wasn't enough information to study other results.
+We looked at 25 studies with a total of 4121 people, including 2511 children and 1517 adults. Some studies had a mixed population.
+Four studies were high-quality with no risk of bias, 14 studies were medium-quality, and seven were low-quality, suggesting a moderate risk for any overall analysis.
+Corticosteroids may not lower the overall death rate (17.8% compared to 19.9%) in most cases, with a risk ratio of 0.90. For adults, the effect is not clear either.
+These substances reduced the risk of severe and any hearing loss, as well as neurological problems after exposure.
+Corticosteroids lower the risk of death in meningitis caused by Streptococcus pneumoniae, but not in cases caused by Haemophilus influenzae or Neisseria meningitidis.
+Corticosteroids lower the risk of severe hearing loss in children with meningitis caused by H influenzae, but they don't have the same effect on children with meningitis caused by other species.
+In wealthy countries, corticosteroids can lower the risk of severe and any hearing loss, as well as short-term brain-related complications.
+We used four clinical trials that involved 167 people.
+Using adrenaline with lidocaine increased the length of anesthesia by about 3.2 hours, based on one small study with 20 participants. This evidence is of low quality.
+The studies did not find any problems like blockage of blood flow in areas away from the injection site, and they did not look at the cost of the treatment.
+The trial reported how long pain relief lasted after surgery, but there wasn't enough information to understand the results.
+Two studies showed less bleeding during surgeries.
+All the studies included had advanced prostate cancer (stage T3 or T4), had small participant numbers, and were short in length.
+One study with 77 participants looked at the chemical changes.
+There's no information available comparing the effectiveness of IAS and CAS in terms of overall survival, survival from prostate cancer, or disease progression.
+All studies had a high risk of not being completely objective.
+In all comparisons, there were no differences in death rates, needed organ replants, organ rejections needing replacement or medication, or worsening of scarring between the groups for any of the reported outcomes.
+In one trial, more people who received a combination of ribavirin and peg interferon developed serious side effects (60.7%) compared to those who received peg interferon alone (17.9%). The risk of serious side effects was about three times higher in the combination therapy group.
+In other studies comparing the intervention and control groups, there was no greater occurrence of serious side effects in either group.
+There's no proof yet that antiviral treatment helps prevent repeated liver transplant infections caused by the hepatitis C virus, as it doesn't seem to offer any health benefits.
+More studies with a low chance of bias and accurate results over a long period are needed.
+The first study included men with non-spreading prostate cancer confirmed by biopsy, not on chemotherapy, and opting for external radiation therapy. The second study involved people aged 55 and older living in the community. The third study recruited university students.
+These studies looked at people with anxiety and depression, based on their symptoms, and provided information separately for each group.
+This study had 25 people with anxiety, 17 with depression, and 20 with either anxiety or depression, but it wasn't clear which. Therefore, the results could only be explained in words, not numbers.
+Reiki may not help with anxiety, depression, or both in people aged 16 and older, as there isn't enough proof to support its usefulness in these cases.
+Four trials included a total of 3267 children between the ages of 2 and 35 months.
+Giving zinc to children with severe pneumonia didn't significantly affect the time it takes for them to be discharged from the hospital, compared to not giving zinc. (Hazard ratio around 1.04.)
+Children were given one of two treatments by chance.
+Treatments were given intensively, for one hour each day, four days a week, over three weeks, at a university clinic in Australia.
+Speech pathology students provided the treatments in English.
+Neither treatment doesn't seem to be clearly better than not having treatment or the usual treatment.
+There's no proof that any treatments work for kids aged 4 to 12 with idiopathic CAS, unless they also have other developmental issues.
+More studies like this one would provide stronger proof.
+More research is needed on different treatments for children with Attention Deficit and Hyperactivity Disorder (ADHD), particularly those who also have other conditions.
+We found 31 studies, and 13 of them met the requirements for being part of our analysis.
+No benefits were found from using D-ribose, glucagon, verapamil, vitamin B6, branched chain amino acids, dantrolene sodium, or high-dose creatine.
+Low doses of creatine and ramipril didn't help much for people with a specific gene variant (D/D ACE) in their angiotensin converting enzyme.
+A diet high in carbs improves exercise performance more than a diet high in protein.
+Four studies found side effects.
+Oral ribose can cause diarrhea and symptoms like feeling dizzy and hungry, which might indicate low blood sugar levels.
+In one study, taking branched chain amino acids worsened the overall functioning.
+We found one study that matched our requirements and included it in this analysis.
+Sixty-three people with a condition called involutional lower eyelid entropion were randomly assigned to either surgery with just sutures or surgery with both sutures and a lateral tarsal strip.
+The study shows that a procedure combining both horizontal and vertical eyelid tightening methods (using everting sutures and lateral tarsal strip) is more effective for treating inward-turning of the eyelid (involutional entropion) compared to using only vertical tightening with everting sutures.
+We used 26 clinical trials that involved 23,499 people.
+The studies looked at how ezetimibe, along with other cholesterol-lowering drugs, compares with other cholesterol-lowering drugs or placebo alone.
+Adding ezetimibe to statins might lower the number of heart procedures needed by about 12 per 1000 people, but this finding is not certain as it varies among studies with a lower risk of bias. (About 21,323 participants, 7 studies)
+Adding ezetimibe to statins might not significantly increase the risk of liver disease (low-quality evidence, based on 20,687 participants across 4 studies).
+Adding ezetimibe to statins or fenofibrate may lower LDL cholesterol, total cholesterol, and triglycerides, and possibly increase 'good' cholesterol levels. However, significant differences were found among the studies.
+Ezetimibe's role in preventing heart disease initially isn't well understood and more research is needed to determine its effectiveness when used alone for this purpose.
+This study looked at 159 IBD patients, either in remission or with active disease. It compared the use of etoricoxib (60 to 120 mg daily) with a placebo.
+This study (with 222 patients) tested celecoxib (200 mg twice a day) against a dummy pill in people with quiet ulcerative colitis.
+In both the celecoxib and placebo groups, about 21% and 17% of patients had side effects, respectively, but this difference was not significant.
+No patient in either group had a serious health problem or died.
+Eleven percent of patients in both the celecoxib and placebo groups had gastrointestinal side effects. The risk was similar in both groups.
+No one had any heart-related problems.
+Kidney problems or blood clot side effects were not reported.
+Therefore, we can't definitely say if celecoxib and etoricoxib are safe for short-term use in people with IBD (inflammatory bowel disease).
+Celecoxib and etoricoxib don't seem to make inflammatory bowel disease symptoms worse.
+Both studies had a small number of participants and a short observation period.
+More studies are needed to check if celecoxib and etoricoxib are safe and well-tolerated by these patients.
+No studies were found that tested a non-drug method to improve swallowing in people with Parkinson's disease.
+The main results will be the chances of getting food or liquid in the lungs (aspiration) and developing pneumonia.
+Non-medication swallowing exercises don't have proof yet that they help with swallowing problems in Parkinson's disease. They might not help or they might, but we don't know for sure.
+Large studies comparing swallowing therapy with a placebo are needed to check if it helps people with Parkinson's disease who have trouble swallowing. These studies follow a specific reporting guideline called CONSORT.
+Patients need to be watched for at least 6 months to see how long any improvement lasts.
+The studies included 15,940 young people from the United States, who were of various ethnicities.
+Seven programs took place at schools, two programs happened in the community, and one program was held at home.
+Abstinence-only programs do not seem to lower the risk of getting HIV, according to people's reports about their actions and bodily tests.
+The programs were not linked to changes in having unprotected sex, the number of sexual encounters, partners, or the use of condoms, compared to other options.
+A study suggested that recent vaginal sex might lower the risk of a certain event, but this was only true for a short period, and there were issues with accuracy and other studies showing no effect in a larger group.
+The analysis often overlooks important results, fails to report crucial data, may be influenced by personal biases, and does not consider changes in participants or grouping in the study design.
+The evidence shows that abstinence-only programs do not seem to reduce or increase the risk of HIV in high-income countries. These programs appear to be ineffective, but their effectiveness may only apply to young people in the United States.
+One study had a low risk of bias in all areas when assessed using the QUADAS-2 tool.
+In studies measuring TSBA, its sensitivity (ability to correctly identify those who have it) ranges from 72% to 98%, and its specificity (ability to correctly identify those who don't have it) ranges from 81% to 97%. This is when the cut-off level is 10 μmol/L.
+Two studies involved 166 people, comparing a combination of psychotherapy with therapy alone (both using behavior therapy).
+The combination was a little better than the benzodiazepine at the end of treatment, but this improvement wasn't very certain. At the 7-month check-up, no significant difference was found between the two.
+There isn't much good evidence available about the effectiveness of using psychotherapy along with benzodiazepines for panic disorder.
+There's not enough information to determine if psychotherapy with benzodiazepines helps people with panic disorder.
+We couldn't find any research studies that could help us understand the effects (death rates or side effects) of the treatment in question.
+Seventy-three studies found different health results after removing or keeping a catheter.
+In most of these studies, removing a catheter helped improve the condition of patients with fungal blood infections (candidaemia).
+No study found evidence that keeping a catheter is beneficial.
+Observational studies suggest removing catheters early might be beneficial, but we couldn't find any major studies to confirm this, so we can't make definite conclusions yet.
+We used 15 research studies involving a total of 17,091 participants.
+Using more antiplatelet drugs instead of fewer may lower the risk of stroke recurrence by about 27% (5.78% vs 7.84%). However, there's no significant difference in the risk of vascular death between the two groups (0.60% vs 0.66%).
+Taking dual antiplatelet drugs right away after a stroke can help lower the chance of another stroke, and this benefit seems to be greater than the potential side effects for a period of one month.
+The studies looked at 15,077 women with various breast cancer risk factors, who had regular mammograms.
+After the BRRM procedure, concern about breast cancer decreased more compared to the initial levels and those who chose surveillance instead, but there was less satisfaction with body image and sexual feelings.
+Removing the other breast after having cancer in one does not necessarily increase survival, as the risk of cancer recurrence or spreading remains high.
+BRRM is only important for people at high risk of disease, like those who carry the BRCA1/2 genes.
+Using CRRM may lower the risk of cancer developing in the other breast, but it's not clear if it improves survival. More studies that account for various factors are needed.
+Both amantadine and rimantadine can cause stomach problems.
+Amantadine and rimantadine work similarly in reducing flu A symptoms in healthy adults, but rimantadine causes fewer side effects than amantadine.
+Both drugs likely have a weak ability to stop the spread.
+Worldwide, influenza viruses are becoming resistant to amantadine, as revealed by recent studies.
+Ten studies took place in wealthy and upper-middle-income countries.
+Prostaglandins might lower the risk of death within a month by about 14% (with a possible range of 38% lower to 6% higher), but this evidence is of low certainty, based on 11 studies with 771 participants.
+Prostaglandins may not significantly affect the need for liver retransplantation, early allograft dysfunction, primary non-function of the transplant, or hospital stay length. (Results from 6-7 trials involving 468-624 participants with low-certainty evidence)
+Prostaglandins may significantly lower the likelihood of developing acute kidney failure that needs dialysis (around 42% reduction; about 100 fewer cases per 1000 people, with some variation; based on 5 trials involving 477 participants; evidence has low certainty).
+Eleven studies looked at the use of prostaglandins in adults who received a liver transplant.
+Prostaglandins don't affect common, non-life-threatening side effects.
+There aren't enough good studies to show the effects of using prostaglandins during liver transplants.
+Five studies with 183 people were part of the review.
+Both studies looked at lung health, but they didn't find any difference between the groups being treated (evidence with low certainty).
+The first trial with 18 participants found no difference in needing more antibiotics, while the second trial with 59 participants focused on the time until the next flare-up.
+This study with 18 participants found no adverse events or changes in sputum bacteria in either treatment group for both outcomes. (Very low-certainty evidence)
+Using inhaled antibiotics along with intravenous antibiotics may not have a significant impact on overall health compared to intravenous antibiotics alone.
+There's probably no difference in harmful side effects between the two groups (based on low-quality evidence), and one study (with 62 participants) found no difference in the growth of antibiotic-resistant bacteria (also based on low-quality evidence).
+Inhaled antibiotics may not be effective for treating lung infections in people with cystic fibrosis, based on the evidence we found, but the certainty is low or very low.
+The studies looked at a mindfulness-added parent training program against no treatment, waiting list, or attention control (in 2 studies), a parent training program without mindfulness (in 5 studies), and both no treatment/waiting list/attention control and a parent training program without mindfulness (in 4 studies).
+We combined results from 2118 children and their parents to find out the impact.
+The mindfulness-focused parent training programs, compared to regular parent training, may not show significant differences in children's emotional and behavioral well-being, parenting skills, or parent mindfulness (based on limited evidence from 5 studies involving 203, 319, and 412 participants, respectively).
+Based on the current evidence, these findings might change as more high-quality studies become available.
+There were a total of twelve studies, some at hospitals and some in communities.
+In hospitals, cleaning newborn skin or umbilical cord with chlorhexidine compared to the usual care might not affect newborn death rates. (One study of low quality found a ratio of neonatal death with chlorhexidine to no treatment of 0.11, but this range includes the possibility of a 2.04 times higher death rate with chlorhexidine.)
+Chlorhexidine cleaning of the umbilical cord, compared to no cleaning, likely lowers the risk of infections (like omphalitis) in two trials.
+Using chlorhexidine to clean newborn skin or umbilical cord instead of usual care in the community reduces the chances of newborn death and infections.
+Cleaning the mother's vagina along with total body cleaning during childbirth increases the risk of hypothermia. (RR 1.33)
+Using chlorhexidine in the mother's vagina along with a full body cleanse did not seem to affect newborn death rates compared to using sterile saline solution and no cleaning, according to a low-quality study.
+A study found that cleaning the mother's vagina with chlorhexidine, along with full body cleaning, likely decreases the chances of newborn infections compared to not cleaning at all. (Risk reduction: 0.69)
+Health professionals were more likely to follow osteoporosis treatment guidelines, such as bone density tests or medication, when they received email reminders, rather than usual care.
+The evidence shows it doesn't clearly affect what patients do or decide.
+The study did not look at results from healthcare services or any potential side effects.
+One study was found, but it wasn't enough to suggest using emails for professional communication among healthcare providers for medical practice.
+Future research should focus on using high-quality study methods that incorporate the latest technology, taking into account the complexity of emails as a tool.
+We used information from 30 studies that involved a total of 18,682 participants.
+Studies have significant variations in how they diagnose cancer, treat it, participant ages, and questionnaires they use to measure fatigue, as well as the number of participants involved.
+Seventeeneen studies reported that 14,573 survivors experienced severe fatigue, with rates ranging from none to 61.7%.
+In three studies with children up to 18 years old, the number of kids experiencing fatigue varied from 6.7% to 12.5%.
+In these 12 studies, the number of people aged 16 and older who survived ranged from 4.4% to 61.7% having certain health issues.
+In seven studies, the number of haematological cancer survivors experiencing severe fatigue varied from 1.8% to 35.9%. This was reported for 1907 survivors.
+Brain cancer survivors often experience severe fatigue, according to two studies. The first study found it occurs in about 15% of survivors, while the second study found it in about 21% of survivors.
+Seventeen people who survived bone cancer have no recurrence, according to one study.
+Studies looked at causes and risk of feeling tired, but these studies had different definitions and methods, so the results were mostly described in words instead of numbers.
+Depression may be linked to feeling tired.
+Age at diagnosis and education level don't seem to affect feelings of tiredness.
+This also applies to feeling very tired after treatment and the connection between tiredness and related factors that increase the risk.
+We used three studies, with a total of 149 women and their newborns.
+All three studies had a high risk of being biased.
+None of the trials showed that using this treatment affects the likelihood of stillbirth, newborn death, low birthweight, or preterm birth, and no study looked at the babies' health in the long term.
+During pregnancy, there isn't much evidence from controlled trials that the hormone relaxin can prevent early birth in women already in labor before their due date.
+Women given relaxin during pregnancy may have a higher chance of giving birth within a week compared to a control group, but this was found in a small, bias-prone study with only 30 participants.
+In women with early labor, it's not clear if relaxin can help stop preterm birth or not, as there's not enough proof.
+Eighty-five trials were used, and 76 of them provided data for one or more outcomes.
+Most trials focused on people having a planned gallbladder removal surgery (laparoscopic cholecystectomy) and who were at low risk for anesthesia (ASA I and II).
+Just two trials had a low risk of being misleading.
+People who received local anesthetic in their abdomen (intraperitoneal) had lower pain scores, as measured on a scale, at four to eight hours and nine to 24 hours compared to the control group. This was based on 57 trials involving 4046 participants and 52 trials involving 3588 participants, respectively. However, the evidence is of low certainty.
+Intraperitoneal anesthesia may reduce pain for up to 24 hours in low-risk patients who have a laparoscopic gallbladder removal surgery.
+Five studies looking back at women with a diagnosis of GCT (a type of cancer) were included in the review, and all used proper methods to account for different factors.
+Two studies found no difference in survival rates between different surgery methods, whether a person had lymph nodes removed or received chemotherapy or radiation afterwards.
+Women who had radiation therapy after surgery had a lower chance of the disease coming back, compared to those who only had surgery.
+Three studies found no difference in disease recurrence, regardless of the type of chemotherapy or surgery used, except that accurate staging of the disease during surgery might be significant.
+There's no clear difference found in the rate of disease returning, between fertility-sparing surgery and conventional surgery.
+All studies had a high risk of being unreliable.
+The evidence we have is not much, and it's not very reliable.
+More study could significantly change our understanding of the effect's size.
+This ongoing study aims to determine the best chemotherapy treatment for sex cord stromal tumors. It compares carboplatin and paclitaxel with the standard treatment (BEP). The study is led by the Gynaecological Oncology Group.
+More studies are needed to understand the side effects and quality of life linked to various treatment plans, as well as the safety of less invasive surgical methods.
+Two studies with a combined total of 161 people were part of this review.
+The studies did not provide information about death rates or the number of lost limbs.
+In a study with 133 participants, those given folic acid or 5-methyltetrahydrofolate had a greater improvement in ankle-brachial index compared to those given a placebo.
+In a study with 18 participants, taking a multivitamin B supplement did not significantly change ABI compared to a placebo. The average ABI for the supplement group was 0.7, and for the placebo group it was 0.8.
+The studies used different treatments, involved various people, and used multiple tools to measure results.
+Family therapy may help decrease depression and improve family functioning, but the evidence supporting this is limited or conflicting overall. However, three studies suggest that family therapy is more effective than doing nothing or waiting for treatment.
+More well-done studies are needed to see if specific types of family therapy work better than others.
+We found 9188 studies and used 15 of them in this review. These studies involved 2242 participants who took part in randomized controlled trials.
+Children participated in 11 trials, while adults were in 5 trials.
+Removing a cough earlier might lower the chance of coughing compared to a later removal, but the evidence is weak. This conclusion is based on 11 studies involving 1430 participants. The risk of coughing was found to be about 52% lower after early removal compared to late removal, but this could also be due to chance.
+Early removal of LMA (a breathing tube) may increase the risk of airway obstruction, with a rate of 15.6%, compared to a rate of 4.6% with late removal. The risk is about 2.7 times higher.
+This study shows that there's no clear advantage for removing the LMA (Laryngeal Mask Airway) either early or late during anesthesia.
+The evidence is poor or very poor.
+Eighteen studies assigned 3888 people to receive rosiglitazone treatment.
+The treatment lasted up to four years, with most people receiving treatment for about 26 weeks.
+Treatment with rosiglitazone for at least 24 weeks in people with type 2 diabetes did not show an improvement in outcomes like death, health problems, side effects, costs, and quality of life.
+The large study ADOPT showed an increased risk of heart problems.
+All studies, published or unpublished, should share their safety information and any side effects with the public.
+We used one study (a type of trial) with a moderate risk of having incomplete or unclear results, which involved 66 people who had never used Botulinum toxin A and were diagnosed with cervical dystonia.
+Two doses of a muscle-relaxing medicine called BtA (brand name Dysport) were given, once at week 0 and again at week 8, with a usual dose of 262 to 292 units. This was compared to taking trihexyphenidyl multiple times a day, up to a total of 24 mg.
+The study was funded by the maker of BtA.
+We didn't find any information about how the dose of BtA affects it, differences between BtA types, the use of electromyography for injections, or how long the treatment effect lasts.
+Four studies with 127,891 men and 9342 women were part of this review.
+One study had only women participants.
+After three to five years, there was no noticeable difference in death rate from any cause between the group that was screened and the group that wasn't, for both men and women.
+Men had fewer instances of ruptured aneurysms, while for women, there was no significant change.
+Men had a greater likelihood of having surgery for an abdominal aortic aneurysm (a bulge in the main artery in the abdomen), with a ratio of 2.03 times more compared to women.
+Nineteen studies reported results for 1597 young to middle-aged people.
+Several studies had methods that could lead to bias, such as poor randomization, unclear blinding, and incomplete evaluation of results.
+The combined results for most studies showed no noticeable difference between the two types of grafts in terms of physical tests, returning to activities, and personal evaluations of results.
+The two interventions showed no difference in the rate of knee re-rupture or scores given by the International Knee Documentation Committee.
+The tests (instrumental, Lachman, pivot shift) showed that the knee became more stable after surgery with PT reconstruction, compared to HT reconstruction.
+It's uncertain how significant these changes in movement range are in a clinical context.
+There isn't enough information to decide if one transplant works better than the other for long-term results.
+This review includes five studies with a total of 971 participants who received health education using mobile devices for people with heart failure.
+Participants' ages ranged between 60 and 75 years, and around 2 out of 3 participants were men.
+Three studies found that mobile health education programs didn't significantly improve heart failure knowledge more than usual care for 411 participants. The quality of evidence was low.
+We couldn't combine the results because the outcomes were different among studies, and the evidence is unclear.
+No study found any side effects.
+Using mobile health education might not significantly reduce hospitalizations related to heart failure (Evidence suggests a 26% lower risk, but this difference isn't certain; Based on 3 studies involving 894 participants; Evidence quality is low).
+The studies had issues with design, execution, diversity, and included fewer than 500 participants, so we considered their quality as lower.
+Research studies, both ongoing and upcoming, suggest that this topic will provide more information in both the short and long term.
+We looked at 67 studies in total, and we analyzed data from 43 of those studies.
+We used 17 studies, with 2422 participants, where we have data on outcomes.
+The participants were mostly older adults who had survived a stroke and had some degree of disability.
+The group that received endoscopic surgery stayed in the hospital about 6 days less, on average. (Moderate evidence supports this.)
+The cost for the ESD group in the six trials was 23% less to 15% more than the usual care.
+In these studies, the teams that worked together on a specific procedure had the most significant reduction in death or need for help, while those without a coordinated team may have had less successful results (borderline significant difference at P=0.06).
+Properly equipped Endovascular Stroke Treatment (ESD) services, with a team of different medical professionals working together, can help reduce long-term disability, institutional care, and shorten hospital stays for some stroke patients.
+Services without a team working together from different fields cannot be relied upon for accurate results.
+Patients and their caregivers did not experience any negative effects on their mood or overall health, and there were no hospital readmissions.
+Seventy-two randomized controlled trials fit our requirements.
+The quality of the studies we used differed.
+A regular review system combined with strong blood pressure medication lowered both systolic (by about 8 mmHg) and diastolic (by about 4 mmHg) blood pressure in three groups, and reduced the chances of death from any cause over five years (6.4% vs 7.8%, a difference of 1.4%) in a large study called the Hypertension Detection and Follow-Up study.
+Self-monitoring moderate blood pressure reduction: systolic (decrease by 2.5 mmHg) and diastolic (decrease by 1.8 mmHg).
+A nurse or pharmacist leading care could be a helpful approach, as most studies show improved blood pressure control and lower average systolic and diastolic blood pressure. However, these methods need more examination.
+Appointment reminders may need more testing due to differences between studies and small numbers of participants. However, most studies show an increase in people attending follow-ups (41% more, on average) and improved blood pressure control in two small studies (54% more likely with reminders).
+If your blood pressure is too high, a strong step-by-step approach should be used to give you medication to lower it.
+Five studies with 260 participants provided data for analysis.
+Cognitive behavior therapy decreased negative feelings about pain, but had no effect on pain intensity, according to one study.
+A study on family education about psychology did not lower depression levels.
+A study testing cognitive behavioral therapy didn't clearly show benefits for coping strategies, and there was no difference in the use of healthcare services between the groups tested.
+Home-based therapy for thinking and behavior did not help more than learning about the disease.
+A study found that teaching patients about their health improved their views towards healthcare workers and medication, with an average improvement of 4.39 and 1.74, respectively.
+These findings might not be true for all ages, different levels of sickle cell disease, types of pain (either short-term or long-term), or locations.
+Two studies involving 67 participants were included in the analysis.
+The study of 47 people found no difference in lifespan or personal preference between two types of long IV tubes, Hydrocath and Vygon EC.
+Using longer IV lines, instead of shorter ones, may increase the lifespan of the line and improve patient satisfaction.
+More studies are needed to find significant differences between these medical devices that matter in real-world patient care.
+We looked at 11 studies that included a total of 596 people.
+A bigger study with its plan made public is needed to prove the finding before doctors change how they treat patients.
+Dietary supplements don't appear to help eczema, so they're not recommended for public use or in clinical practice right now.
+Most studies were low in quality and had a high chance of being biased, so there's little reliable evidence available.
+Using different doses of brachytherapy appeared to reduce cough in some people, suggesting that the lowest effective dose might be best to reduce side effects.
+Morphine, codeine, dihydrocodeine, levodropropizine, sodium cromoglycate, and butamirate citrate cough syrup may help a bit, but all studies had a high risk of bias.
+We looked at six studies (most were retrospective) where laparoscopic surgery was compared to open surgery for removing a part of the esophagus (334 patients in total, with 154 for laparoscopic and 180 for open). Five of these studies gave information about one or more results for this procedure.
+All the studies had a questionable or high risk of not being accurate, and the overall evidence quality was very poor for all results.
+In comparing laparoscopic and open esophagectomy, results were unclear for short-term death (5% in laparoscopic vs 1.1% in open). Long-term death rates were similar for both. The risk of anastomotic stenosis was slightly higher in laparoscopic surgery (11.1% vs 8.1%). Short-term recurrence occurred in 6.3% of laparoscopic cases and none in open. Long-term recurrence rates were similar. Fewer people required blood transfusions after laparoscopic surgery (0% vs 16.2%). The proportion of people with positive resection margins was lower in laparoscopic surgery (15.8% vs 24.3%). The number of lymph nodes removed during surgery varied between the two methods.
+In one study, it wasn't clear if laparoscopic esophagectomy used less blood on average compared to other methods.
+None of the studies mentioned difficulty swallowing after surgery, improvements in quality of life, the time it took to get back to normal activities without help, or the time it took to return to work after surgery.
+Clinical trials are needed to find the best way to perform esophagectomy, comparing it with laparoscopic transhiatal method and other options.
+Four studies with 215 participants looked at stopping azathioprine treatment alone, while two studies with 125 participants compared stopping azathioprine from a combination of treatments to continuing the combination therapy.
+The most common side effects were infections, mild decrease in white blood cell count, abdominal problems, joint pain, headaches, and increased liver enzymes.
+In this study, about half of patients who kept taking both azathioprine and infliximab had a relapse, while slightly over half of patients who stopped azathioprine but continued infliximab also had a relapse. The research quality was low.
+Combination therapy often causes infections, increased liver enzyme levels, joint pain, and infusion reactions.
+Withdrawing immunosuppressant medication in people with calm Crohn's disease is not clear whether it's safe or effective.
+It's unknown if stopping azathioprine (alone or combined with other drugs) affects the occurrence of complications related to CD, side effects, severe side effects, or stopping due to side effects.
+More research, especially studies without knowing the treatment (double-blind), needs to be done in this field. This research should focus on stopping biologic therapy or another immunosuppressant other than azathioprine.
+We looked at nine studies involving a total of 316 newborn babies who received either naloxone or a placebo (dummy medication), after their mothers received opioid painkillers during childbirth.
+No studies looked at babies born to mothers who used opioids, whether prescribed or not, during pregnancy.
+These studies didn't include any infant participants with heart or brain function problems.
+This study did not look at how it affects babies being admitted to a special baby care unit or not being able to breastfeed.
+The current research doesn't provide clear answers if giving naloxone helps newborns with breathing or brain problems caused by the mother taking opioids during pregnancy.
+Neuraxial blockade, compared to general anesthesia, lowers the chance of death within 30 days (by about 29%), according to 20 studies with 3006 participants. (No details about the confidence interval or I2 are provided.)
+Using neuraxial blockade lowered the risk of getting pneumonia, based on five studies with 400 participants.
+There was no significant difference found in the risk of heart attack between the two methods, based on six studies involving 849 participants.
+Adding a neuraxial block to general anesthesia did not change the risk of death within 30 days, based on 18 studies with 3228 participants.
+There was no clear difference found in the risk of heart attack between patients who received both neck and spinal anesthesia and those who only received general anesthesia, based on eight studies with a total of 1580 participants.
+Adding a neuraxial block to general anesthesia may lower the chance of getting pneumonia in about 31% of cases, according to nine studies with 2433 participants.
+The evidence was found to be moderate for all six comparisons.
+No serious side effects, such as seizures or heart problems caused by anesthetic overdose, long-lasting nerve damage (more than a month), or infections related to spinal block, were reported.
+More studies need to be done.
+Nine trials looked at agalsidase alfa or beta in 351 people and met the required conditions.
+Neither trial resulted in any deaths.
+One study showed that agalsidase beta improved globotriaosylceramide levels in kidney, heart, and overall (including complications and death) compared to a placebo, with significant reductions of -1.70 in the kidney, -0.90 in the heart, and -4.80 in the overall results.
+There was no difference in death rates between the groups, and no studies investigated pain.
+One group had fewer adverse events, including serious ones, compared to the other group, but the difference was not statistically significant.
+There were no noticeable differences found in the different schedules for people's self-evaluation of their health condition or their pain levels.
+Enzyme replacement therapy reduces microvascular endothelial deposits of globotriaosylceramide and improves pain-related quality of life, as shown by trials comparing it to a placebo.
+There's no proof showing whether the 'alpha' or 'beta' form is better, or the best dose and frequency for enzyme replacement therapy.
+Nearly half of the studies (42%) were deemed high quality.
+NSAIDs were shown to be more effective than placebo, but they also cause more side effects.
+Nonsteroidal anti-inflammatory drugs (NSAIDs) are not more effective than other medications for treating acute lower back pain (moderate evidence).
+COX-2 inhibitors may increase the risk of heart problems in certain groups of patients.
+Fifteen separate studies, including 1022 adults with broken wrists (displaced and unstable near the wrist bones), were part of the analysis.
+All studies looked at whether using a special device (external fixation) or a plaster cast was better for healing broken bones. However, there were many differences between the patients and treatments used in these studies.
+Using a device to fix bones from outside may lead to many issues like pin-track infections, but most of these problems were minor.
+The two groups did not have a clear difference in the number of people who experienced serious complications like reflex sympathetic dystrophy (25 in one group, 17 in the other, based on 11 studies). The relative risk was 1.31, but the exact difference wasn't clearly defined.
+External fixation might help in setting broken wrists (distal radius fractures) in adults when they are pushed outwards (dorsally displaced).
+External fixation reduces the chances of bones moving again, and it often leads to better bone alignment. Most complications from the surgery are minor. However, there isn't enough proof yet that it leads to better overall function.
+We looked at 34 studies in our analysis.
+We identified 20 important points, grouped into three main categories (with seven subcategories), which explain what influences people's decisions about joining a vaccine trial for a pandemic or epidemic illness.
+The trial team had control over certain factors.
+Other factors that might affect someone's decision could be advice from family, friends, or the community.
+People worried about potential side effects, how well the vaccine works, and how it could affect their daily responsibilities (like caring for others or work).
+People's actions can also be affected by their families, and it might influence their relationships due to participation.
+Society's stigma made them hesitant to participate.
+Trust in government involvement in research and trials can affect a person's decision.
+People's personal and public benefits influenced their choice to take part.
+Receiving the vaccine offers better health, knowledge about the disease, and a return to normal life during a pandemic or epidemic.
+Helping people in the community and advancing science can be important reasons for the work, often driven by memories of loved ones who passed away from the disease.
+We found two studies with a total of 291 participants for this review.
+The studies shared limited information about infections, side effects, and other results (like Staph aureus infections and death).
+There's not much strong evidence yet from well-designed studies showing that nasal decontamination can prevent surgical site infections.
+We found only two studies that fit the criteria for this review, but one was quite small and lacked clear reporting.
+The benefits and risks of cleaning to prevent infections after surgery in this group of people are not clear.
+Five studies with 187 women aged 15 to 40 participated.
+In two studies, isoxsuprine given by mouth was compared to a placebo. In three other studies, terbutaline oral spray, ritodrine chloride, and oral hydroxyphenyl-orciprenalin were also compared to a placebo when given by mouth.
+Side effects were seen in some people using all of these medications, affecting up to a quarter of all participants.
+They experienced nausea, vomiting, dizziness, shaking, trembling, and an increase in heart rate.
+This review suggests that beta2-adrenoceptor agonists might not be helpful for easing menstrual cramps, as the available studies are too small and have unclear quality, making it hard to make a confident decision at this time.
+We found six studies with 292 participants who had fibromyalgia. These studies were designed to be unbiased and fair.
+The treatment in the double-blind phase lasted between 3 to 8 weeks.
+In the studies, there was no significant difference between using NSAIDs and a placebo for pain relief. However, a substantial number of people using NSAIDs reported fewer adverse events compared to those using a placebo.
+The effect is likely to be quite different.
+NSAIDs are not helpful for treating fibromyalgia.
+This study included around 200 people with knee pain behind the kneecap, known as patellofemoral pain syndrome.
+Taping was compared to no taping or a placebo in all studies. Exercise was a common intervention in four of these studies for both taping and control group participants.
+In four different studies, measuring pain on a scale of 0 (no pain) to 10 (worst pain), using tape or not at the end of treatment did not show a noticeable difference in pain levels (difference in means was -0.15, with a range of -1.15 to 0.85). This lack of difference was found despite the methods used varying and the studies coming from 161 knees.
+The current evidence from studies on taping, used alone or as part of a treatment plan, is of poor quality and not enough to make a clear determination about its effects.
+Agreement is needed on the diagnosis of knee cap pain, methods to measure the results, and a good way to use knee cap taping.
+Smaller study sizes and wide ranges of possible results made it hard for most studies to find differences between treatments, and they couldn't combine the results for the majority of outcomes in a summary analysis.
+Four studies found that antidepressants do not help with weight gain, eating disorders, or related mental health problems.
+More studies on safer and easier-to-use antidepressants should be conducted, especially in larger, well-planned tests, to help doctors make better decisions.
+We used two clinical trials with 116 adult participants.
+A study compared using a large, salty nasal spray (intervention) to doing nothing as usual (control) in 76 adults, some with polyps. The quality of life related to sinus problems was measured using a scale from 0 to 100, where a higher score means a better quality of life.
+After three months of treatment, patients given saline solution showed more improvement than those given a dummy pill (improvement of about 6.3 points). This improvement was greater after six months (improvement of about 13.5 points).
+The patient's symptoms of sinus problems were evaluated, but the scale used isn't clear, so we can't understand the severity of their condition from the data given.
+Quality of life was measured using SF-12, with 100 representing the best possible quality of life.
+After three months of treatment, no clear difference was found between the groups. However, after six months, the saline group showed a slight advantage, but this may not have significant effects in real-world medical practice, and the findings have a lot of uncertainty.
+A study looked at 40 adults with polyps, comparing using a small amount of saltwater mist (nebulized saline) to using a nasal spray with steroids (intranasal corticosteroids).
+The study did not report improvements in the quality of life related to the specific disease.
+At the end of three months, patients using intranasal corticosteroids had significantly less severe symptoms. This effect was quite substantial.
+Three studies were accepted for the analysis.
+Two studies with 20,451 participants looked at the impact of TXA.
+The larger study, which involved 20,211 patients with different types of trauma, was carried out in 40 countries, while another study, with 240 patients, focused only on those with brain injuries due to trauma.
+A study with 77 participants examined the use of aprotinin in people with severe bone injury and shock.
+Antifibrinolytics don't seem to affect the chances of having a blood clot-related problem, needing surgery, or receiving a blood transfusion. (Quality of evidence: Moderate for the first point, High for the other two points.)
+TXA lowers the risk of death in trauma patients with severe bleeding without causing more problems.
+TXA may help some people with a brain injury, but we still don't know a lot about its effects.
+Two ongoing studies in people with head injuries without other injuries will likely answer the remaining questions.
+These studies offer moderate or low-quality information about the risk they're studying.
+At four months or more, more alcohol consumption is linked with a higher risk of heart disease (drinks per week decreased from 13.7 to 12.5); drinking more frequently leads to a decrease in drinking days per week (from 2.74 to 2.52 days); and higher blood alcohol levels are associated with a higher risk of heart disease (a slight reduction in blood alcohol concentration from 0.144% to 0.131%). These findings are supported by moderate quality evidence.
+The length of the MI treatment (in minutes) didn't clearly affect its impact.
+For longer-term results (four months or more), there were no notable differences between the assessment-only group and the control group with alternatives. This was true for university/college settings compared to others, and for higher-risk participants compared to all or low-risk participants.
+Although some effects were found, they were too small to make a difference in real-world policy or practice.
+We found 11 studies from the past that considered several factors and fit our requirements.
+In our study, having a larger amount (more than 1 cm) of remaining cancer after surgery had a negative impact on survival, but this effect was still significant. However, there was little difference in survival and a slight difference in how long it took for the cancer to return when the remaining cancer was between 2 cm and less than 2 cm.
+These studies, being done in the past, likely had a high risk of bias because it's hard to avoid selecting only certain types of cases, even after adjustments for important factors affecting the outcome.
+Twelve studies involving 1150 women were considered.
+In women given general anesthesia for a cesarean section, using local anesthetic near the wound and in the belly reduced the need for additional pain medication by half (1 study, 100 participants).
+Women given a mix of local anesthetic and non-steroidal anti-inflammatory drugs in their wound required less morphine than those given only local anesthetic (difference: about 7.4 mg, 60 participants in the study).
+Using injections near the surgery site and nerve blocks in the belly, along with regular anesthesia, can help reduce the amount of painkillers needed during a cesarean section.
+Taking Nonsteroidal anti-inflammatory drugs along with other treatments can provide extra pain relief.
+Thirty-two studies were found that match the required criteria.
+Many had problems with their research methods.
+In 29 studies, researchers looked at improvements in brain function (the main thing they were interested in), but they could only combine results from 13 of those studies. These 13 studies included a total of 879 participants who received treatment and 909 who did not.
+The treatment didn't show a significant overall difference compared to the control group, but one specific analysis using tolrestat, from four trials, favored the treatment.
+Some studies showed improvement in nerve-related symptoms when using a certain method, but other studies did not find the same results when measuring symptoms more continuously.
+There was no overall improvement in nerve function tests (27 studies) or foot ulcers (one study).
+Three drugs were removed from human use due to serious side effects: sorbinil caused severe allergic reactions, zenarestat increased creatinine levels, and tolrestat affected liver function.
+Aldose reductase inhibitors didn't significantly help in treating diabetic nerve damage, compared to a placebo.
+Three suitable trials with 569 participants were found.
+Acute and chronic pain levels varied greatly in the control groups, with acute pain ranging from 38.67% to 96.51%, and chronic pain ranging from 7.83% to 40.47%, due to issues with the study methods.
+Both methods work well since they both lead to a low chance of the problem happening again.
+In individual studies, preperitoneal repair may cause less or similar levels of short-term and long-term pain compared to the Lichtenstein procedure.
+We stress the importance of similar, high-quality studies that compare different methods for repairing inguinal hernias (either elective preperitoneal or Lichtenstein repair) in terms of long-term pain.
+Different teeth whitening products (CP and HP gels, strips, paints, SHMP and STPP chewing gums, and HP mouthwash) showed some whitening effect compared to a dummy product over a short time (2 weeks to 6 months). However, the confidence in the evidence is low to very low.
+Most comparisons were based on individual studies with few participants and rare events, and the quality of the evidence was rated as low to very low.
+Higher concentrations of the active ingredients often caused tooth sensitivity and mouth irritation, but these effects were mild and temporary.
+Home-based bleaching methods, using chemicals, are likely not very effective compared to a placebo (dummy treatment), for all the tested outcomes, over short periods of time.
+Well-organized studies should use the same methods to apply treatments, including the amount used, when it's applied, and for how long.
+We used 45 studies, with a total of 1619 participants, in our updated review.
+Electromechanical and robot-assisted arm training significantly improved people's ability to perform daily tasks, arm function, and muscle strength in multiple studies involving 957 and 1452 participants, respectively. These findings are based on high-quality evidence.
+Stroke patients may improve their daily living activities, arm movement, and arm strength with training using electronic and robotic devices for their arms.
+The results should be understood carefully because the studies had differences in training intensity, duration, treatment type, participants, and measurement methods.
+We used two studies that looked at changes over time in the USA.
+The study looked at two programs: mandatory random drug tests and mandatory random and needed alcohol tests.
+This study looked at random drug tests required for all interstate truck drivers, using data from federal injury reports.
+Mandatory drug testing following intervention may reduce injuries by about 1.3 per 100 people in one study, but had no significant effect on injuries in the second study.
+Using drug and alcohol tests for workplace drivers doesn't have enough proof to say it definitely prevents injuries over a long time. This depends on the workplace culture, how people interact, and other local factors.
+Trials that randomly group people are necessary to understand the impact of safety measures in this workplace.
+Whole grain diets don't seem to affect overall death from heart disease or heart attacks and other related events.
+Whole grain diets, as reported in all studies, affect factors that increase the risk of heart disease, such as cholesterol levels and blood pressure.
+Whole grain and control groups showed no significant difference in total cholesterol levels (7 studies, 722 participants, low-quality evidence).
+We found the evidence about cholesterol to be of low quality.
+Whole grain diets do not have proven effects on heart problems or on factors like cholesterol and blood pressure, as shown by research studies.
+We included a study with 167 women and their newborns.
+In the group monitored twice a week, babies were born about 4 days earlier, on average, compared to the group monitored every two weeks.
+Women who were monitored every two weeks were less likely to have labor induced compared to those monitored twice a week.
+More research is needed to understand the effects of current methods used to monitor a baby's growth when it's not growing properly in the womb.
+No studies about taking vitamin A or similar supplements were found for this research.
+A single study tested giving beta-carotene to 24 people with Cystic Fibrosis who were already taking pancreatic enzymes.
+The study looked at giving a high dose of beta-carotene, then a lower dose, and compared these periods to a placebo.
+During the low-dose supplementation, it's important to be careful with the results because there was no break (wash-out) after the high-dose supplementation.
+No significant differences were found in lung function between the groups, based on low-quality evidence. No harmful side effects were detected in any group, also based on low-quality evidence.
+The study did not provide information about the effect on people's quality of life or side effects.
+No studies using random methods could find if vitamin A supplements help people with CF. So, we can't say for sure if they do.
+Due to the study's methods being less reliable and the low quality of evidence, we can't clearly say if taking β-carotene supplements is beneficial.
+Until more information is available, it's best to follow region-specific advice about these practices.
+We looked at 40 studies with 1717 participants.
+Most of the studies included had low quality, and they were often small, poorly reported ones.
+People taking a combination of antibiotics showed greater improvement in lung function, overall, compared to those using a single antibiotic, according to various measures. However, the evidence supporting this is considered low in quality.
+No study found information about the quality of life in any comparison.
+Intravenous antibiotics are not well supported over placebo based on current evidence.
+No one antibiotic combination is proven better than others, and there's no proof that giving antibiotics through a vein is superior to taking them by mouth or inhalation.
+Six studies involving 1211 people were included. Five of these studies tested aciclovir taken by mouth, while one tested famciclovir taken orally, with 419 participants.
+Neither treatment had more side effects than a placebo.
+We didn't find any new clinical trials when we did our updates in April 2013.
+Taking oral aciclovir does not significantly lower the chance of getting Postherpetic Neuralgia (PHN) much.
+More research is needed to find out if famciclovir or new antiviral drugs can prevent Postherpetic Neuralgia (PHN), as current studies don't provide enough information about the effectiveness of other antiviral treatments.
+Future studies should focus more on the level of pain and the quality of life of participants, and should involve various groups of people, including those who have weakened immune systems.
+Using either skew flaps or sagittal flaps didn't offer any advantage over the well-known long posterior flap method for healing the primary stump. The healing rate was approximately 60% for both skew flaps and long posterior flap, and about 58% for sagittal flaps and 55% for long posterior flap. There was no significant difference in healing rates among the methods.
+For people with gangrene, a two-step surgery with an ankle amputation followed by a long flap surgery resulted in better initial stump healing compared to a single surgery.
+The method of amputation a surgeon uses might depend on their past experience, the amount of dead tissue, and the placement of old surgical scars.
+Fourty-four trials with 4422 participants were analyzed.
+Clindamycin usually leads to fewer side effects, but metallic taste, nausea, and vomiting are more common with metronidazole.
+Taking lactobacillus pills along with metronidazole medicine worked better than just using metronidazole alone. (This was found in 67% of cases.)
+Taking Metronidazole can lead to a metallic taste, feeling sick, and vomiting.
+Six studies did not provide any information about the key outcomes for this review.
+After random assignment, 210 people were not included in the remaining 78 trials.
+In most comparisons, except for those involving antibiotics versus a control group, a large number of participants had necrotizing pancreatitis. The rest had only a few patients with this condition.
+Most studies focus on people with severe or a mix of severe and mild acute pancreas inflammation (75 studies).
+Most of the trials had an uncertain or high risk of bias, except for one.
+Pharmaceutical companies paid for 21 research studies.
+No differences were found in short-term death rates for any comparisons (poor quality evidence).
+There's not enough strong evidence to show that any of the drugs studied lower the risk of death in the short term for people with acute pancreatitis.
+We looked at eight studies with 646 participants, many of which had low research quality.
+These biomarkers were studied in small individual experiments, but the results couldn't be combined to draw a clear conclusion.
+No biomarkers were suitable for replacing the current test or for deciding which patients need immediate medical attention.
+Three studies found that biomarkers in question couldn't tell the difference between women with endometriosis and healthy women.
+The review looked at 184 studies from 191 papers.
+The studies involved 37 countries, almost equally divided between high-income countries and low/middle-income countries.
+In health-related areas, the study categorized the interventions as either fully included or partly included.
+Healthcare workers like policymakers, managers, doctors, nurses, allied health professionals, lay workers, and support staff took part in integrating healthcare interventions.
+We determined the group of people the service is intended for.
+This review summarizes various views and experiences of healthcare workers about integrating primary health care, showing differences in settings, study types, client groups, healthcare worker groups, and the kinds, extent, and methods of interventions.
+Understanding how different approaches to implementing primary health care integration can affect healthcare workers' impact on primary health care is crucial for researchers and decision-makers.
+Researchers can categorize studies based on their focus, scale, approach, and the types of healthcare professionals and patients involved. This helps them understand the diversity in research and come up with questions for future studies.
+Three studies compared intramedullary nailing to plating in 213 people. Data from 173 of these participants was analyzed, among them 112 were men.
+There are no studies that show the effects of surgery compared to non-surgical methods.
+The evidence for all outcomes is rated as very uncertain, so we have little confidence in the results for each outcome.
+There is not enough evidence to say if surgery is the best option for broken bones in the lower part of the adult tibia (shin bone).
+This study, with low-quality evidence, found no significant differences in function, pain, re-operation need, or complication risk between nailing and plating.
+The future updates will benefit from knowing whether it's better to use nails or plates in ongoing surgeries.
+More studies are needed to address other issues, but we should first find out what questions are most important.
+Found four new studies for the update; the review now has seven studies with 420 participants in total.
+Smaller studies (20-30 children each) and larger studies (80 children each) found that using beta-blocker therapy improved heart failure in children.
+A larger study with 161 people found no improvement when using the treatment for heart failure symptoms compared to a dummy treatment (placebo).
+With beta-blockers, only one instance of complete heart stoppage was reported as an adverse event.
+Using beta-blockers in children with heart failure doesn't have enough research to say if it helps or hurts, and there isn't a recommended dosage for children yet.
+Children with heart failure might benefit from beta-blocker medication.
+Eight studies compared ursodeoxycholic acid to a placebo or no treatment in 592 patients.
+Eight clinical trials have a high risk of not being unbiased.
+The amount of ursodeoxycholic acid used in the studies varied from a low of 10 mg per kg of body weight per day to a high of 28 to 30 mg per kg of body weight per day.
+Ursodeoxycholic acid was safe and easy for patients with primary sclerosing cholangitis to tolerate.
+We looked at the progression from Mild Cognitive Impairment (MCI) to Alzheimer's Disease (ADD) in 448 people.
+The studies looked at 401 people over a period of 1.6 years, and 47 people over a period of 3 years.
+Two studies about the flow and timing were likely not reliable.
+Developing Alzheimer's Disease (ADD) from Mild Cognitive Impairment (MCI) was found in 67% of people followed up for 2 to less than 4 years, based on visual assessment (n=47, 1 study).
+In a study of 401 people, a method could correctly identify 87% to 89% of those with MCI (Mild Cognitive Impairment) who went on to develop Alzheimer's Disease (ADD) within one to less than two years, but it also wrongly identified 49% to 58% of those without ADD as having it. This method was assessed both visually and with a standardized uptake value ratio (SUVR).
+There was no information found about MCI leading to any type of dementia other than Alzheimer's.
+One study showed that 18F-florbetapir PET could identify some cases, but its poor ability to correctly rule out the condition and limited information in research make it unsuitable for regular use in predicting progression from Mild Cognitive Impairment (MCI) to Alzheimer's Disease (ADD).
+All participants had dementia, and all 12 studies mentioned that they lived in nursing homes or similar care facilities.
+Lavender and lemon balm were used in eight and four studies, respectively. One study each used lavender and orange, lavender and lemon balm together, and cedar extracts.
+Ten studies looked at agitation using different methods for measurement.
+In four out of five studies with uncertain or questionable results, aromatherapy didn't seem to help with agitation, but one study found that it might have a positive effect.
+Four people found aromatherapy helpful, while one didn't notice any effect.
+Most trials did not report adverse events properly or at all.
+Only a few trials looked at the impact on quality of life, mood, sleep, and daily activities, as well as caregiver burden.
+We didn't find any positive effects on these results.
+The results from other studies varied.
+The studies we looked at did a poor job of reporting any potential harms or risks.
+Four studies with 231 participants in total are part of the review.
+These studies looked at several surgical methods against different steroid types and doses, as well as different antibiotics.
+Two studies reported scores from a camera examination of the inside of the body.
+The study compared surgery to systemic steroids and found a big improvement in the surgery group, with an average score difference of -1.5 (ranging from -1.78 to -1.22, involving 95 participants) on a scale where 0 means no polyposis and 3 means severe polyposis.
+In one study, there was no significant difference found between using ESS and antibiotics with high-dose topical steroids for treatment, as the improvement in symptoms was similar in both groups. (34 participants were involved.)
+In those studies, no differences were found in any tests that measured physical things or smell.
+In adults with chronic sinus infections and growths called nasal polyps, the evidence about which surgery works better than medical treatment is very weak.
+More research is needed to better understand this issue, which greatly affects people's quality of life and healthcare service usage, as current evidence is of poor quality and doesn't provide clear answers.
+We looked at 17 clinical trials with a total of 2264 participants. 13 of these trials included adults (1954 in total), and 4 trials included children (310 in total).
+This update added 12 new studies and removed one old study, along with 5 new trials.
+The studies only included hospital patients who had pneumonia that they got outside the hospital, whether or not it was also related to healthcare.
+Corticosteroids shortened the time to recovery, length of hospital and ICU stays, and prevented respiratory failure or shock that didn't occur at the start of pneumonia, and decreased the chances of pneumonia complications.
+In children with bacterial pneumonia, using corticosteroids lowered the risk of early treatment failure and shortened the time to recovery, as shown in two small, diverse studies (high-quality evidence).
+Corticosteroid treatment loweres the chances of illness, but not death, in both adults and children with non-severe pneumonia.
+Taking corticosteroids can lead to more side effects, particularly high blood sugar levels. However, the benefits may still outweigh the side effects.
+Self-management education may help patients with cystic fibrosis understand their condition better, but it doesn't seem to have the same effect on their parents or caregivers.
+Self-management education might help change some behaviors in both patients and their caregivers.
+The current research on self-management education for cystic fibrosis is too limited to clearly say if it helps or not.
+More studies are required to see if teaching self-care skills improves health and behavior in children, teens, and adults with cystic fibrosis and their caretakers.
+This study included 38,546 people and found that getting vaccinated was compared to receiving a placebo.
+The vaccine helps lower the number of shingles cases, but it doesn't seem to further reduce the occurrence of post-shingles nerve pain beyond the decrease in shingles cases.
+Vaccines may not directly show they prevent postherpetic neuralgia more than just reducing shingles. However, they might still be effective and safe for preventing shingles, which can reduce the risk of postherpetic neuralgia in adults aged 60 and older.
+We used six clinical trials with a total of 3753 participants. We rated the quality of these studies as moderate.
+All studies involved women undergoing IVF/ICSI treatment for a specific reason (COS), who were between 18 and 41 years old.
+Women who received lower doses (60 to 120 micrograms) of long-acting FSH had fewer live births than those who used daily FSH (Rate Ratio 0.70). This was found in 645 participants across three studies, with no variation between them.
+In the group given medium dose (150 to 180 micrograms), there was no significant difference found in the number of live births compared to other groups (1685 participants, four studies).
+In the study, there was no difference found in pregnancy outcomes, including clinical pregnancy, ongoing pregnancy, multiple pregnancy, miscarriage (at low or medium dose), ectopic pregnancy, or congenital malformation (at low or medium dose) between the groups.
+In women with unexplained difficulty getting pregnant, a moderate dose (150 to 180 micrograms) of a long-lasting FSH drug is a safe and effective treatment alternative to daily FSH.
+Women given a low dose (60 to 120 micrograms) of long-acting FSH had fewer live births than those given daily FSH.
+Five studies were included.
+Extended-field radiation therapy compared to pelvic radiation therapy alone, probably reduces the risk of death and recurrence of lymph nodes in the pelvic area, but it's uncertain if it improves the risk of disease progression or severe side effects.
+In a study, women who received pelvic chemoradiotherapy instead of extended-field radiotherapy had a likely lower risk of death and disease progression.
+People who received extended-field radiation therapy might have a lower risk of lymph node recurrence near the aorta (possibly half as much), but more studies are needed for certain. This therapy also seems to lower the risk of severe side effects, according to one study. However, the certainty of this evidence is moderate.
+There was no significant difference in the occurrence of serious late side effects between the compared groups (moderate-certainty evidence, based on 1 study with 386 participants).
+There was no significant difference in the risk of recurrence of lymph nodes near the aorta or severe adverse events (either immediate or late) between the groups, but the evidence was of low certainty.
+Compared to just treating the pelvis area with radiation, a wider area radiation treatment probably improves overall survival and decreases the chances of lymph node recurrence in the area near the aorta.
+Using just radiation treatment in the pelvis is no longer considered acceptable treatment today, so this result doesn't reflect modern standards of care.
+Pelvic radiation therapy may improve overall and cancer-free survival more than extended-field radiation therapy, but it might have a higher chance of recurrence near the aorta and cause more short-term side effects.
+Using a type of radiation therapy called extended-field CRT instead of pelvic CRT might slightly improve overall survival or delay cancer progression, but it's important to be cautious as the evidence supporting this is very limited.
+We used data from four studies, including 139 people, who took part in three regular group studies and one study where they switched groups.
+The result from the 2019 review did not change.
+At the end of follow-up, there was less stiffness in the elbow when using rPMS, along with rehabilitation, compared to a sham rPMS and rehabilitation (1 trial, 63 participants, low-certainty evidence).
+The evidence about the main result is considered less reliable because the studies involved a small number of participants.
+Using rPMS after a stroke doesn't have enough proof to show its benefits.
+More studies with many participants are required to provide strong proof of the effectiveness of rPMS after a stroke.
+We found 17 reports about 11 studies with 297,994 participants. These studies looked at academic performance, sleep duration and quality, mental health, school attendance, and student focus.
+Four studies looked at whether starting school later affects school performance, finding varying results.
+Later school start times are linked with more sleep in six studies, and this connection was found to be strong.
+This study found that starting school later is linked to fewer symptoms of depression.
+There isn't enough evidence yet to make definite statements about potential side effects.
+We looked at 10 studies (with 836 participants) for this review.
+The evidence shows that cognitive behavior therapy may have varying effects on people with chronic nose problems, and the strength of this evidence is generally weak to fair.
+Cognitive Behavioral Therapy, along with another treatment, didn't seem to have a significant impact on pain or disability compared to the other treatment alone in the short term.
+No study included mentioned any harmful side effects.
+For short-term relief from chronic neck pain, cognitive-behavioral therapy (CBT) is more effective than doing nothing, but the improvement may not be significant enough to notice in everyday life.
+In the comparison, cognitive-behavioral therapy (CBT) and other treatments, as well as adding CBT to another treatment, showed no significant difference compared to the other treatments alone.
+The review now has 24 studies that matter, with 2126 participants in total.
+The evidence was poor quality overall.
+Supportive therapy and standard care have similar effects on relapse, hospitalization, and overall functioning.
+There aren't enough studies to compare the benefits of supportive therapy, family therapy, and psychoeducation, and no studies show improvements in people's daily lives, which is one of our main goals.
+Future studies should have bigger groups of people, and they should use comfort care as the main treatment, instead of the comparison treatment.

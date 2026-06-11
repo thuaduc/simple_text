@@ -2,14 +2,15 @@
 
 import argparse
 import json
-import os
 import sys
 from pathlib import Path
 import torch
 from datetime import datetime
 
 # Add src to path
-sys.path.insert(0, str(Path(__file__).parent.parent.parent))
+_SCRIPT_DIR = Path(__file__).resolve().parent
+_DEFAULT_OUTPUT_DIR = _SCRIPT_DIR / "results"
+sys.path.insert(0, str(_SCRIPT_DIR.parent.parent))
 
 from src.config import MODEL_NAME, DATA_DIR, BATCH_SIZE, RANDOM_SEED
 from src.utils.data_loader import load_cochrane_sentences, get_few_shot_examples
@@ -47,8 +48,8 @@ def parse_args():
     
     parser.add_argument(
         '--output_dir',
-        type=str,
-        default='experiments/sentence_level/results',
+        type=Path,
+        default=_DEFAULT_OUTPUT_DIR,
         help='Directory to save results'
     )
     
@@ -87,12 +88,18 @@ def parse_args():
     return parser.parse_args()
 
 
+def ensure_output_dir(output_dir: Path) -> Path:
+    """Resolve and create the output directory if needed."""
+    resolved = output_dir.expanduser().resolve()
+    resolved.mkdir(parents=True, exist_ok=True)
+    return resolved
+
+
 def main():
     """Main evaluation pipeline."""
     args = parse_args()
     
-    # Create output directory
-    os.makedirs(args.output_dir, exist_ok=True)
+    output_dir = ensure_output_dir(args.output_dir)
     
     # Set random seed
     torch.manual_seed(args.seed)
@@ -106,7 +113,7 @@ def main():
     print(f"  Test size: {args.test_size or 'all'}")
     print(f"  Batch size: {args.batch_size}")
     print(f"  4-bit quantization: {args.load_in_4bit}")
-    print(f"  Output directory: {args.output_dir}")
+    print(f"  Output directory: {output_dir}")
     print(f"  Random seed: {args.seed}")
     print(f"  Dataset: {'all labels' if args.all_labels else 'rephrase only'}")
     print(f"  Device: {'CUDA' if torch.cuda.is_available() else 'CPU'}")
@@ -174,24 +181,6 @@ def main():
     
     print(f"Generated {len(predictions)} simplifications")
     
-    # Save predictions
-    predictions_file = os.path.join(args.output_dir, 'predictions.txt')
-    print(f"\nSaving predictions to {predictions_file}...")
-    with open(predictions_file, 'w', encoding='utf-8') as f:
-        for pred in predictions:
-            f.write(pred + '\n')
-    
-    # Also save input-output pairs for inspection
-    pairs_file = os.path.join(args.output_dir, 'input_output_pairs.txt')
-    print(f"Saving input-output pairs to {pairs_file}...")
-    with open(pairs_file, 'w', encoding='utf-8') as f:
-        for i, (inp, pred, refs) in enumerate(zip(complex_sentences, predictions, simple_references)):
-            f.write(f"Example {i+1}\n")
-            f.write(f"Input:  {inp}\n")
-            f.write(f"Output: {pred}\n")
-            f.write(f"References: {refs}\n")
-            f.write("-" * 80 + "\n\n")
-    
     # Evaluate
     print("\nEvaluating predictions...")
     
@@ -201,11 +190,30 @@ def main():
         references=simple_references
     )
     
-    # Print results
+    # Print results before saving files
     print_results(results)
     
+    # Save predictions
+    ensure_output_dir(output_dir)
+    predictions_file = output_dir / 'predictions.txt'
+    print(f"\nSaving predictions to {predictions_file}...")
+    with predictions_file.open('w', encoding='utf-8') as f:
+        for pred in predictions:
+            f.write(pred + '\n')
+    
+    # Also save input-output pairs for inspection
+    pairs_file = output_dir / 'input_output_pairs.txt'
+    print(f"Saving input-output pairs to {pairs_file}...")
+    with pairs_file.open('w', encoding='utf-8') as f:
+        for i, (inp, pred, refs) in enumerate(zip(complex_sentences, predictions, simple_references)):
+            f.write(f"Example {i+1}\n")
+            f.write(f"Input:  {inp}\n")
+            f.write(f"Output: {pred}\n")
+            f.write(f"References: {refs}\n")
+            f.write("-" * 80 + "\n\n")
+    
     # Save results
-    results_file = os.path.join(args.output_dir, 'metrics.json')
+    results_file = output_dir / 'metrics.json'
     print(f"Saving metrics to {results_file}...")
     
     # Add metadata
@@ -225,13 +233,13 @@ def main():
         }
     }
     
-    with open(results_file, 'w', encoding='utf-8') as f:
+    with results_file.open('w', encoding='utf-8') as f:
         json.dump(results_with_metadata, f, indent=2)
     
     print("\n" + "="*80)
     print("EVALUATION COMPLETE")
     print("="*80)
-    print(f"\nResults saved to: {args.output_dir}")
+    print(f"\nResults saved to: {output_dir}")
     print(f"  - predictions.txt: Generated simplifications")
     print(f"  - input_output_pairs.txt: Side-by-side comparison")
     print(f"  - metrics.json: All evaluation metrics")
