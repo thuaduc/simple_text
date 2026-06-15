@@ -37,12 +37,14 @@ Simple: [model generates simplification]
 
 **Run**:
 ```bash
-uv run python experiments/sentence_level/run_baseline.py
+source .venv/bin/activate
+python experiments/sentence_level/run_baseline.py
 ```
 
 **With 4-bit quantization (recommended)**:
 ```bash
-uv run python experiments/sentence_level/run_baseline.py --load_in_4bit
+source .venv/bin/activate
+python experiments/sentence_level/run_baseline.py --load_in_4bit
 ```
 
 **Expected Performance**:

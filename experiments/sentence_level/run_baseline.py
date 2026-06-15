@@ -38,6 +38,12 @@ def parse_args():
         default=None,
         help='Subset of test data to use (default: all)'
     )
+
+    parser.add_argument(
+        '--example',
+        action='store_true',
+        help='Run on 10 sentences only (quick smoke test; overrides --test_size)'
+    )
     
     parser.add_argument(
         '--batch_size',
@@ -113,6 +119,9 @@ def resolve_output_dir(output_dir: Path, run_name: str | None) -> Path:
 def main():
     """Main evaluation pipeline."""
     args = parse_args()
+
+    if args.example:
+        args.test_size = 10
     
     output_dir = resolve_output_dir(args.output_dir, args.run_name)
     
@@ -125,7 +134,7 @@ def main():
     print(f"\nConfiguration:")
     print(f"  Model: {MODEL_NAME}")
     print(f"  Few-shot examples: {args.num_shots}")
-    print(f"  Test size: {args.test_size or 'all'}")
+    print(f"  Test size: {args.test_size or 'all'}{' (example mode)' if args.example else ''}")
     print(f"  Batch size: {args.batch_size}")
     print(f"  4-bit quantization: {args.load_in_4bit}")
     print(f"  Output directory: {output_dir}")
@@ -240,6 +249,7 @@ def main():
             'model': MODEL_NAME,
             'num_shots': args.num_shots,
             'test_size': len(complex_sentences),
+            'example_mode': args.example,
             'batch_size': args.batch_size,
             'load_in_4bit': args.load_in_4bit,
             'use_curated_examples': args.use_curated_examples,

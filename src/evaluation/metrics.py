@@ -41,16 +41,17 @@ def compute_sari(
         SARI score (0-100, higher is better)
     """
     logger.info("Computing SARI...")
-    
-    try:
-        metric = _get_metric()
-        result = metric.compute(sources=sources, predictions=predictions, references=references)
-        sari = result["sari"]
-        logger.info(f"SARI: {sari:.2f}")
-        return sari
-    except Exception as e:
-        logger.error(f"Error computing SARI: {e}")
+
+    if not sources:
         return 0.0
+    if not (len(sources) == len(predictions) == len(references)):
+        raise ValueError("SARI requires aligned sources, predictions, and references")
+
+    metric = _get_metric()
+    result = metric.compute(sources=sources, predictions=predictions, references=references)
+    sari = result["sari"]
+    logger.info(f"SARI: {sari:.2f}")
+    return sari
 
 
 def compute_bleu(
@@ -68,35 +69,25 @@ def compute_bleu(
         BLEU score (0-100, higher is better)
     """
     logger.info("Computing BLEU...")
-    
-    try:
-        # Handle empty references
-        if not references:
-            return 0.0
-        
-        # Transpose references from per-sentence to per-reference-variant format
-        # Input: [[r1, r2], [r1], [r1, r2, r3], ...]
-        # Output: [[r1_sent0, r1_sent1, ...], [r2_sent0, r2_sent1, ...], ...]
-        
-        # Find max number of references per sentence
-        max_refs = max(len(refs) for refs in references)
-        
-        # Pad shorter reference lists with empty strings
-        padded_references = []
-        for refs in references:
-            padded = list(refs) + [''] * (max_refs - len(refs))
-            padded_references.append(padded)
-        
-        # Transpose to get reference streams
-        ref_streams = [list(stream) for stream in zip(*padded_references)]
-        
-        # Compute BLEU
-        bleu = sacrebleu.corpus_bleu(predictions, ref_streams)
-        logger.info(f"BLEU: {bleu.score:.2f}")
-        return bleu.score
-    except Exception as e:
-        logger.error(f"Error computing BLEU: {e}")
+
+    if not predictions:
         return 0.0
+    if len(predictions) != len(references):
+        raise ValueError("BLEU requires aligned predictions and references")
+    if any(not refs for refs in references):
+        raise ValueError("BLEU requires at least one reference for every prediction")
+
+    # SacreBLEU expects reference streams; use None for missing references so
+    # variable-reference corpora do not treat empty strings as valid references.
+    max_refs = max(len(refs) for refs in references)
+    ref_streams = [
+        [refs[ref_idx] if ref_idx < len(refs) else None for refs in references]
+        for ref_idx in range(max_refs)
+    ]
+
+    bleu = sacrebleu.corpus_bleu(predictions, ref_streams)
+    logger.info(f"BLEU: {bleu.score:.2f}")
+    return bleu.score
 
 
 def compute_bertscore(
@@ -114,43 +105,40 @@ def compute_bertscore(
         BERTScore F1 (0-1, higher is better)
     """
     logger.info("Computing BERTScore...")
-    
-    try:
-        # Handle empty references
-        if not references or not predictions:
-            return 0.0
-        
-        device = "cuda" if torch.cuda.is_available() else "cpu"
-        
-        # For each prediction, compute F1 against all references and take max
-        all_f1_scores = []
-        
-        for pred, refs in zip(predictions, references):
-            if not refs:
-                continue
-            
-            # Compute BERTScore against all references for this prediction
-            P, R, F1 = bert_score(
-                [pred] * len(refs),
-                refs,
-                lang="en",
-                model_type="roberta-large",
-                device=device,
-                verbose=False,
-                batch_size=32
-            )
-            
-            # Take max F1 across all references
-            max_f1 = F1.max().item()
-            all_f1_scores.append(max_f1)
-        
-        # Return corpus-level mean
-        corpus_f1 = sum(all_f1_scores) / len(all_f1_scores) if all_f1_scores else 0.0
-        logger.info(f"BERTScore F1: {corpus_f1:.4f}")
-        return corpus_f1
-    except Exception as e:
-        logger.error(f"Error computing BERTScore: {e}")
+
+    if not predictions:
         return 0.0
+    if len(predictions) != len(references):
+        raise ValueError("BERTScore requires aligned predictions and references")
+    if any(not refs for refs in references):
+        raise ValueError("BERTScore requires at least one reference for every prediction")
+
+    device = "cuda" if torch.cuda.is_available() else "cpu"
+
+    # For each prediction, compute F1 against all references and take max.
+    # Empty predictions are scored as zero instead of being dropped.
+    all_f1_scores = []
+
+    for pred, refs in zip(predictions, references):
+        if not pred.strip():
+            all_f1_scores.append(0.0)
+            continue
+
+        _, _, F1 = bert_score(
+            [pred] * len(refs),
+            refs,
+            lang="en",
+            model_type="roberta-large",
+            device=device,
+            verbose=False,
+            batch_size=32
+        )
+
+        all_f1_scores.append(F1.max().item())
+
+    corpus_f1 = sum(all_f1_scores) / len(all_f1_scores) if all_f1_scores else 0.0
+    logger.info(f"BERTScore F1: {corpus_f1:.4f}")
+    return corpus_f1
 
 
 def evaluate_simplification(
@@ -171,22 +159,30 @@ def evaluate_simplification(
     """
     logger.info(f"Evaluating {len(predictions)} predictions...")
     
-    # Filter out empty predictions or references
+    if not (len(sources) == len(predictions) == len(references)):
+        raise ValueError("Evaluation requires aligned sources, predictions, and references")
+
+    # Filter only examples that cannot be scored because they have no reference.
+    # Empty predictions remain in the evaluation and are penalized by the metrics.
     valid_sources = []
     valid_predictions = []
     valid_references = []
+    empty_predictions = 0
     
-    for i in range(len(predictions)):
-        refs = references[i] if i < len(references) else []
+    for source, prediction, refs in zip(sources, predictions, references):
         clean_refs = [r for r in refs if r.strip()] if refs else []
-        
-        if predictions[i].strip() and clean_refs:
-            valid_sources.append(sources[i])
-            valid_predictions.append(predictions[i])
+
+        if clean_refs:
+            if not prediction.strip():
+                empty_predictions += 1
+            valid_sources.append(source)
+            valid_predictions.append(prediction.strip())
             valid_references.append(clean_refs)
     
     if len(valid_sources) < len(predictions):
-        logger.warning(f"Filtered out {len(predictions) - len(valid_sources)} empty predictions/references")
+        logger.warning(f"Filtered out {len(predictions) - len(valid_sources)} examples without references")
+    if empty_predictions:
+        logger.warning(f"Scoring {empty_predictions} empty predictions")
     
     results = {}
     
@@ -233,9 +229,8 @@ def print_results(results: Dict[str, float]):
     print("    - >30: High")
     print("    Note: Can be low for good simplifications due to intentional changes")
     print("\n  BERTScore F1: 0-1 (higher is better)")
-    print("    - <0.70: Poor semantic preservation")
-    print("    - 0.70-0.80: Good")
-    print("    - >0.80: Excellent")
+    print("    - Raw roberta-large max-over-reference F1")
+    print("    - Best used as a relative semantic-preservation signal")
     print("\n  CLEF 2025 Task 1.1 top results:")
     print("    - UM-FHS (GPT-4.1-mini): 43.34 SARI")
     print("    - DS@GT (plan-guided LLaMA 70B): 42.33 SARI")

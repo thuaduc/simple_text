@@ -14,7 +14,9 @@ Paragraph, document, and multi-operation sentence splits are in `cochrane/data/`
 ## Setup
 
 ```bash
-uv sync
+python -m venv .venv
+source .venv/bin/activate
+python -m pip install -e .
 cp .env.example .env   # set MODEL_NAME to Qwen3.5-2B or Qwen3.5-4B
 ```
 
@@ -32,7 +34,8 @@ LOAD_IN_4BIT=false
 **Local:**
 
 ```bash
-uv run python experiments/sentence_level/run_baseline.py --load_in_4bit
+source .venv/bin/activate
+python experiments/sentence_level/run_baseline.py --load_in_4bit
 ```
 
 **SLURM** (results saved per job ID):
@@ -56,7 +59,7 @@ Outputs go to `experiments/sentence_level/results/<run_name>/` (e.g. `qwen35-4b-
 
 ```bash
 # Quick dev run
-uv run python experiments/sentence_level/run_baseline.py \
+python experiments/sentence_level/run_baseline.py \
   --test_size 100 \
   --run_name dev-test \
   --load_in_4bit
@@ -103,4 +106,4 @@ simple_text/
 
 - **OOM**: `--load_in_4bit`, smaller model (`Qwen3.5-2B`), or `--batch_size 1`
 - **Slow**: use GPU; `--test_size 100` for iteration
-- **Import errors**: `uv sync`
+- **Import errors**: activate `.venv`, then run `python -m pip install -e .`

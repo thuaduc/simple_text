@@ -2,8 +2,8 @@
 
 #SBATCH --partition=lrz-hgx-h100-94x4
 #SBATCH --gres=gpu:1
-#SBATCH --time=16:00:00
-#SBATCH --job-name=simpletext-baseline
+#SBATCH --time=1:00:00
+#SBATCH --job-name=simpletext-qwen35-2b
 #SBATCH --output=logs/%j.out
 #SBATCH --error=logs/%j.err
 
@@ -18,6 +18,13 @@ fi
 cd "${SLURM_SUBMIT_DIR}"
 
 source .venv/bin/activate
-set -a && source .env && set +a
 
-python experiments/sentence_level/run_baseline.py --load_in_4bit
+export MODEL_NAME="Qwen/Qwen3.5-2B"
+export MAX_NEW_TOKENS=256
+export TEMPERATURE=0.7
+export LOAD_IN_4BIT=false
+export DATA_DIR=cochrane/data
+export BATCH_SIZE=8
+export RANDOM_SEED=42
+
+python experiments/sentence_level/run_baseline.py --run_name test_10_sents --example

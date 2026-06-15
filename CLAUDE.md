@@ -36,7 +36,8 @@ Default prompting: **zero-shot** (`--num_shots 0`). Use `--load_in_4bit` when GP
 ## Running
 
 ```bash
-uv run python experiments/sentence_level/run_baseline.py --load_in_4bit --run_name my-run
+source .venv/bin/activate
+python experiments/sentence_level/run_baseline.py --load_in_4bit --run_name my-run
 ```
 
 SLURM scripts pass `--run_name "qwen35-{2b|4b}-${SLURM_JOB_ID}"` so reruns do not overwrite `experiments/sentence_level/results/`.

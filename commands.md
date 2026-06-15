@@ -9,13 +9,14 @@ scancel <jobid>   # cancel if needed
 
 
 ````
-uv run python experiments/sentence_level/simplify_sentence.py --sentence "Given the evidence from this Cochrane review, the avoidance of nitrous oxide may be reasonable in participants with pre-existing poor pulmonary function or at high risk of postoperative nausea and vomiting." --reference "The avoidance of nitrous oxide may be reasonable in participants with pre-existing poor pulmonary function or at high risk of postoperative nausea and vomiting." --prompt_type "paper358_zero_shot"
+source .venv/bin/activate
+python experiments/sentence_level/simplify_sentence.py --sentence "Given the evidence from this Cochrane review, the avoidance of nitrous oxide may be reasonable in participants with pre-existing poor pulmonary function or at high risk of postoperative nausea and vomiting." --reference "The avoidance of nitrous oxide may be reasonable in participants with pre-existing poor pulmonary function or at high risk of postoperative nausea and vomiting." --prompt_type "paper358_zero_shot"
 ````
 
 ````
-uv run python experiments/sentence_level/simplify_sentence.py --sentence "Given the evidence from this Cochrane review, the avoidance of nitrous oxide may be reasonable in participants with pre-existing poor pulmonary function or at high risk of postoperative nausea and vomiting." --reference "The avoidance of nitrous oxide may be reasonable in participants with pre-existing poor pulmonary function or at high risk of postoperative nausea and vomiting." --num-shots 1
+python experiments/sentence_level/simplify_sentence.py --sentence "Given the evidence from this Cochrane review, the avoidance of nitrous oxide may be reasonable in participants with pre-existing poor pulmonary function or at high risk of postoperative nausea and vomiting." --reference "The avoidance of nitrous oxide may be reasonable in participants with pre-existing poor pulmonary function or at high risk of postoperative nausea and vomiting." --num-shots 1
 
-~/Downloads/tum/SS26/Praktikum/simple_text main !2 ?7 ❯ uv run python experiments/sentence_level/simplify_sentence.py --sentence "Given the evidence from this Cochrane review, the avoidance of nitrous oxide may be reasonable in participants with pre-existing poor pulmonary function or at high risk of postoperative nausea and vomiting." --reference "The avoidance of nitrous oxide may be reasonable in participants with pre-existing poor pulmonary function or at high risk of postoperative nausea and vomiting." --num_shots 1
+~/Downloads/tum/SS26/Praktikum/simple_text main !2 ?7 ❯ python experiments/sentence_level/simplify_sentence.py --sentence "Given the evidence from this Cochrane review, the avoidance of nitrous oxide may be reasonable in participants with pre-existing poor pulmonary function or at high risk of postoperative nausea and vomiting." --reference "The avoidance of nitrous oxide may be reasonable in participants with pre-existing poor pulmonary function or at high risk of postoperative nausea and vomiting." --num_shots 1
 ================================================================================
 TEXT SIMPLIFICATION
 ================================================================================
