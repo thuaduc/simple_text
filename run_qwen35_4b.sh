@@ -1,11 +1,8 @@
 #!/bin/bash
 
 #SBATCH --partition=lrz-hgx-h100-94x4
-#SBATCH --qos=gpu
 #SBATCH --gres=gpu:1
-#SBATCH --cpus-per-task=8
-#SBATCH --mem=40G
-#SBATCH --time=16:00:00
+#SBATCH --time=4:00:00
 #SBATCH --job-name=simpletext-qwen35-4b
 #SBATCH --output=logs/%j.out
 #SBATCH --error=logs/%j.err
@@ -30,4 +27,4 @@ export DATA_DIR=cochrane/data
 export BATCH_SIZE=8
 export RANDOM_SEED=42
 
-python experiments/sentence_level/run_baseline.py --load_in_4bit
+python experiments/sentence_level/run_baseline.py --load_in_4bit --run_name "qwen35-4b-${SLURM_JOB_ID}"

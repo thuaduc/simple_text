@@ -50,7 +50,14 @@ def parse_args():
         '--output_dir',
         type=Path,
         default=_DEFAULT_OUTPUT_DIR,
-        help='Directory to save results'
+        help='Base directory to save results (default: experiments/sentence_level/results)'
+    )
+
+    parser.add_argument(
+        '--run_name',
+        type=str,
+        default=None,
+        help='Subfolder name for this run under output_dir (e.g. qwen35-4b-v2); avoids overwriting previous results'
     )
     
     parser.add_argument(
@@ -95,11 +102,19 @@ def ensure_output_dir(output_dir: Path) -> Path:
     return resolved
 
 
+def resolve_output_dir(output_dir: Path, run_name: str | None) -> Path:
+    """Resolve the final output directory, optionally scoped to a named run."""
+    resolved = ensure_output_dir(output_dir)
+    if run_name:
+        resolved = ensure_output_dir(resolved / run_name)
+    return resolved
+
+
 def main():
     """Main evaluation pipeline."""
     args = parse_args()
     
-    output_dir = ensure_output_dir(args.output_dir)
+    output_dir = resolve_output_dir(args.output_dir, args.run_name)
     
     # Set random seed
     torch.manual_seed(args.seed)
@@ -114,6 +129,8 @@ def main():
     print(f"  Batch size: {args.batch_size}")
     print(f"  4-bit quantization: {args.load_in_4bit}")
     print(f"  Output directory: {output_dir}")
+    if args.run_name:
+        print(f"  Run name: {args.run_name}")
     print(f"  Random seed: {args.seed}")
     print(f"  Dataset: {'all labels' if args.all_labels else 'rephrase only'}")
     print(f"  Device: {'CUDA' if torch.cuda.is_available() else 'CPU'}")
@@ -228,6 +245,8 @@ def main():
             'use_curated_examples': args.use_curated_examples,
             'rephrase_only': rephrase_only,
             'seed': args.seed,
+            'run_name': args.run_name,
+            'output_dir': str(output_dir),
             'timestamp': datetime.now().isoformat(),
             'evaluation': 'SARI, BLEU, BERTScore (automatic metrics)'
         }

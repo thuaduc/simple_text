@@ -1,10 +1,7 @@
 #!/bin/bash
 
 #SBATCH --partition=lrz-hgx-h100-94x4
-#SBATCH --qos=gpu
 #SBATCH --gres=gpu:1
-#SBATCH --cpus-per-task=8
-#SBATCH --mem=40G
 #SBATCH --time=16:00:00
 #SBATCH --job-name=simpletext-baseline
 #SBATCH --output=logs/%j.out
