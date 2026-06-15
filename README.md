@@ -71,9 +71,9 @@ Under `cochrane/data/`:
 
 | File | Split | Rows |
 |------|-------|------|
-| `cochraneauto_sents_rephrase_train.csv` | train | ~5,384 |
-| `cochraneauto_sents_rephrase_val.csv` | val | — |
-| `cochraneauto_sents_rephrase_test.csv` | test | 688 |
+| `cochraneauto_sents_rephrase_train.csv` | train | 5,384 |
+| `cochraneauto_sents_rephrase_val.csv` | val |  | 773 |
+| `cochraneauto_sents_rephrase_test.csv` | test | 667 |
 
 Columns used: `complex` (input), `simple` (reference list), `label`, `pair_id`.
 
