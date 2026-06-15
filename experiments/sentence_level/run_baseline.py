@@ -13,9 +13,7 @@ _DEFAULT_OUTPUT_DIR = _SCRIPT_DIR / "results"
 sys.path.insert(0, str(_SCRIPT_DIR.parent.parent))
 
 from src.config import MODEL_NAME, DATA_DIR, BATCH_SIZE, RANDOM_SEED
-from src.utils.data_loader import load_cochrane_sentences, get_few_shot_examples
-from src.prompts.few_shot_examples import get_curated_examples
-from src.models.llama_simplifier import LlamaSimplifier
+from src.utils.data_loader import load_cochrane_sentences
 from src.evaluation.metrics import evaluate_simplification, print_results
 
 
@@ -23,13 +21,6 @@ def parse_args():
     """Parse command line arguments."""
     parser = argparse.ArgumentParser(
         description="Run baseline text simplification evaluation"
-    )
-    
-    parser.add_argument(
-        '--num_shots',
-        type=int,
-        default=0,
-        help='Number of few-shot examples (default: 0, zero-shot)'
     )
     
     parser.add_argument(
@@ -50,6 +41,14 @@ def parse_args():
         type=int,
         default=BATCH_SIZE,
         help=f'Batch size for generation (default: {BATCH_SIZE})'
+    )
+
+    parser.add_argument(
+        '--baseline',
+        type=str,
+        choices=['model', 'identity', 'reference'],
+        default='model',
+        help='Baseline to evaluate: model generation, identity copy, or reference copy (default: model)'
     )
     
     parser.add_argument(
@@ -80,12 +79,6 @@ def parse_args():
     )
     
     parser.add_argument(
-        '--use_curated_examples',
-        action='store_true',
-        help='Use manually curated examples instead of sampling from training data'
-    )
-    
-    parser.add_argument(
         '--seed',
         type=int,
         default=RANDOM_SEED,
@@ -96,6 +89,12 @@ def parse_args():
         '--all_labels',
         action='store_true',
         help='Use full dataset with all operation labels (default: rephrase only)'
+    )
+
+    parser.add_argument(
+        '--skip_bertscore',
+        action='store_true',
+        help='Skip BERTScore evaluation (useful for fast CPU baseline runs)'
     )
     
     return parser.parse_args()
@@ -124,6 +123,12 @@ def main():
         args.test_size = 10
     
     output_dir = resolve_output_dir(args.output_dir, args.run_name)
+    baseline_model_name = {
+        'model': MODEL_NAME,
+        'identity': 'identity_copy',
+        'reference': 'reference_copy',
+    }[args.baseline]
+    prompt_name = 'default_zero_shot' if args.baseline == 'model' else None
     
     # Set random seed
     torch.manual_seed(args.seed)
@@ -132,8 +137,9 @@ def main():
     print("TEXT SIMPLIFICATION BASELINE EVALUATION")
     print("="*80)
     print(f"\nConfiguration:")
-    print(f"  Model: {MODEL_NAME}")
-    print(f"  Few-shot examples: {args.num_shots}")
+    print(f"  Baseline: {args.baseline}")
+    print(f"  Model: {baseline_model_name}")
+    print(f"  Prompt: {prompt_name or 'none'}")
     print(f"  Test size: {args.test_size or 'all'}{' (example mode)' if args.example else ''}")
     print(f"  Batch size: {args.batch_size}")
     print(f"  4-bit quantization: {args.load_in_4bit}")
@@ -142,6 +148,7 @@ def main():
         print(f"  Run name: {args.run_name}")
     print(f"  Random seed: {args.seed}")
     print(f"  Dataset: {'all labels' if args.all_labels else 'rephrase only'}")
+    print(f"  BERTScore: {'skipped' if args.skip_bertscore else 'enabled'}")
     print(f"  Device: {'CUDA' if torch.cuda.is_available() else 'CPU'}")
     print()
     
@@ -165,47 +172,35 @@ def main():
     
     print(f"Total test examples: {len(complex_sentences)}")
     
-    # Get few-shot examples (skip when zero-shot)
-    few_shot_examples = None
-    if args.num_shots > 0:
-        print(f"\nPreparing {args.num_shots}-shot examples...")
-        if args.use_curated_examples:
-            few_shot_examples = get_curated_examples(num_examples=args.num_shots)
-            print("Using manually curated examples")
-        else:
-            few_shot_examples = get_few_shot_examples(
-                num_shots=args.num_shots,
-                data_dir=args.data_dir,
-                seed=args.seed,
-                rephrase_only=rephrase_only,
-            )
-            print("Using examples sampled from training data")
-
-        print("\nFew-shot examples:")
-        for i, ex in enumerate(few_shot_examples, 1):
-            print(f"\n  Example {i}:")
-            print(f"    Complex: {ex['complex'][:80]}...")
-            print(f"    Simple:  {ex['simple'][:80]}...")
+    if args.baseline == 'identity':
+        print("\nUsing identity baseline: output is exactly the input")
+        predictions = list(complex_sentences)
+        print(f"Copied {len(predictions)} inputs as predictions")
+    elif args.baseline == 'reference':
+        print("\nUsing reference baseline: output is exactly the first reference")
+        predictions = [refs[0] if refs else "" for refs in simple_references]
+        print(f"Copied {len(predictions)} references as predictions")
     else:
-        print("\nZero-shot mode (no few-shot examples)")
-    
-    # Initialize model
-    print(f"\nInitializing {MODEL_NAME}...")
-    simplifier = LlamaSimplifier(
-        load_in_4bit=args.load_in_4bit and torch.cuda.is_available()
-    )
-    
-    # Generate simplifications
-    print("\nGenerating simplifications...")
-    print(f"Processing {len(complex_sentences)} sentences...")
-    
-    predictions = simplifier.simplify_batch(
-        complex_sentences,
-        few_shot_examples=few_shot_examples,
-        batch_size=args.batch_size
-    )
-    
-    print(f"Generated {len(predictions)} simplifications")
+        print("\nUsing default zero-shot prompt")
+
+        # Initialize model only for the model baseline so identity runs stay lightweight.
+        from src.models.sentence_simplifier import SentenceSimplifier
+
+        print(f"\nInitializing {MODEL_NAME}...")
+        simplifier = SentenceSimplifier(
+            load_in_4bit=args.load_in_4bit and torch.cuda.is_available()
+        )
+
+        # Generate simplifications
+        print("\nGenerating simplifications...")
+        print(f"Processing {len(complex_sentences)} sentences...")
+
+        predictions = simplifier.simplify_batch(
+            complex_sentences,
+            batch_size=args.batch_size
+        )
+
+        print(f"Generated {len(predictions)} simplifications")
     
     # Evaluate
     print("\nEvaluating predictions...")
@@ -213,7 +208,8 @@ def main():
     results = evaluate_simplification(
         sources=complex_sentences,
         predictions=predictions,
-        references=simple_references
+        references=simple_references,
+        include_bertscore=not args.skip_bertscore,
     )
     
     # Print results before saving files
@@ -246,19 +242,20 @@ def main():
     results_with_metadata = {
         'metrics': results,
         'metadata': {
-            'model': MODEL_NAME,
-            'num_shots': args.num_shots,
+            'baseline': args.baseline,
+            'model': baseline_model_name,
+            'prompt': prompt_name,
             'test_size': len(complex_sentences),
             'example_mode': args.example,
             'batch_size': args.batch_size,
             'load_in_4bit': args.load_in_4bit,
-            'use_curated_examples': args.use_curated_examples,
+            'skip_bertscore': args.skip_bertscore,
             'rephrase_only': rephrase_only,
             'seed': args.seed,
             'run_name': args.run_name,
             'output_dir': str(output_dir),
             'timestamp': datetime.now().isoformat(),
-            'evaluation': 'SARI, BLEU, BERTScore (automatic metrics)'
+            'evaluation': 'SARI, BLEU' + ('' if args.skip_bertscore else ', BERTScore') + ' (automatic metrics)'
         }
     }
     

@@ -115,18 +115,25 @@ def compute_bertscore(
 
     device = "cuda" if torch.cuda.is_available() else "cpu"
 
-    # For each prediction, compute F1 against all references and take max.
-    # Empty predictions are scored as zero instead of being dropped.
-    all_f1_scores = []
+    # Compute all prediction-reference pairs in one call so the model is loaded once.
+    all_f1_scores = [0.0] * len(predictions)
+    flat_predictions = []
+    flat_references = []
+    prediction_indices = []
 
-    for pred, refs in zip(predictions, references):
+    for pred_idx, (pred, refs) in enumerate(zip(predictions, references)):
         if not pred.strip():
-            all_f1_scores.append(0.0)
             continue
 
+        for ref in refs:
+            flat_predictions.append(pred)
+            flat_references.append(ref)
+            prediction_indices.append(pred_idx)
+
+    if flat_predictions:
         _, _, F1 = bert_score(
-            [pred] * len(refs),
-            refs,
+            flat_predictions,
+            flat_references,
             lang="en",
             model_type="roberta-large",
             device=device,
@@ -134,7 +141,8 @@ def compute_bertscore(
             batch_size=32
         )
 
-        all_f1_scores.append(F1.max().item())
+        for pair_idx, pred_idx in enumerate(prediction_indices):
+            all_f1_scores[pred_idx] = max(all_f1_scores[pred_idx], F1[pair_idx].item())
 
     corpus_f1 = sum(all_f1_scores) / len(all_f1_scores) if all_f1_scores else 0.0
     logger.info(f"BERTScore F1: {corpus_f1:.4f}")
@@ -144,7 +152,8 @@ def compute_bertscore(
 def evaluate_simplification(
     sources: List[str],
     predictions: List[str],
-    references: List[List[str]]
+    references: List[List[str]],
+    include_bertscore: bool = True,
 ) -> Dict[str, float]:
     """
     Compute evaluation metrics for text simplification.
@@ -153,6 +162,7 @@ def evaluate_simplification(
         sources: List of complex input sentences
         predictions: List of predicted simplified sentences
         references: List of lists of reference simplifications
+        include_bertscore: Whether to compute BERTScore F1
     
     Returns:
         Dictionary with SARI, BLEU, and BERTScore F1 scores
@@ -193,12 +203,14 @@ def evaluate_simplification(
         bleu = compute_bleu(valid_predictions, valid_references)
         results['bleu'] = bleu
         
-        bertscore_f1 = compute_bertscore(valid_predictions, valid_references)
-        results['bertscore_f1'] = bertscore_f1
+        if include_bertscore:
+            bertscore_f1 = compute_bertscore(valid_predictions, valid_references)
+            results['bertscore_f1'] = bertscore_f1
     else:
         results['sari'] = 0.0
         results['bleu'] = 0.0
-        results['bertscore_f1'] = 0.0
+        if include_bertscore:
+            results['bertscore_f1'] = 0.0
     
     results['n_evaluated'] = len(valid_sources)
     
@@ -213,7 +225,10 @@ def print_results(results: Dict[str, float]):
     
     print(f"\nSARI Score:              {results.get('sari', 0):.4f}")
     print(f"BLEU Score:              {results.get('bleu', 0):.4f}")
-    print(f"BERTScore F1:            {results.get('bertscore_f1', 0):.4f}")
+    if 'bertscore_f1' in results:
+        print(f"BERTScore F1:            {results.get('bertscore_f1', 0):.4f}")
+    else:
+        print("BERTScore F1:            skipped")
     print(f"Sentences evaluated:     {results.get('n_evaluated', 0)}")
     
     print("\n" + "="*60)

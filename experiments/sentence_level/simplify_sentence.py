@@ -9,8 +9,7 @@ import torch
 sys.path.insert(0, str(Path(__file__).parent.parent.parent))
 
 from src.config import MODEL_NAME
-from src.models.llama_simplifier import LlamaSimplifier
-from src.prompts.few_shot_examples import get_curated_examples
+from src.models.sentence_simplifier import SentenceSimplifier
 from src.evaluation.metrics import evaluate_simplification, print_results
 
 
@@ -41,13 +40,6 @@ def main():
     )
     
     parser.add_argument(
-        '--num_shots',
-        type=int,
-        default=0,
-        help='Number of few-shot examples (default: 0, zero-shot)'
-    )
-    
-    parser.add_argument(
         '--temperature',
         type=float,
         default=0.7,
@@ -59,14 +51,6 @@ def main():
         type=int,
         default=1024,
         help='Maximum tokens to generate (default: 256)'
-    )
-    
-    parser.add_argument(
-        '--prompt_type',
-        type=str,
-        default='default',
-        choices=['default', 'paper358_zero_shot', 'paper358_one_shot'],
-        help='Prompt strategy to use (default: default)'
     )
     
     parser.add_argument(
@@ -96,14 +80,13 @@ def main():
     print("="*80)
     print(f"\nModel: {args.model}")
     print(f"Device: {'CUDA' if torch.cuda.is_available() else 'CPU'}")
-    print(f"Prompt type: {args.prompt_type}")
-    print(f"Few-shot examples: {args.num_shots}")
+    print("Prompt: default zero-shot")
     print(f"Temperature: {args.temperature}")
     print()
     
     # Load model
     print("Loading model...")
-    simplifier = LlamaSimplifier(
+    simplifier = SentenceSimplifier(
         model_name=args.model,
         load_in_4bit=args.load_in_4bit and torch.cuda.is_available(),
         max_new_tokens=args.max_tokens,
@@ -112,17 +95,6 @@ def main():
     )
     print("Model loaded successfully!")
     print()
-    
-    # Get few-shot examples if requested
-    few_shot_examples = None
-    if args.num_shots > 0:
-        few_shot_examples = get_curated_examples(num_examples=args.num_shots)
-        print(f"Using {len(few_shot_examples)} few-shot examples:")
-        for i, ex in enumerate(few_shot_examples, 1):
-            print(f"\n  Example {i}:")
-            print(f"    Complex: {ex['complex'][:70]}...")
-            print(f"    Simple:  {ex['simple'][:70]}...")
-        print()
     
     # Display input
     print("-"*80)
@@ -133,7 +105,7 @@ def main():
     
     # Simplify
     print("Simplifying...")
-    simplified = simplifier.simplify(args.sentence, few_shot_examples=few_shot_examples, prompt_type=args.prompt_type)
+    simplified = simplifier.simplify(args.sentence)
     print()
     
     # Display output

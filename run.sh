@@ -1,8 +1,8 @@
 #!/bin/bash
 
-#SBATCH --partition=lrz-hgx-h100-94x4
+#SBATCH --partition=lrz-v100x2
 #SBATCH --gres=gpu:1
-#SBATCH --time=1:00:00
+#SBATCH --time=0:30:00
 #SBATCH --job-name=simpletext-qwen35-2b
 #SBATCH --output=logs/%j.out
 #SBATCH --error=logs/%j.err
