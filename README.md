@@ -23,7 +23,7 @@ cp .env.example .env   # set MODEL_NAME to Qwen3.5-2B or Qwen3.5-4B
 Key `.env` options:
 
 ```bash
-MODEL_NAME=Qwen/Qwen3.5-4B
+MODEL_NAME=Qwen/Qwen3.5-2B
 DATA_DIR=cochrane/data
 BATCH_SIZE=8
 LOAD_IN_4BIT=false
@@ -34,8 +34,14 @@ LOAD_IN_4BIT=false
 **Local:**
 
 ```bash
+# Direct execution
 source .venv/bin/activate
 python experiments/sentence_level/run_baseline.py --load_in_4bit
+
+# Or use the convenience script (auto-logs and timestamps)
+./run_local.sh
+./run_local.sh --load_in_4bit  # with 4-bit quantization
+./run_local.sh --test_size 100  # quick test on 100 examples
 ```
 
 **SLURM** (results saved per job ID):
@@ -45,7 +51,7 @@ python experiments/sentence_level/run_baseline.py --load_in_4bit
 ./run_qwen35_4b.sh   # H100, ~4B model
 ```
 
-Outputs go to `experiments/sentence_level/results/<run_name>/` (e.g. `qwen35-4b-5678037`).
+Outputs go to `experiments/sentence_level/results/<run_name>/` (e.g. `qwen35-2b-20260615_182230`).
 
 ### Useful flags
 
@@ -98,8 +104,9 @@ simple_text/
 │   └── results/
 ├── cochrane/data/
 │   └── cochraneauto_sents_rephrase_*.csv
-├── run_qwen35_2b.sh
-└── run_qwen35_4b.sh
+├── run_local.sh           # local execution (no SLURM)
+├── run_qwen35_2b.sh       # SLURM: 2B model
+└── run_qwen35_4b.sh       # SLURM: 4B model
 ```
 
 ## Troubleshooting

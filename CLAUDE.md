@@ -35,19 +35,39 @@ Default prompting: **zero-shot** (`--num_shots 0`). Use `--load_in_4bit` when GP
 
 ## Running
 
+**Local (no SLURM):**
+```bash
+./run_local.sh                     # default settings
+./run_local.sh --load_in_4bit      # with quantization
+./run_local.sh --test_size 100     # quick test
+```
+
+**Direct Python:**
 ```bash
 source .venv/bin/activate
 python experiments/sentence_level/run_baseline.py --load_in_4bit --run_name my-run
 ```
 
+**SLURM:**
 SLURM scripts pass `--run_name "qwen35-{2b|4b}-${SLURM_JOB_ID}"` so reruns do not overwrite `experiments/sentence_level/results/`.
+Local script uses timestamp: `qwen35-2b-YYYYMMDD_HHMMSS`.
 
 ## Key files
 
 - `experiments/sentence_level/run_baseline.py` — main eval pipeline
+- `experiments/sentence_level/IMPROVEMENT_PLAN.md` — **main progress/results doc (update this, not random markdown files)**
 - `src/utils/data_loader.py` — loads rephrase CSVs
 - `src/models/llama_simplifier.py` — generation wrapper (model-agnostic despite the name)
 - `src/config.py` — reads `.env` (`MODEL_NAME`, `DATA_DIR`, etc.)
+
+## Documentation policy
+
+**DO NOT create random documentation, summaries, or status markdown files.** Instead:
+
+- **Update `experiments/sentence_level/IMPROVEMENT_PLAN.md`** with progress, results, and findings
+- Add result sections at the end of IMPROVEMENT_PLAN.md for each week/experiment
+- Keep implementation notes concise and focused
+- Only create new docs if explicitly requested by the user
 
 ## Out of scope for now
 

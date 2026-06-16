@@ -8,7 +8,7 @@ from tqdm import tqdm
 from transformers import AutoModelForCausalLM, AutoTokenizer
 
 from src.config import MAX_NEW_TOKENS, MODEL_NAME, TEMPERATURE
-from src.prompts.templates import create_default_prompt
+from src.prompts.templates import create_prompt
 
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
@@ -24,7 +24,8 @@ class SentenceSimplifier:
         load_in_4bit: bool = False,
         max_new_tokens: Optional[int] = None,
         temperature: Optional[float] = None,
-        do_sample: bool = True
+        do_sample: bool = True,
+        prompt_name: str = "default_zero_shot"
     ):
         """
         Initialize the sentence simplification model.
@@ -36,11 +37,13 @@ class SentenceSimplifier:
             max_new_tokens: Maximum tokens to generate (defaults to MAX_NEW_TOKENS from .env)
             temperature: Sampling temperature (defaults to TEMPERATURE from .env)
             do_sample: Whether to use sampling
+            prompt_name: Prompt variant to use ('default_zero_shot' or 'definition_augmented')
         """
         self.model_name = model_name or MODEL_NAME
         self.max_new_tokens = max_new_tokens or MAX_NEW_TOKENS
         self.temperature = temperature or TEMPERATURE
         self.do_sample = do_sample
+        self.prompt_name = prompt_name
 
         if device is None:
             self.device = "cuda" if torch.cuda.is_available() else "cpu"
@@ -83,17 +86,27 @@ class SentenceSimplifier:
     def simplify(
         self,
         complex_sentence: str,
+        definitions: Optional[List] = None,
+        examples: Optional[List] = None
     ) -> str:
         """
         Simplify a single sentence.
 
         Args:
             complex_sentence: The complex sentence to simplify
+            definitions: Optional list of (term, definition) tuples for definition_augmented
+            examples: Optional list of (complex, simple) tuples for few_shot
 
         Returns:
             Simplified sentence
         """
-        prompt = create_default_prompt(complex_sentence, self.tokenizer)
+        prompt = create_prompt(
+            self.prompt_name,
+            complex_sentence,
+            self.tokenizer,
+            definitions=definitions,
+            examples=examples
+        )
 
         inputs = self.tokenizer(
             prompt,
@@ -123,7 +136,9 @@ class SentenceSimplifier:
     def simplify_batch(
         self,
         complex_sentences: List[str],
-        batch_size: int = 8
+        batch_size: int = 8,
+        definitions_list: Optional[List[List]] = None,
+        examples_list: Optional[List[List]] = None
     ) -> List[str]:
         """
         Simplify multiple sentences in batches.
@@ -131,18 +146,38 @@ class SentenceSimplifier:
         Args:
             complex_sentences: List of complex sentences
             batch_size: Batch size for processing
+            definitions_list: Optional list of definition lists (one per sentence)
+            examples_list: Optional list of example lists (one per sentence)
 
         Returns:
             List of simplified sentences
         """
+        if definitions_list is None:
+            definitions_list = [None] * len(complex_sentences)
+        if examples_list is None:
+            examples_list = [None] * len(complex_sentences)
+        
+        if len(definitions_list) != len(complex_sentences):
+            raise ValueError(
+                f"definitions_list length ({len(definitions_list)}) must match "
+                f"complex_sentences length ({len(complex_sentences)})"
+            )
+        
+        if len(examples_list) != len(complex_sentences):
+            raise ValueError(
+                f"examples_list length ({len(examples_list)}) must match "
+                f"complex_sentences length ({len(complex_sentences)})"
+            )
+        
         simplified = []
-        for sentence in tqdm(
-            complex_sentences,
+        for sentence, definitions, examples in tqdm(
+            zip(complex_sentences, definitions_list, examples_list),
             desc="Simplifying",
             unit="sent",
             mininterval=1.0,
+            total=len(complex_sentences)
         ):
-            simplified.append(self.simplify(sentence))
+            simplified.append(self.simplify(sentence, definitions=definitions, examples=examples))
 
         return simplified
 

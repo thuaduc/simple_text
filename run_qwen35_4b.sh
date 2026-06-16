@@ -26,4 +26,8 @@ export DATA_DIR=cochrane/data
 export BATCH_SIZE=8
 export RANDOM_SEED=42
 
-python experiments/sentence_level/run_baseline.py --run_name "qwen35-4b-${SLURM_JOB_ID}"
+python experiments/sentence_level/run_baseline.py \
+  --prompt few_shot \
+  --num_shots 3 \
+  --load_in_4bit \
+  --run_name "qwen35-4b-few-shot-${SLURM_JOB_ID}"

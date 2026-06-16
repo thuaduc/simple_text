@@ -10,7 +10,7 @@ load_dotenv(dotenv_path=env_path)
 
 
 # Model Configuration
-MODEL_NAME = os.getenv('MODEL_NAME', 'meta-llama/Llama-3.2-3B')
+MODEL_NAME = os.getenv('MODEL_NAME', 'Qwen/Qwen3.5-2B')
 
 # Model Parameters
 MAX_NEW_TOKENS = int(os.getenv('MAX_NEW_TOKENS', '256'))
