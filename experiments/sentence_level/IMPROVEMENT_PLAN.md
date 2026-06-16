@@ -123,10 +123,10 @@ Poster output by end of week 4:
 
 ## Step Checklist
 
-- [ ] Week 1: Implement prompt variants and split-aware validation runs.
-- [ ] Week 1: Compare prompt-only Qwen3.5 2B/4B systems on `val`.
-- [ ] Week 2: Build exact-match biomedical glossary retrieval and definition-augmented prompting.
-- [ ] Week 2: Report RAG coverage and compare with SARI, BLEU, and BERTScore.
+- [x] Week 1: Implement prompt variants and split-aware validation runs.
+- [x] Week 1: Compare prompt-only Qwen3.5 2B/4B systems on `val` (N=50 quick test done, `few_shot` wins).
+- [x] Week 2: Build exact-match biomedical glossary retrieval and definition-augmented prompting.
+- [x] Week 2: Report RAG coverage and compare with SARI, BLEU, and BERTScore.
 - [ ] Week 3: Fine-tune Qwen3.5 with QLoRA on the rephrase-only train split.
 - [ ] Week 3: Compare fine-tuned models against prompt-only and RAG validation winners.
 - [ ] Week 4: Run final selected systems on `test`.
@@ -138,3 +138,66 @@ Poster output by end of week 4:
 - Achieve a validation SARI gain without increasing empty outputs, factual-number errors, or unreadable outputs.
 - Prefer a final system that is simple to submit: one Qwen3.5 model, one selected prompt/retrieval configuration, deterministic output settings, and full metadata in results.
 - Use the Task 1.1 rephrase-only files only unless we explicitly decide to expand scope later.
+
+---
+
+## Implementation Progress
+
+### Week 1 Implementation (✅ Complete)
+
+**Implemented prompt variants:**
+- `default_zero_shot`: Conservative baseline
+- `nih_k8`: NIH plain-language, 8th-grade reading level
+- `plan_guided`: Two-stage (plan → simplify)
+- `few_shot`: Retrieves 1-3 similar examples from train split (lexical similarity)
+
+**Infrastructure added:**
+- Few-shot retrieval module (`src/retrieval/few_shot.py`)
+- Updated runner with `--prompt` and `--num_shots` arguments
+- Split-aware experiments (train/val/test)
+- Helper scripts: `run_week1_prompts.sh`, `compare_results.py`
+- **SLURM scripts updated:** `run_qwen35_2b.sh` and `run_qwen35_4b.sh` now use `few_shot` prompt by default
+
+**Validation results (N=50, Qwen3.5-2B, val split):**
+- **few_shot:** 39.06 SARI, 12.47 BLEU, 0.9084 BERTScore ✓ Best
+- **nih_k8:** 37.90 SARI, 5.34 BLEU, 0.8937 BERTScore
+- **default_zero_shot:** 36.95 SARI, 12.94 BLEU, 0.9045 BERTScore (baseline)
+- **plan_guided:** 35.01 SARI, 3.44 BLEU, 0.8262 BERTScore
+
+**Key findings:**
+- `few_shot` wins with +2.10 SARI over baseline (+5.7%)
+- `few_shot` also has highest BERTScore (0.9084)
+- `plan_guided` underperforms unexpectedly (may need prompt tuning)
+- `nih_k8` shows lower BLEU (5.34), suggests more aggressive rewording
+
+### Week 2 Implementation (✅ Complete)
+
+**RAG system:**
+- MedSimplify glossary: 3,113 biomedical terms downloaded to `cochrane/data/MedSimplify.csv`
+- Exact phrase matching with word boundaries
+- Deduplication (keeps shortest definition per term)
+- Coverage tracking and per-sentence matched terms saved
+
+**Test results (N=667):**
+- **Baseline (default_zero_shot):** 40.52 SARI, 18.49 BLEU, 0.9160 BERTScore
+- **With RAG (definition_augmented):** 41.50 SARI (+0.98), 19.71 BLEU (+1.22), 0.9160 BERTScore
+- **Coverage:** 84.3% of sentences matched at least one term (avg 2.51 terms/sentence)
+
+**Key findings:**
+- RAG provides consistent improvement (+2.4% SARI, +6.6% BLEU)
+- Semantic preservation maintained (BERTScore unchanged)
+- Top matched terms: risk (84×), adverse (48×), effects (46×), treatment (46×)
+- Manual inspection shows better handling of placebo, statistical notation, and acronyms
+
+### Next Steps
+
+1. ~~Run Week 1 validation to compare all prompt variants~~ ✅ Complete (N=50)
+2. **Run full validation** (N=758) to confirm `few_shot` as best prompt
+3. **Test on test set** with `few_shot` and compare to Week 2 RAG results
+4. **Optional: combine `few_shot` + RAG** to test if both improvements stack
+5. **Week 3: fine-tuning** with `few_shot` prompt as base (target: 42-43 SARI)
+
+**Current standings:**
+- Week 1 `few_shot` (N=50): 39.06 SARI
+- Week 2 RAG (N=667 test): 41.50 SARI
+- Need to run `few_shot` on full validation and test sets for fair comparison
