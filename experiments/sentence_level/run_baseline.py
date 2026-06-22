@@ -12,7 +12,7 @@ _SCRIPT_DIR = Path(__file__).resolve().parent
 _DEFAULT_OUTPUT_DIR = _SCRIPT_DIR / "results"
 sys.path.insert(0, str(_SCRIPT_DIR.parent.parent))
 
-from src.config import MODEL_NAME, DATA_DIR, BATCH_SIZE, RANDOM_SEED
+from src.config import MODEL_NAME, DATA_DIR, BATCH_SIZE, RANDOM_SEED, TEMPERATURE
 from src.utils.data_loader import load_cochrane_sentences
 from src.evaluation.metrics import evaluate_simplification, print_results
 
@@ -114,6 +114,26 @@ def parse_args():
         action='store_true',
         help='Use 4-bit quantization (requires CUDA)'
     )
+
+    parser.add_argument(
+        '--adapter_path',
+        type=str,
+        default=None,
+        help='Path to a trained LoRA adapter to load on top of the base model'
+    )
+
+    parser.add_argument(
+        '--sample',
+        action='store_true',
+        help='Use sampling during generation (default: greedy decoding for reproducible evaluation)'
+    )
+
+    parser.add_argument(
+        '--temperature',
+        type=float,
+        default=TEMPERATURE,
+        help=f'Sampling temperature when --sample is enabled (default: {TEMPERATURE})'
+    )
     
     parser.add_argument(
         '--seed',
@@ -200,6 +220,9 @@ def main():
     print(f"  Data size: {args.test_size or 'all'}{' (example mode)' if args.example else ''}")
     print(f"  Batch size: {args.batch_size}")
     print(f"  4-bit quantization: {args.load_in_4bit}")
+    print(f"  Generation: {'sampling' if args.sample else 'greedy'}")
+    if args.sample:
+        print(f"  Temperature: {args.temperature}")
     print(f"  Output directory: {output_dir}")
     if args.run_name:
         print(f"  Run name: {args.run_name}")
@@ -304,7 +327,10 @@ def main():
         print(f"\nInitializing {MODEL_NAME}...")
         simplifier = SentenceSimplifier(
             load_in_4bit=args.load_in_4bit and torch.cuda.is_available(),
-            prompt_name=args.prompt
+            prompt_name=args.prompt,
+            adapter_path=args.adapter_path,
+            do_sample=args.sample,
+            temperature=args.temperature
         )
 
         # Generate simplifications
@@ -371,11 +397,14 @@ def main():
             'split': args.split,
             'baseline': args.baseline,
             'model': baseline_model_name,
+            'adapter_path': args.adapter_path,
             'prompt': args.prompt,
             'data_size': len(complex_sentences),
             'example_mode': args.example,
             'batch_size': args.batch_size,
             'load_in_4bit': args.load_in_4bit,
+            'do_sample': args.sample,
+            'temperature': args.temperature if args.sample else None,
             'skip_bertscore': args.skip_bertscore,
             'rephrase_only': rephrase_only,
             'seed': args.seed,

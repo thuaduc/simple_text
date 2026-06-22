@@ -17,6 +17,27 @@ NIH_K8_SYSTEM_PROMPT = (
 )
 
 
+def _chat_prompt_no_think(system: str, user: str, tokenizer) -> str:
+    """Build a chat prompt with model-specific formatting and thinking disabled."""
+    messages = [
+        {"role": "system", "content": system},
+        {"role": "user", "content": user},
+    ]
+    try:
+        return tokenizer.apply_chat_template(
+            messages,
+            tokenize=False,
+            add_generation_prompt=True,
+            enable_thinking=False,
+        )
+    except TypeError:
+        return tokenizer.apply_chat_template(
+            messages,
+            tokenize=False,
+            add_generation_prompt=True,
+        )
+
+
 def create_default_prompt(input_sentence: str, tokenizer=None) -> str:
     """Create the default zero-shot simplification prompt."""
     user_prompt = (
@@ -33,15 +54,7 @@ def create_default_prompt(input_sentence: str, tokenizer=None) -> str:
     )
 
     if tokenizer is not None and hasattr(tokenizer, "apply_chat_template") and tokenizer.chat_template:
-        messages = [
-            {"role": "system", "content": DEFAULT_SYSTEM_PROMPT},
-            {"role": "user", "content": user_prompt},
-        ]
-        return tokenizer.apply_chat_template(
-            messages,
-            tokenize=False,
-            add_generation_prompt=True,
-        )
+        return _chat_prompt_no_think(DEFAULT_SYSTEM_PROMPT, user_prompt, tokenizer)
 
     return f"{DEFAULT_SYSTEM_PROMPT}\n\n{user_prompt}"
 
@@ -86,15 +99,7 @@ def create_definition_augmented_prompt(
     )
 
     if tokenizer is not None and hasattr(tokenizer, "apply_chat_template") and tokenizer.chat_template:
-        messages = [
-            {"role": "system", "content": DEFAULT_SYSTEM_PROMPT},
-            {"role": "user", "content": user_prompt},
-        ]
-        return tokenizer.apply_chat_template(
-            messages,
-            tokenize=False,
-            add_generation_prompt=True,
-        )
+        return _chat_prompt_no_think(DEFAULT_SYSTEM_PROMPT, user_prompt, tokenizer)
 
     return f"{DEFAULT_SYSTEM_PROMPT}\n\n{user_prompt}"
 
@@ -120,15 +125,7 @@ def create_nih_k8_prompt(input_sentence: str, tokenizer=None) -> str:
     )
     
     if tokenizer is not None and hasattr(tokenizer, "apply_chat_template") and tokenizer.chat_template:
-        messages = [
-            {"role": "system", "content": NIH_K8_SYSTEM_PROMPT},
-            {"role": "user", "content": user_prompt},
-        ]
-        return tokenizer.apply_chat_template(
-            messages,
-            tokenize=False,
-            add_generation_prompt=True,
-        )
+        return _chat_prompt_no_think(NIH_K8_SYSTEM_PROMPT, user_prompt, tokenizer)
     
     return f"{NIH_K8_SYSTEM_PROMPT}\n\n{user_prompt}"
 
@@ -151,15 +148,7 @@ def create_plan_guided_prompt(input_sentence: str, tokenizer=None) -> str:
     )
     
     if tokenizer is not None and hasattr(tokenizer, "apply_chat_template") and tokenizer.chat_template:
-        messages = [
-            {"role": "system", "content": DEFAULT_SYSTEM_PROMPT},
-            {"role": "user", "content": user_prompt},
-        ]
-        return tokenizer.apply_chat_template(
-            messages,
-            tokenize=False,
-            add_generation_prompt=True,
-        )
+        return _chat_prompt_no_think(DEFAULT_SYSTEM_PROMPT, user_prompt, tokenizer)
     
     return f"{DEFAULT_SYSTEM_PROMPT}\n\n{user_prompt}"
 
@@ -198,15 +187,7 @@ def create_few_shot_prompt(
     )
     
     if tokenizer is not None and hasattr(tokenizer, "apply_chat_template") and tokenizer.chat_template:
-        messages = [
-            {"role": "system", "content": DEFAULT_SYSTEM_PROMPT},
-            {"role": "user", "content": user_prompt},
-        ]
-        return tokenizer.apply_chat_template(
-            messages,
-            tokenize=False,
-            add_generation_prompt=True,
-        )
+        return _chat_prompt_no_think(DEFAULT_SYSTEM_PROMPT, user_prompt, tokenizer)
     
     return f"{DEFAULT_SYSTEM_PROMPT}\n\n{user_prompt}"
 

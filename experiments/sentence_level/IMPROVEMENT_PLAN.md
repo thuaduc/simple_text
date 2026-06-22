@@ -189,6 +189,38 @@ Poster output by end of week 4:
 - Top matched terms: risk (84×), adverse (48×), effects (46×), treatment (46×)
 - Manual inspection shows better handling of placebo, statistical notation, and acronyms
 
+### Week 3 Implementation (Complete)
+
+**QLoRA fine-tuning added:**
+- `experiments/sentence_level/finetune.py` — minimal LoRA SFT script
+  - Builds instruction examples with the existing `default_zero_shot` prompt; target is the first simplified reference
+  - Loss is masked on prompt tokens (`-100`), computed only on the simplified output
+  - `LoraConfig(target_modules="all-linear", task_type=CAUSAL_LM)`, defaults `r=16`, `alpha=32`, `dropout=0.05`
+  - Trains on `train`, evaluates on `val` each epoch, saves best adapter by epoch
+  - `--load_in_4bit` enables QLoRA; gradient checkpointing + paged 8-bit optimizer for memory-tight GPUs
+- `run_finetune.sh` — local launcher (Qwen3.5-2B, QLoRA, single GPU via `CUDA_VISIBLE_DEVICES`)
+- Evaluation support: `run_baseline.py --adapter_path <dir>` loads the trained adapter on top of the base model (via `SentenceSimplifier(adapter_path=...)`)
+- Added `peft>=0.19.0` dependency
+
+**How to run:**
+```bash
+# Train
+./run_finetune.sh                            # local, Qwen3.5-2B QLoRA
+# or directly
+python experiments/sentence_level/finetune.py --load_in_4bit
+
+# Evaluate the adapter on test
+python experiments/sentence_level/run_baseline.py \
+  --split test --adapter_path experiments/sentence_level/lora_adapter/<run> \
+  --run_name qwen35-2b-lora
+```
+
+**Test results (N=667):**
+- **QLoRA default_zero_shot (`checkpoint-328`):** 46.50 SARI, 27.22 BLEU, 0.9240 BERTScore
+- Run output: `experiments/sentence_level/results/qwen35-2b-lora`
+- Evaluation config: `Qwen/Qwen3.5-2B`, `default_zero_shot`, greedy decoding, 4-bit loading, rephrase-only test split
+- Compared with Week 2 RAG test result, QLoRA improves by +5.00 SARI, +7.51 BLEU, and +0.0080 BERTScore
+
 ### Next Steps
 
 1. ~~Run Week 1 validation to compare all prompt variants~~ ✅ Complete (N=50)
@@ -200,4 +232,5 @@ Poster output by end of week 4:
 **Current standings:**
 - Week 1 `few_shot` (N=50): 39.06 SARI
 - Week 2 RAG (N=667 test): 41.50 SARI
+- Week 3 QLoRA `default_zero_shot` (N=667 test): 46.50 SARI
 - Need to run `few_shot` on full validation and test sets for fair comparison

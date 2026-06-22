@@ -25,7 +25,8 @@ class SentenceSimplifier:
         max_new_tokens: Optional[int] = None,
         temperature: Optional[float] = None,
         do_sample: bool = True,
-        prompt_name: str = "default_zero_shot"
+        prompt_name: str = "default_zero_shot",
+        adapter_path: Optional[str] = None
     ):
         """
         Initialize the sentence simplification model.
@@ -55,6 +56,7 @@ class SentenceSimplifier:
         self.tokenizer = AutoTokenizer.from_pretrained(self.model_name)
         if self.tokenizer.pad_token is None:
             self.tokenizer.pad_token = self.tokenizer.eos_token
+        self.tokenizer.padding_side = "left"
 
         if load_in_4bit and self.device == "cuda":
             from transformers import BitsAndBytesConfig
@@ -79,6 +81,12 @@ class SentenceSimplifier:
                 torch_dtype=torch.float16 if self.device == "cuda" else torch.float32
             )
             self.model.to(self.device)
+
+        if adapter_path:
+            from peft import PeftModel
+
+            logger.info(f"Loading LoRA adapter from {adapter_path}...")
+            self.model = PeftModel.from_pretrained(self.model, adapter_path)
 
         self.model.eval()
         logger.info("Model loaded successfully!")
@@ -115,15 +123,17 @@ class SentenceSimplifier:
             max_length=2048
         ).to(self.device)
 
+        generate_kwargs = {
+            "max_new_tokens": self.max_new_tokens,
+            "do_sample": self.do_sample,
+            "pad_token_id": self.tokenizer.pad_token_id,
+            "eos_token_id": self.tokenizer.eos_token_id,
+        }
+        if self.do_sample:
+            generate_kwargs["temperature"] = self.temperature
+
         with torch.no_grad():
-            outputs = self.model.generate(
-                **inputs,
-                max_new_tokens=self.max_new_tokens,
-                temperature=self.temperature,
-                do_sample=self.do_sample,
-                pad_token_id=self.tokenizer.pad_token_id,
-                eos_token_id=self.tokenizer.eos_token_id
-            )
+            outputs = self.model.generate(**inputs, **generate_kwargs)
 
         new_tokens = outputs[0][inputs.input_ids.shape[1]:]
         simplified = self.tokenizer.decode(new_tokens, skip_special_tokens=True).strip()
@@ -156,6 +166,9 @@ class SentenceSimplifier:
             definitions_list = [None] * len(complex_sentences)
         if examples_list is None:
             examples_list = [None] * len(complex_sentences)
+
+        if batch_size < 1:
+            raise ValueError(f"batch_size must be >= 1, got {batch_size}")
         
         if len(definitions_list) != len(complex_sentences):
             raise ValueError(
@@ -170,14 +183,56 @@ class SentenceSimplifier:
             )
         
         simplified = []
-        for sentence, definitions, examples in tqdm(
-            zip(complex_sentences, definitions_list, examples_list),
+        for start in tqdm(
+            range(0, len(complex_sentences), batch_size),
             desc="Simplifying",
-            unit="sent",
+            unit="batch",
             mininterval=1.0,
-            total=len(complex_sentences)
+            total=(len(complex_sentences) + batch_size - 1) // batch_size
         ):
-            simplified.append(self.simplify(sentence, definitions=definitions, examples=examples))
+            end = start + batch_size
+            prompts = [
+                create_prompt(
+                    self.prompt_name,
+                    sentence,
+                    self.tokenizer,
+                    definitions=definitions,
+                    examples=examples
+                )
+                for sentence, definitions, examples in zip(
+                    complex_sentences[start:end],
+                    definitions_list[start:end],
+                    examples_list[start:end]
+                )
+            ]
+
+            inputs = self.tokenizer(
+                prompts,
+                return_tensors="pt",
+                padding=True,
+                truncation=True,
+                max_length=2048
+            ).to(self.device)
+
+            generate_kwargs = {
+                "max_new_tokens": self.max_new_tokens,
+                "do_sample": self.do_sample,
+                "pad_token_id": self.tokenizer.pad_token_id,
+                "eos_token_id": self.tokenizer.eos_token_id,
+            }
+            if self.do_sample:
+                generate_kwargs["temperature"] = self.temperature
+
+            with torch.no_grad():
+                outputs = self.model.generate(**inputs, **generate_kwargs)
+
+            prompt_length = inputs.input_ids.shape[1]
+            for output in outputs:
+                new_tokens = output[prompt_length:]
+                text = self.tokenizer.decode(new_tokens, skip_special_tokens=True).strip()
+                if "\n\n" in text:
+                    text = text.split("\n\n")[0].strip()
+                simplified.append(text)
 
         return simplified
 
