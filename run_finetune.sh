@@ -12,11 +12,14 @@ export DATA_DIR=cochrane/data
 
 python experiments/sentence_level/finetune.py \
   --load_in_4bit \
+  --prompt few_shot \
+  --num_shots 3 \
+  --max_seq_len 1024 \
   --epochs 3 \
   --early_stopping_patience 1 \
   --lr 1e-4 \
   --lora_r 8 \
   --lora_alpha 16 \
   --lora_dropout 0.1 \
-  --output_dir "experiments/sentence_level/lora_adapter/qwen35-2b" \
+  --output_dir "experiments/sentence_level/lora_adapter/qwen35-2b-few-shot" \
   "$@"

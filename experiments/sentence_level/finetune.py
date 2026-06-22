@@ -1,7 +1,7 @@
 """LoRA fine-tuning for Qwen3.5 on rephrase-only sentence simplification.
 
 Trains a LoRA adapter so the model maps a complex biomedical sentence
-(using the default zero-shot prompt) to its simplified reference.
+using the selected prompt style to its simplified reference.
 Loss is computed only on the simplified target, not the prompt.
 """
 
@@ -26,7 +26,8 @@ sys.path.insert(0, str(_SCRIPT_DIR.parent.parent))
 
 from src.config import MODEL_NAME, DATA_DIR
 from src.utils.data_loader import load_cochrane_sentences
-from src.prompts.templates import create_default_prompt
+from src.prompts.templates import create_prompt
+from src.retrieval import FewShotRetriever
 
 
 def parse_args():
@@ -34,6 +35,19 @@ def parse_args():
     parser.add_argument('--model_name', type=str, default=MODEL_NAME)
     parser.add_argument('--data_dir', type=str, default=DATA_DIR)
     parser.add_argument('--output_dir', type=str, default=str(_SCRIPT_DIR / "lora_adapter"))
+    parser.add_argument(
+        '--prompt',
+        type=str,
+        choices=['default_zero_shot', 'few_shot'],
+        default='default_zero_shot',
+        help='Prompt variant to fine-tune with'
+    )
+    parser.add_argument(
+        '--num_shots',
+        type=int,
+        default=3,
+        help='Number of retrieved examples for few_shot prompts'
+    )
     parser.add_argument('--max_seq_len', type=int, default=512)
     parser.add_argument('--epochs', type=float, default=3.0)
     parser.add_argument('--batch_size', type=int, default=2)
@@ -48,7 +62,7 @@ def parse_args():
     return parser.parse_args()
 
 
-def build_examples(split, data_dir, tokenizer, max_seq_len):
+def build_examples(split, data_dir, tokenizer, max_seq_len, prompt_name, num_shots, retriever):
     """Tokenize each pair as prompt + target, masking prompt tokens in the labels."""
     complex_sents, references, _, _ = load_cochrane_sentences(
         split=split, data_dir=data_dir, rephrase_only=True
@@ -60,7 +74,19 @@ def build_examples(split, data_dir, tokenizer, max_seq_len):
     for complex_sent, refs in zip(complex_sents, references):
         if not refs:
             continue
-        prompt = create_default_prompt(complex_sent, tokenizer)
+        examples_for_prompt = None
+        if prompt_name == "few_shot" and retriever is not None:
+            examples_for_prompt = retriever.retrieve(
+                complex_sent,
+                k=num_shots,
+                exclude_self=(split == "train")
+            )
+        prompt = create_prompt(
+            prompt_name,
+            complex_sent,
+            tokenizer,
+            examples=examples_for_prompt
+        )
         target = refs[0].strip() + tokenizer.eos_token
 
         prompt_ids = tokenizer(prompt, add_special_tokens=False)["input_ids"]
@@ -124,8 +150,32 @@ def main():
     model = get_peft_model(model, lora_config)
     model.print_trainable_parameters()
 
-    train_examples = build_examples("train", args.data_dir, tokenizer, args.max_seq_len)
-    val_examples = build_examples("val", args.data_dir, tokenizer, args.max_seq_len)
+    retriever = None
+    if args.prompt == "few_shot":
+        train_complex, train_references, _, _ = load_cochrane_sentences(
+            split="train", data_dir=args.data_dir, rephrase_only=True
+        )
+        retriever = FewShotRetriever(train_complex, train_references, method="lexical")
+        print(f"Using few_shot prompts with {args.num_shots} retrieved examples")
+
+    train_examples = build_examples(
+        "train",
+        args.data_dir,
+        tokenizer,
+        args.max_seq_len,
+        args.prompt,
+        args.num_shots,
+        retriever
+    )
+    val_examples = build_examples(
+        "val",
+        args.data_dir,
+        tokenizer,
+        args.max_seq_len,
+        args.prompt,
+        args.num_shots,
+        retriever
+    )
 
     collator = DataCollatorForSeq2Seq(tokenizer, padding=True, label_pad_token_id=-100)
 

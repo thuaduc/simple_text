@@ -127,8 +127,9 @@ Poster output by end of week 4:
 - [x] Week 1: Compare prompt-only Qwen3.5 2B/4B systems on `val` (N=50 quick test done, `few_shot` wins).
 - [x] Week 2: Build exact-match biomedical glossary retrieval and definition-augmented prompting.
 - [x] Week 2: Report RAG coverage and compare with SARI, BLEU, and BERTScore.
-- [ ] Week 3: Fine-tune Qwen3.5 with QLoRA on the rephrase-only train split.
-- [ ] Week 3: Compare fine-tuned models against prompt-only and RAG validation winners.
+- [x] Week 3: Fine-tune Qwen3.5 with QLoRA on the rephrase-only train split (`default_zero_shot`, 46.50 SARI on test).
+- [ ] Week 3: Train or recover the `few_shot` QLoRA adapter at `experiments/sentence_level/lora_adapter/qwen35-2b-few-shot`.
+- [ ] Week 3: Compare fine-tuned models against prompt-only and RAG winners with the same split and decoding settings.
 - [ ] Week 4: Run final selected systems on `test`.
 - [ ] Week 4: Add candidate generation only if time remains.
 
@@ -217,20 +218,24 @@ python experiments/sentence_level/run_baseline.py \
 
 **Test results (N=667):**
 - **QLoRA default_zero_shot (`checkpoint-328`):** 46.50 SARI, 27.22 BLEU, 0.9240 BERTScore
+- **QLoRA + RAG (`definition_augmented`):** 45.87 SARI, 26.73 BLEU, 0.9232 BERTScore
 - Run output: `experiments/sentence_level/results/qwen35-2b-lora`
+- RAG + fine-tuning output: `experiments/sentence_level/results/qwen35-2b-ze-shot-lora-definition-augmented`
 - Evaluation config: `Qwen/Qwen3.5-2B`, `default_zero_shot`, greedy decoding, 4-bit loading, rephrase-only test split
 - Compared with Week 2 RAG test result, QLoRA improves by +5.00 SARI, +7.51 BLEU, and +0.0080 BERTScore
+- RAG does not stack with the fine-tuned adapter in this run: adding `definition_augmented` to the QLoRA adapter reduces SARI by 0.63 and BLEU by 0.49 versus plain QLoRA.
 
 ### Next Steps
 
 1. ~~Run Week 1 validation to compare all prompt variants~~ ✅ Complete (N=50)
-2. **Run full validation** (N=758) to confirm `few_shot` as best prompt
-3. **Test on test set** with `few_shot` and compare to Week 2 RAG results
-4. **Optional: combine `few_shot` + RAG** to test if both improvements stack
-5. **Week 3: fine-tuning** with `few_shot` prompt as base (target: 42-43 SARI)
+2. ~~Run Week 2 RAG evaluation~~ ✅ Complete (41.50 SARI on test)
+3. ~~Run first QLoRA evaluation~~ ✅ Complete (`default_zero_shot`, 46.50 SARI on test)
+4. ~~Test RAG + QLoRA stacking~~ ✅ Complete (`definition_augmented`, 45.87 SARI; worse than plain QLoRA)
+5. **Evaluate the few-shot QLoRA adapter** on the same test split/settings once the adapter exists, then compare against the current `default_zero_shot` QLoRA result.
 
 **Current standings:**
 - Week 1 `few_shot` (N=50): 39.06 SARI
 - Week 2 RAG (N=667 test): 41.50 SARI
 - Week 3 QLoRA `default_zero_shot` (N=667 test): 46.50 SARI
-- Need to run `few_shot` on full validation and test sets for fair comparison
+- Week 3 QLoRA + RAG `definition_augmented` (N=667 test): 45.87 SARI
+- Next decision: train/evaluate the missing `qwen35-2b-few-shot` adapter before changing the final system.
