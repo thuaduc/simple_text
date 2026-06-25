@@ -12,6 +12,6 @@ python experiments/sentence_level/run_baseline.py \
   --prompt few_shot \
   --num_shots 3 \
   --load_in_4bit \
-  --adapter_path experiments/sentence_level/lora_adapter/qwen35-2b-few-shot \
-  --run_name qwen35-2b-few-shot-lora \
+  --adapter_path experiments/sentence_level/lora_adapter/qwen35-2b-few-shot/checkpoint-328 \
+  --run_name qwen35-2b-few-shot-lora-new \
   "$@"

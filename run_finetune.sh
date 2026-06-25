@@ -11,15 +11,15 @@ export MODEL_NAME="Qwen/Qwen3.5-2B"
 export DATA_DIR=cochrane/data
 
 python experiments/sentence_level/finetune.py \
-  --load_in_4bit \
+  --model "$MODEL_NAME" \
   --prompt few_shot \
   --num_shots 3 \
-  --max_seq_len 1024 \
-  --epochs 3 \
-  --early_stopping_patience 1 \
-  --lr 1e-4 \
-  --lora_r 8 \
-  --lora_alpha 16 \
-  --lora_dropout 0.1 \
-  --output_dir "experiments/sentence_level/lora_adapter/qwen35-2b-few-shot" \
+  --max_length 1024 \
+  --num_epochs 3 \
+  --patience 1 \
+  --learning_rate 5e-5 \
+  --lora_r 16 \
+  --lora_alpha 32 \
+  --lora_dropout 0.05 \
+  --output "experiments/sentence_level/lora_adapter/qwen35-2b-zero-shot-low-lr" \
   "$@"
