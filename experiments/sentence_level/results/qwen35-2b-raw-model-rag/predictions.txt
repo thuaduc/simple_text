@@ -1,0 +1,669 @@
+Computer reminders improved process adherence by a median of 4.2% (range: 0.8% to 18.8%) across all reported outcomes, with medication ordering improving by 3.3% (range: 0.5% to 10.6%), vaccinations by 3.8% (range: 0.5% to 6.6%), and test ordering by 3.8% (range: 0.4% to 16.3%).
+In the eight comparisons that reported dichotomous clinical endpoints, intervention patients experienced a median absolute improvement of 2.5% (IQR: 1.3% to 4.2%).
+A small number of interventions produced larger effects, but no specific reminder or contextual features significantly affected the size of these effects.
+Further research must identify design features and contextual factors consistently associated with larger improvements in provider behaviour if computer reminders are to succeed on more than a trial and error basis.
+The oral anticoagulant was a vitamin K antagonist (VKA) in six of these randomized controlled trials (RCTs), and a direct oral anticoagulant (DOAC) in the remaining four RCTs (three studies used apixaban; one used rivaroxaban).
+Compared to no prophylaxis, vitamin K antagonists probably reduce mortality at six months slightly (risk ratio 0.93, 95% confidence interval 0.77 to 1.13; risk difference 22 fewer per 1000, 95% confidence interval 72 fewer to 41 more; moderate-certainty evidence), and probably reduce mortality at 12 months slightly (risk ratio 0.95, 95% confidence interval 0.87 to 1.03; risk difference 29 fewer per 1000, 95% confidence interval 75 fewer to 17 more; moderate-certainty evidence).
+Compared to no treatment, direct oral anticoagulants (DOACs) probably slightly reduce the risk of death, pulmonary embolism, and deep vein thrombosis (DVT) slightly, but they probably do not increase major bleeding and may increase minor bleeding.
+We included 17 randomized controlled trials in the review (2505 women).
+Repeated single embryo transfer versus multiple embryo transfer in a single cycle. Repeated single embryo transfer was compared with double embryo transfer in four studies of cleavage-stage transfer.
+This suggests that for a woman with a 42% chance of live birth following a single cycle of DET, the repeated SET would yield pregnancy rates between 34% and 46%.
+There may be little or no difference in the rate of miscarriage between the two groups.
+A single cycle of single embryo transfer was compared with a single cycle of double embryo transfer in 13 studies, 11 comparing cleavage-stage transfers and three comparing blastocyst-stage transfers. One study reported both cleavage and blastocyst stage transfers.
+Thus, for a woman with a 46% chance of live birth following a single cycle of DET, the chance following a single cycle of SET would be between 27% and 35%.
+This suggests that for a woman with a 15% chance of multiple pregnancy after one cycle of DET, the chance after one cycle of SET would be between 2% and 4%.
+There may be little or no difference in the rate of miscarriage between the two groups.
+We included four studies with a total of 401 randomised participants aged zero to seven years on enrolment; one study is ongoing.
+The two older studies generally had a higher chance of bias across all areas, but especially because they lacked blinding and incomplete outcome data, compared to the two more recent studies.
+We only regarded the most recent study as being generally free of bias, although even here we were not certain of the effect of the per protocol analysis on the study results.
+As the studies reviewed lasted six years or less, conclusions cannot be drawn about the long-term effects of prophylaxis.
+Taking an antibiotic that fights Staphylococcus bacteria early in infancy and continuing it up to six years of age may lead to fewer children having Staphylococcus aureus infections.
+Further research may establish whether the trend toward more children with cystic fibrosis and Pseudomonas aeruginosa after four to six years of prophylaxis is a chance finding and whether the choice of antibiotic or duration of treatment might influence this.
+We included 28 publications reporting on 24 studies.
+The risks did not change clearly based on the generation of progestagen or the type of progestagen.
+When we grouped preparations by estrogen dose, the risk of heart disease or stroke seemed to increase with higher doses of estrogen.
+This meta-analysis showed that the chance of having disease in the heart muscle or a stroke due to a blood clot was 1.6 times higher in women using COCs.
+When combined with study results on the risk of blood clotting in women who use combined oral contraceptives, it seems that the pill containing levonorgestrel and 30 µg of estrogen is the safest oral form of combined hormonal contraception.
+One study with 961 teachers in eight schools compared a task-based organisational change intervention along with stress management training to no intervention.
+Two studies compared teacher training combined with school-wide coaching support to no intervention.
+One study with 59 teachers in 43 schools found no significant effects on job-related anxiety or depression after 24 months.
+The other study with 77 teachers in 18 schools found no significant effects on the Maslach Burnout Inventory subscales (e.g. emotional exhaustion subscale: MD -0.05 95% CI -0.52 to 0.42, low-quality evidence) or the Teacher Perceived Emotional Ability subscales (e.g. regulating emotions subscale: MD 0.11 95% CI -0.11 to 0.33, low-quality evidence) after six months.
+One study with 1102 teachers in 34 schools compared a multi-component intervention containing performance bonuses, job promotion opportunities, and mentoring support to a matched-comparison group consisting of 300 schools.
+However, the authors reported results from only one cohort out of four (eight schools), which shows a high risk of reporting bias.
+We found low-quality evidence that organizational interventions lead to improvements in teacher wellbeing and retention rates.
+We need further evaluation of the good and bad results of organisational interventions for teacher wellbeing.
+These studies should follow a complex-interventions framework, use a cluster-randomised design, and have large sample sizes.
+Two studies with a combined total of 288 participants met the inclusion criteria for this review.
+One study compared unfractionated heparin with low molecular weight heparin and found no evidence of a difference between the treatments in the prevention of deep vein thrombosis (DVT).
+No bleeding events occurred in either group.
+Additionally, the study did not report the method of randomisation, so the risk of selection bias was unclear.
+In the second study, there was no evidence of a benefit from heparin use in preventing pulmonary embolism when compared to placebo (134 participants; low-certainty evidence).
+Bleeding events were reported in less than 10% of participants in both treatment groups, but the study did not present specific data (low-certainty evidence).
+No study looked at mechanical prophylaxis.
+Because we only reviewed two studies, each comparing different interventions, there is not enough evidence to determine which thromboprophylaxis regimen is most effective for people undergoing lower limb amputation.
+More large-scale studies of good quality are needed.
+Seven randomised trials were included, four of which reported usable data on 472 children with asthma aged one to 18 years who were admitted to paediatric wards.
+No statistically significant group difference was noted in other secondary outcomes, including the need for supplemental asthma therapy, time to short-acting beta-2 agonists spaced at four hours or longer, asthma clinical scores, lung function, and overall withdrawals for any reason.
+In children hospitalized for an acute asthma attack, adding nebulized anticholinergics to short-acting beta-2 agonists did not help shorten the hospital stay or improve other measures of response to treatment.
+In the absence of trials conducted in ICUs, no conclusion can be drawn about children with impending respiratory failure.
+These findings support current national and international recommendations indicating that healthcare practitioners should avoid using anticholinergics in children hospitalized for acute asthma.
+We included 220 studies.
+Most of the studies originated from China (47.7%) or the USA (20.9%); 9.5% were from Italy.
+This review shows that people who are hospitalized with COVID-19 often have common heart and blood vessel problems, and these complications are frequent.
+We plan to update this review and to conduct a formal meta-analysis of outcomes based on a more homogeneous selected subsample of high-certainty studies.
+Four trials, including 136 participants, were included.
+Two trials compared lamivudine alone versus HBIg alone.
+No statistically significant differences were found in any of the comparisons or outcomes.
+This review could not derive clear evidence from randomised clinical trials for the treatment of patients with chronic hepatitis B following liver transplantation for preventing recurrence of hepatitis B infection.
+Large randomised clinical trials comparing long-term combination treatment to each of the monotherapy alone, including the newer antiviral drugs, are needed.
+Two published studies randomly assigned a total of 119 people.
+Both trials reported some positive effects of Ginkgo biloba on vision, but their results could not be combined.
+No harmful effects or changes in quality of life were reported for people with AMD.
+The question of whether people with age-related macular degeneration should take Ginkgo biloba extract to prevent the disease from getting worse has not been answered by research to date.
+Future trials should be larger and last longer to provide a more robust measure of the effect of Gingko biloba extract on AMD.
+We included 35 trials with 13,872 adult participants.
+The results of meta-analyses showed that nitrous oxide-based techniques increased the incidence of pulmonary atelectasis, but had no effects on the inhospital case fatality rate, the incidence of pneumonia, myocardial infarction, stroke, severe nausea and vomiting, venous thromboembolism, wound infection, or the length of hospital stay.
+The sensitivity analyses suggested that the results of the meta-analyses were all robust except for the outcomes of pneumonia, severe nausea, and vomiting.
+Both trials reported that nitrous oxide-based techniques had no effects on the length of ICU stay.
+Based on the evidence from this review, avoiding nitrous oxide may be reasonable for participants with pre-existing poor lung function or those at high risk of nausea and vomiting after surgery.
+We included three trials with four different interventions involving 196 participants who had a stroke and anxiety.
+The second trial randomly assigned 81 participants with both anxiety and depression to receive paroxetine, paroxetine plus psychotherapy, or standard care.
+The quality of the evidence was very low.
+Further well-conducted randomised controlled trials using placebo or attention controls are required to learn about the health and wellness of pharmacological agents and psychological therapies.
+Two trials compared supplements to additional nutritional advice and one to no intervention.
+Two of the included trials recruited only children.
+In one trial, the risk of bias was low across all domains; in a second trial, it was largely unclear; and in the third, it was mainly low.
+There were no significant differences between people receiving supplements or dietary advice alone for change in weight, height, body mass index, z score or other indices of nutrition or growth.
+There were no significant differences between the groups for body composition, lung function, gastrointestinal adverse effects, or activity levels.
+There is moderate evidence for the outcomes of changes in weight and height, but low evidence for the outcomes of changes in total calories, total fat, and total protein intake. These results apply only to children between the ages of 2 and 15 years, and many post-treatment diet diaries were not returned.
+Oral calorie supplements do not provide any extra help in the nutritional management of moderately malnourished children with cystic fibrosis beyond dietary advice and monitoring alone.
+We included 17 studies with a total of 1025 participants; 12 studies were published (567 patients) and five were unpublished (458 patients).
+Sixteen studies involving 953 people compared betahistine with a sugar pill.
+Using the GRADE system, we judged the quality of evidence overall to be low for two outcomes (proportion of patients with improvement and proportion with adverse events).
+Pooled data showed that the proportion of patients reporting an overall reduction in their vertigo symptoms was higher in the group treated with betahistine than the placebo group: risk ratio 1.30, 95% confidence interval 1.05 to 1.60; 606 participants; 11 studies.
+This result should be interpreted with caution because the test for statistical heterogeneity, measured by the I2 value, was high.
+Adverse effects, mostly gastrointestinal symptoms and headaches, were common, but serious medical events were rare and isolated. There was no difference in the frequency of these effects between the betahistine and placebo groups, with rates of 16% and 15% respectively.
+Sixteen percent of patients from both the betahistine and the placebo groups withdrew from the studies.
+Low quality evidence suggests that in patients with vertigo from different causes, betahistine may make a positive effect on reducing vertigo symptoms.
+Betahistine is generally well tolerated with a low chance of harmful events.
+All studies had methodological shortcomings that placed them at high or unclear risk of bias.
+Because of this high risk of bias, imprecise results, and likelihood of publication bias, we judged the quality of the evidence for all primary outcomes to be very low.
+One trial compared anabolic steroid injections (given weekly until discharge from hospital or four weeks, whichever came first) versus placebo injections in 29 frail elderly females.
+This study found very low quality evidence of little difference between the two groups in the numbers discharged to a higher level of care or dead (one person in the control group died) (8 out of 15 versus 10 out of 14; risk ratio 0.75, 95% confidence interval 0.42 to 1.33; P = 0.32), time to independent mobilisation or individual adverse events.
+The second trial compared anabolic steroid injections every three weeks for six months and daily protein supplementation versus daily protein supplementation alone in 40 lean elderly women who were followed up for one year after surgery.
+This trial provided very low quality evidence that anabolic steroids may result in less dependency, assessed in terms of being either dependent in at least two functions or dead (one person in the control group died) at six and 12 months, but the result was also compatible with no difference or an increase in dependency (dependent in at least two levels of function or dead at 12 months: 1/17 versus 5/19; RR 0.22, 95% CI 0.03 to 1.73; P = 0.15).
+The trial found no evidence of differences between groups in individual adverse events.
+Pooled data from two trials showed no difference in death rates between the two groups at one year.
+The available evidence is not enough to draw conclusions about the effects of anabolic steroids, either alone or with nutritional supplements, after hip fracture surgery in older people.
+We identified three trials with a high chance of bias that compared a bypass (n = 65) versus no bypass (n = 66).
+There were no significant differences regarding renal failure or blood transfusion needs between the two groups.
+We identified one trial with high risk of bias that compared percutaneous (n = 20) versus open technique (n = 19) of veno-venous bypass.
+The patient or graft survival was not reported.
+There was no difference in the sickness caused by bypass procedures between the two groups.
+The operating time was significantly shorter in the percutaneous technique group (MD -59 minutes; 95% CI -102 to -16).
+All of the participants had single or multiple organ failure.
+We included two studies where 189 people with severe acute pancreatitis were randomly assigned to receive CVVH (97 people) or no CVVH (92 people).
+We included one randomized trial with 30 participants who had severe acute pancreatitis. These participants were divided into two groups: 15 received high-volume CVVH and 15 received standard CVVH.
+High-volume continuous veno-venous hemofiltration may result in little to no difference in in-hospital mortality compared with standard continuous veno-venous hemofiltration (RR 0.60, 95% CI 0.17 to 2.07; 1 study, 30 participants; low-certainty evidence).
+The evidence is very uncertain about the effect of high-volume CVVH on adverse events compared with standard CVVH (RR 1.00, 95% CI 0.16 to 6.20; 1 study, 30 participants; very low-certainty evidence).
+The current evidence is very low or low in certainty.
+The evidence is very uncertain about whether CVVH makes patients with severe acute pancreatitis die.
+Very low-certainty evidence suggests that continuous veno-venous hemofiltration (CVVH) may reduce the length of ICU stay, length of hospital stay, and total hospital cost, but the evidence is very uncertain.
+The evidence is also very uncertain whether high-volume CVVH is superior, equivalent, or inferior to standard CVVH in patients with severe acute pancreatitis.
+Twenty-three trials involving 2,467 people were included.
+Comparing methadone with a sugar pill (two studies) resulted in more severe withdrawal and more drop-outs in the sugar pill group.
+Data from literature are hardly comparable; programs vary widely with regard to the assessment of outcome measures, impairing the application of meta-analysis.
+All reported outcomes were judged as providing very low certainty evidence.
+We are uncertain about the effect of tracheal suction on the number of sick people and their complications among non-vigorous neonates born through MSAF.
+We included 11 cross-over studies with 153 participants and one parallel study with 41 participants.
+One study used autogenic drainage; five used conventional chest physiotherapy; nine used positive expiratory pressure (PEP), with one study varying the water pressure between arms; three studies used oscillating PEP; two used exercise; and two used high-frequency chest wall oscillation (HFCWO).
+We rated the certainty of evidence as low or very low because the trial design was short-term and cross-over, there were small numbers of participants, and the risk of bias was uncertain in most or all areas.
+Five studies with 55 participants found that coughing increased radioactive tracer clearance compared to control, while a separate study with eight participants found no improvement in clearance when comparing PEP to control, although coughing was discouraged during the PEP intervention.
+We rated the certainty of evidence on the effect of ACTs on radioactive tracer clearance as very low.
+The review shows that ACTs may have short-term effects on increasing mucus transport in people with CF.
+All included studies had short-term follow-up; therefore, we were unable to draw any conclusions on the long-term effects of ACTs compared to no ACTs in people with CF.
+We identified 12 randomized trials and one quasi-randomized trial (6,923 participants), six for cardiac surgery (3,359 participants) and seven for thoracic surgery (3,564 participants).
+We could not pool data because of the different comparisons and the lack of data.
+In cardiac surgery, 71 symptomatic blood clots occurred in 3040 participants from four studies.
+In a study of 2551 participants, representing 85% of the review population in cardiac surgery, the combination of unfractionated heparin with pneumatic compression stockings was associated with a 61% reduction of symptomatic VTE compared to unfractionated heparin alone (1.5% versus 4.0%; risk ratio 0.39; 95% confidence interval 0.23 to 0.64).
+Major bleeding was reported in only one study, which found a higher number of sick people with vitamin K antagonists compared to platelet inhibitors (11.3% versus 1.6%, RR 7.06; 95% CI 1.64 to 30.40).
+In thoracic surgery, 15 cases of blood clots occurred in 2890 participants from six studies.
+In the largest study comparing unfractionated heparin to an inactive control, the rate of symptoms was 0.7% versus 0%, respectively, giving a relative risk of 6.71 (95% confidence interval 0.40 to 112.65).
+There was not enough evidence to determine if there was a difference in the risk of major bleeding between two studies: one comparing fixed-dose versus weight-adjusted low molecular weight heparin (2.7% versus 8.1%) and another comparing unfractionated heparin versus low molecular weight heparin (6% and 4%).
+The evidence about the effectiveness and safety of blood thinners for heart and chest surgery is limited.
+We include 11 randomized controlled trials with 13,627 participants, with a mean baseline age from 51.5 to 74.2 years.
+Follow-up duration ranged from four weeks to 36.6 months.
+There was no difference between RIs and ACE inhibitors for all-cause mortality (death), with a risk ratio of 1.05 and a 95% confidence interval from 0.93 to 1.18. There was no difference between RIs and ACE inhibitors for total myocardial infarction (heart attack), with a risk ratio of 0.86 and a 95% confidence interval from 0.22 to 3.39. There was no difference between RIs and ACE inhibitors for adverse events, with a risk ratio of 0.98 and a 95% confidence interval from 0.93 to 1.03. There was no difference between RIs and ACE inhibitors for serious adverse events, with a risk ratio of 1.21 and a 95% confidence interval from 0.89 to 1.64. There was no difference between RIs and ACE inhibitors for withdrawal due to adverse effects, with a risk ratio of 0.85 and a 95% confidence interval from 0.68 to 1.06.
+Low-certainty evidence suggests that RIs reduced systolic blood pressure by an average of 1.72 mmHg (95% confidence interval: −2.47 to −0.97) and diastolic blood pressure by an average of 1.18 mmHg (95% confidence interval: −1.65 to −0.72), but this reduction was likely due to bias rather than a true effect.
+More independent, large, long-term trials are needed to compare RIs with ACE inhibitors, particularly assessing morbidity and mortality outcomes, but also on blood pressure-lowering effect.
+One of the included trials reported significantly better lung function when treating a pulmonary exacerbation with ciprofloxacin compared with intravenous treatment; however, our analysis did not confirm this finding.
+None of the studies had a low risk of bias from blinding, which may have an impact particularly on subjective outcomes such as quality of life.
+We found no conclusive evidence that an oral antibiotic regimen for the mouth is more or less effective than an alternative treatment for either pulmonary exacerbations or long-term treatment of chronic infection with P. aeruginosa.
+Until future trials with enough participants are completed, treatment must be chosen based on practical factors, including any existing non-randomized evidence, the specific medical situation of the person, the known effectiveness of drugs against local infections, and the person's own preference.
+We identified 15 randomized trials of intracranial battery stimulation conducted in various settings and populations (3917 participants).
+There were not enough data to analyze other types of outcomes.
+We included 25 studies involving 4121 participants (2511 children and 1517 adults; 93 mixed population).
+Four studies were of high quality with no risk of bias, 14 of medium quality and seven of low quality, indicating a moderate risk of bias for the total analysis.
+There was insufficient evidence that corticosteroids caused a reduction in overall mortality (17.8% versus 19.9%; risk ratio 0.90, 95% confidence interval 0.80 to 1.01; P = 0.07), or for adults (risk ratio 0.74, 95% confidence interval 0.53 to 1.05; P = 0.09).
+However, they caused lower rates of severe hearing loss (RR 0.67, 95% CI 0.51 to 0.88), any hearing loss (RR 0.74, 95% CI 0.63 to 0.87), and neurological sequelae (RR 0.83, 95% CI 0.69 to 1.00).
+Subgroup analyses for the cause of infection showed that corticosteroids reduced mortality in Streptococcus pneumoniae (S pneumoniae) meningitis, but not in Haemophilus influenzae or Neisseria meningitidis meningitis.
+Corticosteroids reduced severe hearing loss in children with H influenzae meningitis but not in children with meningitis caused by other non-Haemophilus species.
+In high-income countries, corticosteroids reduced severe hearing loss, any hearing loss, and short-term neurological sequelae.
+We included four randomized controlled trials with 167 participants.
+The mean difference in anesthesia duration between using adrenaline with lidocaine and without was 3.20 hours (95% confidence interval 2.48 to 3.92 hours; one randomized trial with 20 participants; low-quality evidence).
+No trial reported harmful events such as ischaemia toward the end of the injection site, and no trial reported cost analysis.
+One trial mentioned the secondary outcome of how long pain relief lasted after surgery, but there was not enough data available to analyze the findings.
+Two trials reported the secondary outcome of reduced bleeding during surgery.
+All the included studies involved advanced (T3 or T4) prostate cancer, had relatively small populations, and were of short duration.
+Only one study with 77 participants evaluated biochemical outcomes.
+There are no data for the relative effectiveness of IAS versus CAS for overall survival, prostate cancer-specific survival, or disease progression.
+All trials had a high chance of bias.
+There were no significant differences in death, retransplantation, graft rejections requiring retransplantation, or medical treatment, or worsening fibrosis between the groups in any of the comparisons in which these outcomes were reported.
+There was a significantly higher proportion of participants who developed serious adverse events in the ribavirin plus peg interferon combination therapy group than in the peg interferon monotherapy group (1 trial; 56 participants; 17 out of 28 in the intervention group versus 5 out of 28 in the control group; relative risk 3.40; 95% confidence interval 1.46 to 7.94).
+There was no significant difference in the proportion of participants who developed serious adverse events or in the number of serious adverse events between the intervention and control groups in the other comparisons that reported serious adverse events.
+Considering the lack of clinical benefit, there is currently no evidence to recommend or refute antiviral treatment for recurrent liver graft infection with hepatitis C virus.
+Further trials that are random, have low risk of bias and low risk of random errors, and have adequate follow-up are necessary.
+One study recruited males with a biopsy-proven diagnosis of non-metastatic prostate cancer who were not receiving chemotherapy and had elected to receive external-beam radiation therapy; the second study recruited community-living participants who were aged 55 years and older; the third study recruited university students.
+These studies included subgroups with anxiety and depression as defined by symptom scores and provided data separately for those subgroups.
+As this study included only 25 people with anxiety and 17 with depression and 20 more with either anxiety or depression, but which was not specified, the results could only be reported narratively.
+There is not enough evidence to say whether Reiki is useful for people over 16 years of age with anxiety or depression or both.
+We included four trials in which 3267 children aged two to 35 months participated.
+Zinc supplementation in children with severe pneumonia did not significantly affect the time to hospital discharge compared to the control group.
+Children were randomly assigned to one of the two treatments.
+Treatments were delivered in one-hour sessions, four days a week for three weeks, in a university clinic in Australia.
+Speech pathology students delivered the treatments in the English language.
+We are also unable to say whether either treatment is better than no treatment or treatment as usual.
+No evidence currently exists to support the effectiveness of other treatments for children aged 4 to 12 years with idiopathic cerebral palsy without other comorbid neurodevelopmental disorders.
+Further research studies that replicate this study would strengthen the evidence base.
+Similarly, further randomized controlled trials are needed for other interventions, in other age groups and populations with chronic asthma and with co-occurring disorders.
+We identified 31 studies, and 13 met the inclusion criteria.
+There was no benefit with: D-ribose, glucagon, verapamil, vitamin B6, branched chain amino acids, dantrolene sodium, and high-dose creatine.
+A slight benefit was found with low-dose creatine and ramipril only for patients with a specific genetic variant called the D/D angiotensin converting enzyme (ACE) phenotype.
+A diet high in carbohydrates led to better exercise performance than a diet high in protein.
+Four studies reported harmful effects.
+Oral ribose caused diarrhea and symptoms suggestive of low blood sugar, including light-headedness and hunger.
+In one study, branched-chain amino acids caused a deterioration of functional outcomes.
+We identified one randomized controlled trial that met our inclusion criteria and was included in this review.
+Sixty-three participants with primary involutional lower eyelid entropion were randomised to everting sutures alone or everting sutures with a lateral tarsal strip.
+The trial shows that combining horizontal and vertical eyelid tightening using everting sutures and a lateral tarsal strip is very likely curative for involutional entropion, but vertical tightening alone is not.
+We included 26 randomized controlled trials with 23,499 participants.
+All included studies assessed the effects of ezetimibe plus other lipid-modifying drugs compared with other lipid-modifying drugs alone or plus a placebo.
+Adding ezetimibe to statins might reduce the need for coronary revascularisation, as the rate of revascularisation decreased from 196 to 184 per 1000 participants (95% confidence interval 175 to 194) across 21,323 participants in 7 studies. However, no difference in revascularisation rates was observed when a sensitivity analysis was limited to studies with a low risk of bias.
+Adding ezetimibe to statins may make little or no difference in the risk of liver damage (RR 1.14, 95% CI 0.96 to 1.35; 20,687 participants; 4 studies; low-quality evidence).
+Adding ezetimibe to statin or fenofibrate might further reduce low-density lipoprotein cholesterol (LDL-C), total cholesterol, and triglyceride levels, and likely increase high-density lipoprotein cholesterol levels; however, substantial differences were detected in most analyses.
+However, there is limited evidence about the role of ezetimibe in primary prevention and the effects of ezetimibe monotherapy in preventing cardiovascular disease, and these topics thus require further investigation.
+One study compared etoricoxib (60 to 120 mg/day) to a sugar pill in patients with ulcerative colitis or Crohn's disease who were either quiescent or active.
+The other study (222 patients) compared celecoxib (200 mg twice daily) to a placebo in patients with quiescent ulcerative colitis.
+The proportion of patients who experienced adverse events was similar in the celecoxib and placebo groups (21% and 17%, respectively, P > 0.20).
+No patients in either group died or experienced serious harmful events.
+Eleven percent of patients in the celecoxib and placebo groups experienced gastrointestinal adverse events.
+No patients experienced any harmful events involving the heart and blood vessels.
+No harmful effects or blood clots were reported for the kidneys.
+Thus no definitive conclusions can be drawn about how well patients can stand the short-term use of celecoxib and etoricoxib in patients with IBD, and about the safety of these medicines.
+The two included studies suggest that celecoxib and etoricoxib do not worsen inflammatory bowel disease symptoms.
+However, it should be noted that both studies had relatively small sample sizes and short follow-up durations.
+More randomized controlled trials are needed to determine how well patients can stand the tolerability and safety of celecoxib and etoricoxib.
+No randomised controlled trials or controlled trials were found that examined the effectiveness of non-pharmacological swallowing therapy for the treatment of dysphagia in Parkinson's disease.
+The main outcomes will be the rates of fluid entering the lungs and lung infection.
+There is currently no evidence to support or refute the effectiveness of non-medical swallowing therapy for people with Parkinson's disease who have trouble swallowing.
+Large, well-designed placebo-controlled trials are needed to assess the effectiveness of swallowing therapy for dysphagia in Parkinson's disease, and these results should be reported according to CONSORT guidelines.
+Patients should be followed for at least 6 months to see if any improvement occurs.
+Studies involved 15,940 United States youth; participants were ethnically diverse.
+Seven programs were school-based, two were community-based, and one was delivered in family homes.
+Results showed no evidence that abstinence-only programs can reduce HIV risk, based on self-reported biological and behavioral outcomes.
+Compared to various controls, the evaluated programs consistently did not affect the number of people who had unprotected vaginal sex, the frequency of vaginal sex, the number of partners, sexual initiation, or condom use.
+One study found a significant protective effect for the number of people who had recent vaginal sex (n=839), but this result was limited to short-term follow-up, countered by measurement error, and offset by six studies with no significant results (n=2615).
+Weaknesses included underutilization of relevant outcomes, underreporting of key data, self-report bias, and analyses neglecting attrition and clustered randomization.
+Evidence does not suggest that abstinence-only programs effectively reduce or worsen HIV risk among participants in high-income countries; trials show these programs are ineffective, though their results may not apply to US youth.
+Only one study had a low chance of bias in all four domains of the QUADAS-2 tool.
+When considering all studies with a cut-off of 10 μmol/L, the overall sensitivity of TSBA ranged from 0.72 to 0.98, and the specificity ranged from 0.81 to 0.97.
+Two trials with a total of 166 participants provided data comparing combination therapy with psychotherapy alone (both using behaviour therapy).
+Although the combination appeared to be superior to the benzodiazepine alone at the end of treatment, the finding was only borderline statistically significant, and no significant differences were observed at the 7-month follow-up.
+The review found that there is very little high-quality evidence about whether psychotherapy combined with benzodiazepines works for panic disorder.
+Currently, there is not enough evidence to learn about the good and bad results of psychotherapy combined with benzodiazepines for patients diagnosed with panic disorder.
+We found no randomized controlled trials, so there is no available data to evaluate the primary outcome (death) or the secondary outcomes or adverse effects.
+A total of 73 observational studies reported on various clinically relevant outcomes after catheter removal or catheter retention.
+Most of these observational studies reported that removing the catheter was beneficial for patients with candidaemia.
+None of the observational studies reported results in favor of keeping a catheter.
+Despite some observational studies suggesting early catheter removal, we found no eligible randomized trials or quasi-randomized trials to support these practices and therefore could not draw firm conclusions.
+We included 15 randomized controlled trials with a total of 17,091 participants.
+Compared with fewer antiplatelet agents, using multiple antiplatelet agents was associated with a lower chance of stroke recurrence (5.78% versus 7.84%, risk ratio 0.73, 95% confidence interval 0.66 to 0.82; P less than 0.001; moderate-certainty evidence) with no significant difference in vascular death (0.60% versus 0.66%, risk ratio 0.98, 95% confidence interval 0.66 to 1.45; P equals 0.94; moderate-certainty evidence).
+The benefit of reducing stroke recurrence seems to outweigh the harm for dual antiplatelet agents started in the acute setting and continued for one month.
+The studies presented data on 15,077 women with a wide range of risk factors for breast cancer, who underwent RRM.
+Worry about breast cancer was significantly reduced after BRRM compared to both baseline worry levels and to the groups who chose surveillance instead of BRRM, but satisfaction with body image and sexual feelings was diminished.
+In women who have had cancer in one breast, removing the other breast may reduce the number of sick people in that other breast, but there is insufficient evidence that this improves survival because of the continuing risk of recurrence or metastases from the original cancer.
+BRRM should be considered only among those at high risk of illness, for example, BRCA1/2 carriers.
+CRRM was shown to reduce the number of people with contralateral breast cancer, but there is not enough evidence that CRRM improves survival, and studies that control for multiple confounding variables are recommended.
+Both amantadine and rimantadine caused serious, harmful gastrointestinal side effects.
+Amantadine and rimantadine are equally effective at relieving or treating flu symptoms in healthy adults, although rimantadine causes fewer side effects than amantadine.
+The ability of both drugs to stop transmission is probably low.
+Resistance of flu viruses to amantadine is a serious worldwide problem as shown by recent virological surveys.
+Ten trials were conducted in high- and upper-middle-income countries.
+Prostaglandins may reduce all-cause mortality up to one month. This means there is a 14% chance of death being avoided, with a range from 14% to 26% of people avoiding death. There were 11 trials with 771 participants, and the evidence is considered low-certainty.
+Prostaglandins may result in little to no difference in liver retransplantation, early allograft dysfunction, primary non-function of the allograft, and length of hospital stay.
+Prostaglandins may reduce the development of acute kidney failure requiring dialysis by 100 fewer cases per 1000 people (132 to 49 fewer cases; 5 trials, 477 participants). This finding has low-certainty evidence.
+Eleven trials evaluated prostaglandins in adult liver transplant recipients.
+We do not know the effect of prostaglandins on making adverse events considered non-serious.
+We do not have enough well-designed trials to evaluate the effects of prostaglandins for people undergoing liver transplantation.
+Five trials with 183 participants are included in the review.
+Both trials measured lung function, but there was no difference reported between treatment groups (very low-certainty evidence).
+In two trials, one with 18 participants found no difference in the need for extra antibiotics, while the other with 59 participants reported the time until the next sperm cell joined the female egg.
+The single trial with 18 participants did not observe any adverse events or sputum microbiology in either treatment group for either outcome.
+Inhaled antibiotics plus intravenous antibiotics may make little or no difference to quality of life compared to intravenous antibiotics alone.
+There is likely no difference between groups in adverse events (very low-certainty evidence) and one trial (62 participants) reported no difference in the emergence of antibiotic-resistant organisms (very low-certainty evidence).
+We identified only low- or very low-certainty evidence to judge the effectiveness of inhaled antibiotics for the treatment of pulmonary exacerbations in people with cystic fibrosis.
+The studies compared a mindfulness-enhanced parent training programme with a no-treatment, waitlist, or attentional control group (2 studies); a parent training programme with no mindfulness component (5 studies); and a no-treatment, waitlist, or attentional control group with a parent training programme with no mindfulness component (4 studies).
+We combined data from 2118 participants to produce estimates of the effect.
+Mindfulness-enhanced parent training programmes compared to parent training with no mindfulness component show very low certainty evidence suggesting little to no difference in child emotional and behavioural adjustment, parenting skills, or parent mindfulness after the intervention.
+Given the very low to low certainty evidence reviewed here, these estimates will likely change as more high-quality studies are produced.
+There were seven hospital-based and five community-based studies.
+Newborn skin or cord cleansing with chlorhexidine compared to usual care in hospitals. Low-quality evidence from one trial showed that chlorhexidine cord cleansing compared to dry cord care may lead to no difference in neonatal mortality.
+Moderate-quality evidence from two trials suggests that using chlorhexidine cord cleansing instead of dry cord care likely reduces the risk of omphalitis (infection of the belly button).
+Newborn skin or cord cleansing with chlorhexidine compared to usual care in the community. High-quality evidence from three trials showed that chlorhexidine cord cleansing compared to dry cord care reduces neonatal mortality (RR 0.81, 95% CI 0.71 to 0.92) and omphalitis/infections (RR 0.48, 95% CI 0.40 to 0.57).
+Findings from one trial showed that maternal vaginal cleansing in addition to total body cleansing results in increased chance of low body temperature (RR 1.33, 95% CI 1.19 to 1.49).
+Maternal vaginal chlorhexidine plus total body cleansing compared to no intervention (sterile saline solution) in the community. Low-quality evidence from one trial showed no difference between maternal vaginal chlorhexidine plus total body cleansing and no intervention on neonatal mortality.
+Moderate-quality evidence from one trial showed that using chlorhexidine on the vagina in addition to washing the whole body probably reduces the risk of newborn infections (RR 0.69, 95% CI 0.49 to 0.95).
+The email reminder changed how health professionals acted, making them more likely to provide osteoporosis treatment (which includes bone density measurements or medication) when compared with usual care.
+The evidence for its impact on patient behaviors or actions was unclear.
+The study did not learn about the health or wellness of people regarding health services or their harms.
+Only one study was identified, providing insufficient evidence for guiding clinical practice in regard to the use of email for clinical communication between healthcare professionals.
+Future research should aim to use high-quality study designs that incorporate the latest information technology, while carefully considering the complexity of email as an intervention.
+We included 30 studies with a total of 18,682 participants.
+We found substantial differences between studies in cancer diagnosis, cancer treatment, age of participants, questionnaires used to assess fatigue, and sample size.
+Eighteen studies (describing 14,573 survivors) reported the prevalence of severe fatigue, which ranged from 0% to 61.7%.
+In a subgroup of three studies including children aged up to 18 years at fatigue assessment (268 survivors), prevalence rates ranged from 6.7% to 12.5%.
+In comparison, in a subgroup of 12 studies including participants aged 16 and over (13,952 survivors), prevalence rates ranged from 4.4% to 61.7%.
+The prevalence of severe fatigue in a subgroup of survivors of haematological cancer was presented in seven studies and ranged from 1.8% to 35.9% (1907 survivors).
+Prevalence of severe fatigue in brain cancer survivors was presented in two studies (252 survivors) and was 14.6% and 21.1% respectively.
+One study presented a prevalence of 0.0% (17 survivors).
+Studies assessing risk and associated factors for fatigue were mixed, and definitions of the factors under study were often inconsistent, so results were presented descriptively.
+They found that depression might be associated with a blood test for fatigue.
+In contrast, the age at diagnosis and education level did not seem to be associated with fatigue.
+This is also the case for the course of severe fatigue following treatment and the strength of the relationship between fatigue and associated risk factors.
+We included three quasi-randomised controlled trials with a total of 149 women and their babies.
+All three trials were at a high chance of bias.
+None of the three included trials found significant differences in the outcomes of fetal death, neonatal death, birthweight, or preterm birth, and no trial reported on longer-term outcomes for the babies.
+There is limited evidence from randomised controlled trials about the effect of relaxin during pregnancy for preventing preterm birth for women in preterm labour.
+Evidence from one trial suggested a reduction in birth within seven days of treatment for women receiving relaxin, compared with women in a control group, however this trial was at a high risk of bias and included only 30 women.
+There is not enough evidence to support or refute the use of relaxin in women in preterm labour for preventing preterm birth.
+Eighty-five completed trials were included, of which 76 trials contributed data to one or more of the outcomes.
+Most trials only included participants who had an elective laparoscopic cholecystectomy and were at low anaesthetic risk (ASA I and II).
+Only two trials were at low risk of bias.
+Pain scores, measured by a visual analogue scale (VAS), were lower in the intraperitoneal local anaesthetic instillation group compared to the control group at both four to eight hours (mean difference −0.99 cm VAS; 95% confidence interval −1.19 to −0.79; 57 trials; 4046 participants; low-certainty of evidence) and nine to 24 hours (mean difference −0.68 cm VAS; 95% confidence interval −0.88 to −0.49; 52 trials; 3588 participants; low-certainty of evidence).
+We found that using intraperitoneal local anaesthetic may reduce pain at up to 24 hours for low-risk patients undergoing laparoscopic cholecystectomy.
+Five retrospective studies involving 535 women with a diagnosis of GCT were included in the review.
+Two studies, which analyzed various factors to see if they improved overall survival, found no clear evidence of a difference in overall survival between surgical approaches, whether a participant had a lymph node removed or received adjuvant chemotherapy or radiotherapy.
+One study showed that women who received postoperative radiotherapy had a lower chance of disease recurrence compared with those who underwent surgery alone (adjusted hazard ratio 0.3, 95% confidence interval 0.1 to 0.6, P value 0.04).
+Three studies reported that there was no evidence of differences in disease recurrence based on the type of adjuvant chemotherapy or surgery, except that surgical staging may be important.
+One study found no clear evidence of a difference in the rate of illness recurrence between fertility-sparing surgery and conventional surgery.
+All studies were at very high risk of chance.
+The available evidence is very limited, and the review provides only low-quality evidence.
+Further research is very likely to have an important impact on our confidence in the estimate of effect and may alter our findings.
+The ongoing study led by the Gynaecological Oncology Group may provide answers to the question of which chemotherapy regimen should be selected for managing sex cord stromal tumors. This study is a randomised, phase 2 trial comparing the effectiveness of carboplatin and paclitaxel versus the standard BEP regimen.
+More trials are needed to learn about the harmful effects and quality of life of different treatment plans, as well as the safety of conservative surgical options.
+Two randomised trials with a total of 161 participants were included in this review.
+The studies did not report on death or the rate of limb loss.
+One study with 133 participants found that taking folic acid or 5-methyltetrahydrofolate (5-MTHF) significantly improved ankle brachial index (ABI) compared to a placebo (sugar pill), with mean differences of 0.07 and 0.05 respectively, and these results were statistically significant.
+A second trial with 18 participants showed no significant difference in ABI between those who received a multivitamin B supplement (mean ± SEM: 0.7 ± 0.1) and those who received a placebo (mean ± SEM: 0.8 ± 0.1).
+The studies were very different in terms of interventions, participants, and measuring instruments.
+Despite some studies showing good methods and positive results, evidence for family therapy treating depression did not reach level 3 (limited or conflicting evidence), except for moderate evidence (level 2) from three studies, indicating that family therapy is more effective than no treatment or waiting list in decreasing depression and increasing family functioning.
+Further high quality trials examining the effectiveness and comparative effectiveness of explicitly defined forms of family therapy are required.
+We identified a total of 9,188 citations and included 15 randomized controlled trials conducted on 2,242 participants in this review.
+Children were enrolled in 11 trials and adults in five trials.
+The quality of evidence was very low, showing that the risk of coughing was less after early removal (13.9%) than late removal (19.4%). The risk ratio was 0.52, with a 95% confidence interval from 0.29 to 0.94, based on 11 trials and 1430 participants.
+We found low quality evidence that the risk of airway obstruction was higher with early removal (15.6%) compared to late removal of the LMA (4.6%): RR 2.69, 95% CI 1.32 to 5.5; eight trials, 1313 participants.
+This review suggests that current best evidence comparing early versus late removal of the LMA in participants undergoing general anaesthesia does not demonstrate superiority of either intervention.
+However, the quality of evidence on hand is either low or very low.
+Eighteen trials identified 3888 people who were randomly assigned to receive rosiglitazone treatment.
+The longest duration of therapy was four years, with a median of 26 weeks.
+Published studies of at least 24 weeks of rosiglitazone treatment in people with type 2 diabetes did not provide evidence that patient-oriented outcomes like mortality, morbidity, adverse effects, costs, and health-related quality of life are positively influenced by this compound.
+The single large study (ADOPT - A Diabetes Outcomes Progression Trial) showed that diabetes increases cardiovascular risk.
+Safety data and all adverse events from all investigations should be made available to the public.
+We included one randomized trial of moderate overall risk of bias, which included 66 participants without botulinum toxin A who had cervical dystonia.
+Two doses of BtA (Dysport; weeks 0 and 8; mean dose 262 to 292 units) were compared with daily trihexyphenidyl (up to 24 mg daily).
+The trial was sponsored by the BtA producer.
+We found no information on the relationship between dose and effect with BtA, differences between BtA formulations or different anticholinergics, the utility of electromyography-guided injections, or the duration of treatment effect.
+Four studies involving 127,891 men and 9,342 women were included in this review.
+Only one study included women.
+Three to five years after screening, there was no significant difference in all-cause mortality between screened and unscreened groups for men or women.
+There was also a lower number of ruptured aneurysms in men (OR 0.45; 95% CI 0.21 to 0.99) but not in women (OR 1.49; 95% CI 0.25 to 8.94).
+There was a significant increase in surgery for abdominal aortic aneurysm in men (OR 2.03; 95% CI 1.59 to 2.59).
+Nineteen trials included data from 1597 young to middle-aged adults.
+Many trials were at high risk of bias because they used inadequate methods of randomization, lacked blinding, and had incomplete assessment of the outcome.
+Pooled data from a small number of trials showed no significant differences between the two graft choices for functional assessment (single leg hop test), return to activity, Tegner and Lysholm scores, and subjective measures of outcome.
+There were no differences found between the two interventions for re-rupture or International Knee Documentation Committee scores.
+All tests (instrumental, Lachman, pivot shift) for static stability consistently showed that PT reconstruction resulted in a more stable knee compared with HT reconstruction.
+The blame or punishment of the above range of motion losses is unclear.
+There is not enough evidence to draw conclusions about differences between the two grafts for long-term functional outcome.
+We include five studies (971 participants) of mobile health education interventions for people with heart failure in this review.
+The average age of participants ranged from 60 to 75 years, and 63% of the participants were men.
+Three studies examined heart failure knowledge and found that using mobile health education programs did not show a difference in knowledge compared to usual care.
+We did not combine the studies because the outcome measures were too different, and the evidence is uncertain.
+None of the studies reported any harmful events.
+Using mobile health education may result in little to no difference in heart failure-related hospitalizations (OR 0.74, 95% CI 0.52 to 1.06; P = 0.10, I2 = 0%; 3 studies, 894 participants; low-quality evidence).
+We downgraded the quality of the studies because of limitations in study design and execution, heterogeneity, wide confidence intervals, and fewer than 500 participants.
+The identification of studies currently underway and those awaiting classification suggests that this area of research will generate further evidence in the short and longer term.
+We included 67 studies and sampled 43 studies for our analysis.
+We included 17 trials, recruiting 2422 participants, for which outcome data are currently available.
+Participants were a selected group of elderly stroke survivors with moderate disability.
+The ESD group showed reductions in hospital stay length equivalent to about six days (mean difference -5.5 days; 95% confidence interval -3 to -8 days; P < 0.0001; moderate-grade evidence).
+Estimated costs from six individual trials ranged from 23% lower to 15% greater for the ESD group compared to usual care.
+In a series of planned analyses, the greatest reductions in death or dependency were seen in trials evaluating a coordinated ESD team, with a suggestion of poorer results in those services without a coordinated team (subgroup interaction at P = 0.06).
+Provided that stroke patients are appropriately resourced with coordinated input from a multidisciplinary team, they can reduce long-term dependency and the need for institutional care, as well as shorten their hospital stay.
+Results are inconclusive for services without coordinated multidisciplinary team input.
+We observed no harmful impact on the mood or subjective health status of patients or carers, nor on readmission to hospital.
+72 randomized controlled trials met our inclusion criteria.
+The quality of the included studies varied.
+An organized system of regular review combined with vigorous drug therapy was shown to reduce systolic blood pressure (by 8.0 mmHg) and diastolic blood pressure (by 4.3 mmHg) for three groups of people with high blood pressure, and to reduce all-cause mortality (by 1.4%) at five years follow-up in a large study called the Hypertension Detection and Follow-Up study.
+Self-monitoring was associated with a moderate net reduction in systolic blood pressure (average difference: -2.5 mmHg, 95% confidence interval: -3.7 to -1.3 mmHg) and diastolic blood pressure (average difference: -1.8 mmHg, 95% confidence interval: -2.4 to -1.2 mmHg).
+Nurse or pharmacist-led care may be a promising way forward, as most randomized trials show improved blood pressure control and mean systolic and diastolic blood pressure, but these interventions require further evaluation.
+Appointment reminder systems also need further evaluation because of differences in study groups and small numbers of trials. However, most trials increased the proportion of people who attended for follow-up, with odds ratios favoring intervention 0.41 (95% CI 0.32 to 0.51), and two small trials also led to improved blood pressure control, with odds ratios favoring intervention 0.54 (95% CI 0.41 to 0.73).
+Antihypertensive drug therapy should be implemented by using a vigorous stepped care approach when patients do not reach target blood pressure levels.
+Five studies, involving 260 participants, provided data for analysis.
+One study showed that cognitive behaviour therapy significantly reduced the affective component of pain (feelings about pain), with a mean difference of -0.99 (95% confidence interval -1.62 to -0.36), but not the sensory component (pain intensity), with a mean difference of 0.00 (95% confidence interval -9.39 to 9.39).
+One study of family psycho-education did not show a reduction in depression.
+Another study evaluating cognitive behavioural therapy had inconclusive results for the assessment of coping strategies, and showed no difference between groups assessed on health service utilisation.
+In addition, family-based cognitive behavioural therapy did not show any difference compared to disease education.
+One study of patient education on health beliefs showed a significant improvement in attitudes towards health workers, with a mean difference of -4.39 and medication, with a mean difference of -1.74.
+Nonetheless, these results may not apply across all ages, severity of sickle cell disease, types of pain (acute or chronic), or setting.
+Two studies with 67 participants were included in the review.
+A further study of 47 people found no difference in lifespan or preference when comparing two different long intravenous lines (the Hydrocath and Vygon EC).
+There is some evidence to support the use of long intravenous lines rather than short intravenous lines, in terms of the line's lifespan and patient satisfaction.
+More research is needed to find clinically important differences between these devices.
+We included 11 studies with a total of 596 participants.
+A convincing positive result from a much larger study with a publicly registered protocol is needed before clinical practice can be influenced.
+There is no convincing evidence of the benefit of dietary supplements for eczema, and they cannot be recommended for the public or for clinical practice at present.
+Overall, there was no credible evidence, and most studies had low quality and were at high risk of bias.
+Brachytherapy in a variety of doses seemed to improve cough in selected participants, suggesting that possibly the lowest effective dose should be used to minimise side effects.
+Some signs of a positive effect were seen with morphine, codeine, dihydrocodeine, levodropropizine, sodium cromoglycate, and butamirate citrate linctus (cough syrup), although all studies had a significant risk of bias.
+We included six non-randomised studies (five retrospective) that compared laparoscopic versus open transhiatal oesophagectomy (334 patients: laparoscopic = 154 patients; open = 180 patients); five studies (326 patients: laparoscopic = 151 patients; open = 175 patients) provided information for one or more outcomes.
+All the studies had unclear or high risk of bias, and the overall quality of evidence was very low for all outcomes.
+The differences between laparoscopic and open transhiatal oesophagectomy were unclear for short-term mortality (laparoscopic = 0 deaths out of 151 versus open = 2 deaths out of 175; risk ratio 0.44; 95% confidence interval 0.05 to 4.09; participants = 326; studies = 5; I² = 0%); long-term mortality (hazard ratio 0.97; 95% confidence interval 0.81 to 1.16; participants = 193; studies = 2; I² = 0%); anastomotic stenosis (laparoscopic = 4 cases out of 36 versus open = 3 cases out of 37; risk ratio 1.37; 95% confidence interval 0.33 to 5.70; participants = 73; studies = 1); short-term recurrence (laparoscopic = 1 case out of 16 versus open = 0 cases out of 4; risk ratio 0.88; 95% confidence interval 0.
+There was no clear evidence that the median difference in the amount of blood transfused was statistically significant in favor of laparoscopic oesophagectomy, as this was the only study that reported this information.
+None of the studies reported trouble swallowing after surgery, health-related quality of life, time to return to normal activity (returning to pre-surgery mobility without caregiver support), or time to return to work.
+Randomised controlled trials comparing laparoscopic transhiatal oesophagectomy with other methods of oesophagectomy are required to determine the best method of oesophagectomy.
+Four studies compared stopping azathioprine alone to continuing it, while two studies compared stopping azathioprine from a combination treatment to continuing the combination therapy.
+Common side effects included infections, mild low white blood cell count, belly symptoms, joint pain, headaches, and high liver enzyme levels.
+Among patients who continued combination therapy with azathioprine and infliximab, 48% (27 out of 56) had a clinical relapse compared to 49% (27 out of 55) of patients who discontinued azathioprine but remained on infliximab.
+Common side effects in the combination therapy studies included infections, liver test elevations, joint pain, and infusion reactions.
+The results of stopping immunosuppressant treatment in people with quiescent Crohn's disease are uncertain.
+It is unclear whether stopping azathioprine, which was started alone or with other drugs, affects the development of CD-related problems, harmful events, serious problems, or withdrawal because of these problems.
+Further high-quality research is needed in this area, particularly double-blind studies in which biologic therapy or an immunosuppressant other than azathioprine is withdrawn.
+We included nine trials with 316 participants that compared the effects of naloxone versus a placebo or no drug in newborn infants exposed to maternal opioid analgesia before delivery.
+None of the included trials investigated infants born to mothers who had used a prescribed or non-prescribed opioid during pregnancy.
+None of these trials specifically recruited infants with depression of the heart and breathing or the nervous system.
+The trials did not assess the effect on the primary outcomes of this review (admission to a neonatal unit and failure to establish breastfeeding).
+The existing evidence from randomised controlled trials is insufficient to determine whether naloxone confers any important benefits to newborn infants with cardiorespiratory or neurological depression that may be due to intrauterine exposure to opioid.
+Compared with general anaesthesia, neuraxial blockade reduced the chance of death within 30 days (risk ratio 0.71, 95% confidence interval 0.53 to 0.94; I2 = 0%) based on 20 studies that included 3006 participants.
+Neuraxial blockade also decreased the chance of pneumonia (based on five studies that included 400 participants).
+No difference was detected in the risk of heart disease between the two techniques (RR 1.17, 95% CI 0.57 to 2.37; I2 = 0%) based on six studies with 849 participants.
+Compared with general anaesthesia alone, adding a neuraxial block to general anaesthesia did not affect death from zero to 30 days (RR 1.07, 95% CI 0.76 to 1.51; I2 = 0%) based on 18 studies with 3228 participants.
+No difference was detected in the risk of heart muscle disease between combined neuraxial blockade-general anaesthesia and general anaesthesia alone (RR 0.69, 95% CI 0.44 to 1.09; I2 = 0%) based on eight studies that included 1580 participants.
+Adding a neuraxial block to general anesthesia reduced the risk of pneumonia (chance) after adjusting for publication bias and based on nine studies with 2433 participants.
+The quality of the evidence was judged as moderate for all six comparisons.
+No serious harmful events were reported, including seizures, heart stops, or infections caused by the local anaesthetic.
+More research is needed.
+Nine trials involving 351 participants compared agalsidase alfa or beta and met the selection criteria.
+Death was not an outcome in either of the trials.
+One of the three trials comparing agalsidase beta to placebo reported on globotriaosylceramide concentration in plasma and tissue and showed significant improvement: kidney, mean difference -1.70 (95% confidence interval -2.09 to -1.31); heart, mean difference -0.90 (95% confidence interval -1.18 to -0.62); and composite results (renal, cardiac, and cerebrovascular complications and death), mean difference -4.80 (95% confidence interval -5.45 to -4.15).
+There was no big difference between groups for death; no trials reported on pain.
+One of them showed no significant difference between the groups regarding adverse events, risk ratio 0.36 (95% confidence interval 0.08 to 1.59), or any serious adverse events; risk ratio 0.30; (95% confidence interval 0.03 to 2.57).
+No significant differences were found among the schedules for the primary efficacy outcome of self-assessed health state, or for pain scores.
+Trials comparing enzyme replacement therapy to a placebo show significant improvement with enzyme replacement therapy in regard to microvascular endothelial deposits of globotriaosylceramide and in pain-related quality of life.
+There is, however, no evidence identifying if the alpha or beta form is superior or the optimal dose or frequency of enzyme replacement therapy.
+Twenty-eight trials (42%) were considered high quality.
+Statistically significant benefits were found for NSAIDs compared to a placebo, but this came with statistically significant more side effects.
+There is moderate evidence that NSAIDs are not more effective than other drugs for acute low-back pain.
+However, recent studies show that COX-2 inhibitors are linked to higher cardiovascular risks in certain patient groups.
+Fifteen trials involving 1022 adults with unstable or potentially unstable distal radial fractures were included.
+While all trials compared external fixation versus plaster cast immobilisation, there was considerable variation especially in terms of patient characteristics and interventions.
+External fixation was associated with a high number of complications, such as pin-track infections, but many of these were minor.
+There was not enough evidence to show a difference between the two groups in serious complications like reflex sympathetic dystrophy: 25 out of 384 versus 17 out of 347 (from 11 trials); the relative risk was 1.31, with a 95% confidence interval from 0.74 to 2.32.
+There is some evidence to support the use of external fixation for fractures of the distal radius that are pushed outward in adults.
+Though there is not enough evidence to confirm a better functional outcome, external fixation reduces the need for surgery to fix the joint, improves the shape of the joint, and makes most of the surgical complications minor.
+We included 34 studies in our review.
+We developed 20 key findings, organized into three broad themes (with seven subthemes), describing the factors people consider when deciding whether to take part in a vaccine trial for a pandemic or epidemic disease.
+Some factors were considered to be under the control of the trial team.
+Other factors influencing people's decision to take part could be personal, from family, friends or wider society.
+From a personal perspective, people had concerns about vaccine side effects, vaccine efficacy, and the possible impact on their daily lives, such as caring responsibilities and work.
+People were also influenced by their families, and the impact of participation may have on relationships.
+The fear of being marked as shameful by society influenced the decision to take part.
+Also, from a societal perspective, the level of trust in governments' involvement in research and trials may influence a person's decision.
+Finally, the perceived rewards, both personal and societal, were influencing factors on the decision to take part.
+Personal rewards included access to a vaccine, improved health, and improved disease knowledge, as well as a return to normality during a pandemic or epidemic.
+Potential societal rewards included helping the community and contributing to science, often motivated by the memories of family and friends who had died from the illness.
+We located two studies with 291 participants for inclusion in this review.
+The trials reported limited data on the cell made by joining the female egg and male sperm at the beginning of pregnancy, adverse events, and secondary outcomes (e.g. S aureus SSI, mortality).
+There is currently limited rigorous evidence available regarding the effectiveness of nasal decontamination in preventing surgical site infections.
+We were only able to identify two studies that met the inclusion criteria for this review, and one of these was very small and poorly reported.
+The potential benefits and harms of using decontamination for preventing surgical site infections in this group of people remain uncertain.
+Five trials involving 187 women aged 15 to 40 years were included.
+Oral isoxsuprine was compared with a placebo in two trials; terbutaline oral spray, ritodrine chloride, and oral hydroxyphenyl-orciprenalin were compared with a placebo in three further trials.
+Adverse effects were reported with all of these medications in up to a quarter of the total number of participants.
+They included feeling sick to your stomach, shaking, dizziness, quivering, tremor, and heart palpitations.
+The evidence in this review comes from a few small studies that were rated as having unclear to high risk of bias, which means we cannot confidently decide whether to use beta2-adrenoceptor agonists for dysmenorrhoea.
+Our searches identified six randomised, double-blind studies involving 292 participants with fibromyalgia.
+The duration of treatment in the double-blind phase varied between three and eight weeks.
+Analyses consistently showed no significant difference between NSAIDs and placebo: substantial benefit (at least 50% pain intensity reduction) (risk difference -0.07 (95% confidence interval -0.18 to 0.04) 2 studies, 146 participants; moderate benefit (at least 30% pain intensity reduction) (risk difference -0.04 (95% confidence interval -0.16 to 0.08) 3 studies, 192 participants; withdrawals due to adverse events (risk difference 0.04 (95% confidence interval -0.02 to 0.09) 4 studies, 230 participants; participants experiencing any adverse event (risk difference 0.08 (95% confidence interval -0.03 to 0.19) 4 studies, 230 participants; all-cause withdrawals (risk difference 0.03 (95% confidence interval -0.07 to 0.14) 3 studies, 192 participants).
+The chance that the effect could be very different is very high.
+As a result, NSAIDs cannot be regarded as useful for treating fibromyalgia.
+These involved about 200 people with a diagnosis of patellofemoral pain syndrome.
+All compared taping versus control (no or placebo taping) and all included one or more co-interventions given to both taping and control group participants; this was prescribed exercise in four trials.
+A review of pain data from four trials involving 161 knees found no significant difference between taping and non-taping at the end of treatment programs, as the results were not statistically significant.
+The current evidence from trials showing clinically relevant outcomes is low quality and insufficient to draw conclusions about the effects of taping, whether used alone or as part of a treatment program.
+Before this, consensus is required on the diagnosis of patellofemoral pain syndrome, the standardisation of outcome measurement and an acceptable approach for patellar taping.
+Major methodological limitations such as small trial size and large confidence intervals decreased the power of the studies to detect differences between treatments, and meta-analysis of data was not possible for the majority of outcomes.
+Four trials using sugar pills did not find evidence that antidepressants improved weight gain, eating disorders, or associated psychopathology.
+Future studies testing safer and more tolerable antidepressants in larger, well-designed trials are needed to provide guidance for clinical practice.
+We included two randomized controlled trials with 116 adult participants.
+Large-volume, hypertonic nasal saline versus usual care. One trial included 76 adult participants (52 intervention, 24 control) with or without polyps. Disease-specific quality of life was reported using the Rhinosinusitis Disability Index (RSDI; 0 to 100, 100 = best quality of life).
+At the end of three months of treatment, patients in the saline group were better than those in the placebo group (mean difference 6.3 points, 95% confidence interval 0.89 to 11.71) and at six months there was a greater effect (mean difference 13.5 points, 95% confidence interval 9.63 to 17.37).
+Patient-reported disease severity was evaluated using a "single-item sinus symptom severity assessment," but the range of scores is not stated, making it impossible to determine the meaning of the data presented.
+General health-related quality of life was measured using the SF-12 scale, where a score of 100 represents the best quality of life.
+No difference was found after three months of treatment, but at six months there was a small difference favoring the saline group, which may not be of clinical significance and has high uncertainty (MD 10.5 points, 95% CI 0.66 to 20.34) (very low quality evidence).
+Low-volume, nebulised saline versus intranasal corticosteroids in one trial with 40 adult participants with polyps.
+Our primary outcome of disease-specific health-related quality of life was not reported.
+At the end of treatment (three months), patients who received intranasal corticosteroids had less severe symptoms (MD -13.50, 95% CI -14.44 to -12.56); this corresponds to a large effect size.
+Three trials met the inclusion criteria.
+Two trials with a total of 20,451 people assessed the effect of TXA.
+The larger study (CRASH-2, n = 20,211) was conducted in 40 countries and included patients with various types of trauma; the other study (n = 240) focused only on patients with traumatic brain injury (TBI).
+One trial with 77 participants assessed aprotinin in those with major bony trauma and shock.
+There is no evidence that antifibrinolytics make the chance of vascular occlusive events, need for surgical intervention, or receipt of blood transfusion.
+TXA safely reduces the chance of death in trauma patients with bleeding without increasing the risk of harm.
+Although there is some promising evidence for the effect of TXA in patients with TBI, substantial uncertainty remains.
+Two ongoing trials in patients with isolated traumatic brain injury should resolve these remaining uncertainties.
+Overall, the risk of bias assessment showed that these studies provided moderate or low quality evidence.
+At four or more months follow-up, we found effects in favor of MI for the quantity of alcohol consumed (standardised mean difference −0.11, 95% confidence interval −0.15 to −0.06 or a reduction from 13.7 drinks/week to 12.5 drinks/week; moderate quality evidence); frequency of alcohol consumption (standardised mean difference −0.14, 95% confidence interval −0.21 to −0.07 or a reduction in the number of days/week alcohol was consumed from 2.74 days to 2.52 days; moderate quality evidence); and peak blood alcohol concentration, or BAC (standardised mean difference −0.12, 95% confidence interval −0.20 to 0.05, or a reduction from 0.144% to 0.131%; moderate quality evidence).
+Further analyses showed that there was no clear relationship between the duration of the MI intervention (in minutes) and the effect size.
+Subgroup analyses showed no clear differences in outcomes for longer-term results (four or more months) between assessment-only and alternative intervention controls, university/college versus other settings, or higher risk versus all/low risk participants.
+Although we found some statistically significant effects, the effect sizes were too small to be of relevance to policy or practice.
+We found 11 retrospective studies that included a multivariate analysis meeting our inclusion criteria.
+When we compared suboptimal (> 1 cm) versus optimal (< 1 cm) cytoreduction, survival estimates were attenuated but remained statistically significant in favor of the lower volume disease group. There was no significant difference in overall survival (OS), and only a borderline difference in progression-free survival (PFS) when residual disease of > 2 cm and < 2 cm were compared (hazard ratio (HR) 1.65, 95% CI 0.82 to 3.31; and HR 1.27, 95% CI 1.00 to 1.61, P = 0.05 for OS and PFS respectively).
+There was a high risk of bias because these studies were done in the past (retrospective), even though researchers tried to fix important factors that could affect the results, selection bias was still likely to be a major problem.
+Twenty studies included 1150 women.
+In women under general anaesthesia, with caesarean section wound infiltration and peritoneal spraying with local anaesthetic (one study, 100 participants), the need for opioid rescue was reduced (risk ratio 0.51; 95% confidence interval 0.38 to 0.69).
+Women who received a non-steroidal anti-inflammatory cocktail wound infiltration consumed less morphine (one study, 60 participants; MD -7.40 mg; 95% CI -9.58 to -5.22) compared to those who received local anaesthetic control.
+Using local analgesia infiltration and abdominal nerve blocks as additional methods to regional analgesia and general anaesthesia helps reduce opioid consumption during caesarean section.
+Nonsteroidal anti-inflammatory drugs as an adjuvant may provide additional pain relief.
+Thirty-two trials were identified, each having a 50/50 chance of receiving a study medicine or treatment, and all met the required characteristics to be included.
+Many had serious methodological flaws.
+Change in neurological function, our primary outcome measure, was assessed in 29 trials, but sufficient data for meta-analysis were only available in 13 studies, involving 879 treated participants and 909 controls.
+There was no overall significant difference between the treated and control groups, although one subgroup analysis (four trials using tolrestat) favored treatment.
+A group of trials suggested that a benefit for neuropathic symptoms existed when using a simple yes-or-no measure, but this finding was contradicted by another group of trials that measured symptoms on a continuous scale.
+There was no overall benefit on nerve conduction parameters (27 studies) or foot ulceration (one study).
+While most adverse events were infrequent and minor, three compounds had dose-limiting adverse events that led to their withdrawal from human use: severe hypersensitivity reactions with sorbinil, elevation of creatinine with zenarestat, and alteration of liver function with tolrestat.
+We found no significant difference between aldose reductase inhibitors and a placebo in treating diabetic polyneuropathy.
+Three eligible trials involving 569 patients were identified.
+Due to methodological limitations in the included studies, there was considerable variation in the results of acute pain (risk range 38.67% to 96.51%) and chronic pain (risk range 7.83% to 40.47%) across the control groups.
+Both techniques are valid because they result in similar low recurrence rates.
+Evaluation of pain results in the individual trials shows some evidence that preperitoneal repair causes less or comparable acute and chronic pain compared to the Lichtenstein procedure.
+We emphasize the need for homogeneous, high-quality randomized trials comparing elective preperitoneal inguinal hernia techniques and Lichtenstein repair in terms of chronic pain.
+The bleaching agents (carbamide peroxide gel, hydrogen peroxide gel, hydrogen peroxide strips, carbamide peroxide paint-on gel, hydrogen peroxide paint-on gel, sodium hexametaphosphate chewing gum, sodium tripolyphosphate chewing gum, and hydrogen peroxide mouthwash) at different concentrations and varying application times whitened teeth compared to a placebo over a short time period (from 2 weeks to 6 months), however the certainty of the evidence is low to very low.
+Most of the comparisons were based on single trials with small sample sizes and event rates, and the certainty of the evidence was assessed as low to very low.
+Tooth sensitivity and oral irritation were the most common side effects, occurring more often with higher concentrations of active agents, though the effects were mild and temporary.
+We found low to very low-certainty evidence over short time periods to support the effectiveness of home-based chemically-induced bleaching methods compared to placebo for all the outcomes tested.
+Well-planned randomized controlled trials need to be conducted by standardizing methods of application, concentrations, application times, and duration of treatment.
+We included 45 trials (involving 1619 participants) in this update of our review.
+Electromechanical and robot-assisted arm training improved scores for activities of daily living, arm function, and arm muscle strength.
+People who receive electromechanical and robot-assisted arm training after stroke might improve their daily activities, arm function, and arm muscle strength.
+However, the results must be interpreted with caution because there were variations between the trials in the intensity, duration, and amount of training; type of treatment; participant characteristics; and measurements used.
+We included two studies that looked at changes over time in the United States.
+In the study, two types of testing were evaluated: mandatory random drug testing and mandatory random and for-cause alcohol testing programs.
+The third study focused only on mandatory random drug testing and was conducted on federal injury data that covered all truck drivers of interstate carriers.
+Mandatory random drug testing was associated with an immediate change in injury level following the intervention in one study, but there was no significant effect in the second study.
+There is not enough evidence to tell whether testing for drugs and alcohol in drivers is good or bad for preventing injuries, as it is not a strong, long-term solution that works well in all workplace cultures or peer interactions.
+Cluster-randomised trials are needed to better address the good and bad results of interventions for injury prevention in this occupational setting.
+We found no studies that reported the effect of whole grain diets on total cardiovascular mortality or cardiovascular events (total myocardial infarction, unstable angina, coronary artery bypass graft surgery, percutaneous transluminal coronary angioplasty, total stroke).
+All included studies reported the effect of whole grain diets on the risk factors for heart and blood vessel disease, including blood fats and blood pressure.
+Overall, we found no difference between whole grain and control groups for total cholesterol (mean difference 0.07, 95% confidence interval -0.07 to 0.21; 6 studies; 722 participants; low-quality evidence).
+Using GRADE, we assessed the overall quality of the available evidence on cholesterol as low.
+There is not enough evidence from randomized trials of an effect of whole grain diets on cardiovascular outcomes or on major CVD risk factors such as blood lipids and blood pressure.
+We included one trial with 167 women and their babies.
+In keeping with the more frequent monitoring, the mean gestational age at birth was four days less for the twice-weekly surveillance group compared with the fortnightly surveillance group (mean difference -4.00; 95% confidence interval -7.79 to -0.21).
+Women in the twice-weekly surveillance group were 25% more likely to have induction of labour than those in the fortnightly surveillance group.
+More studies are needed to evaluate the effects of currently used fetal surveillance regimens in impaired fetal growth.
+No studies on vitamin A or other retinoid supplements were eligible for inclusion.
+However, one study of beta-carotene supplementation involving 24 people with cystic fibrosis who were receiving pancreatic enzyme substitution was included.
+The study compared successive periods of high-dose beta-carotene supplementation followed by low-dose supplementation to a placebo.
+The results for the low-dose supplementation period should be interpreted with caution, due to the lack of a wash-out period after the high-dose supplementation.
+There were no significant differences in lung function between groups, and no harmful events were observed.
+The study did not report on quality of life or harmful effects.
+Since no randomised or quasi-randomised controlled studies on retinoid supplementation were identified, no conclusion on the supplementation of vitamin A in people with CF can be drawn.
+Additionally, because the included study had methodological limitations, the low-quality evidence does not allow for clear conclusions about β-carotene supplementation.
+Until further data are available, country- or region-specific guidelines regarding these practices should be followed.
+We included 40 studies involving 1717 participants.
+Most of the included studies were of poor quality, and most of them were small and poorly reported, with only a few exceptions.
+When comparing treatment with a single antibiotic to a combined antibiotic regimen, those participants receiving a combination of antibiotics experienced a greater improvement in lung function when considered as a whole group across a number of different measurements of lung function, but with very low quality evidence.
+No studies in any comparison reported on quality of life.
+The quality of evidence comparing intravenous antibiotics with a sugar pill is poor.
+No specific antibiotic combination can be considered better than any other, and there is no evidence showing that the intravenous route is better than the oral or inhaled routes.
+Six randomized trials with a total of 1211 participants were eligible; five trials evaluated oral aciclovir, and one trial with 419 participants evaluated oral famciclovir.
+For neither treatment was the number of harmful events significantly different from the placebo.
+We found no new randomized controlled trials when we updated the searches in April 2013.
+There is high quality evidence that oral aciclovir does not significantly reduce the number of people with painful skin lesions.
+In addition, there is not enough evidence to determine the effect of other antiviral treatments; therefore, further well-designed studies are needed to investigate famciclovir or other new antiviral agents in preventing PHN.
+Future trials should pay more attention to how bad the pain is and how much it affects the quality of life of participants, and should be conducted among different subgroups of people, such as people who are immunocompromised.
+BKA using skew flaps or sagittal flaps did not offer an advantage over the well-established long posterior flap technique, which had a primary stump healing rate of 60% for both skew flaps and the long posterior flap. Primary stump healing was 58% for sagittal flaps and 55% for the long posterior flap.
+For participants with wet gangrene, a two-stage procedure with a guillotine amputation at the ankle followed by a definitive long posterior flap amputation led to better primary stump healing than a one-stage procedure.
+The choice of amputation technique can, therefore, be a matter of surgeon preference taking into account factors such as previous experience with a particular technique, the extent of non-viable tissue, and the location of pre-existing surgical scars.
+Twenty-four trials involving 4,422 participants were reviewed.
+Clindamycin was associated with a lower rate of adverse events compared to metronidazole (RR 0.75, 95% CI 0.56 to 1.02); metallic taste, nausea, and vomiting were more common in the metronidazole group (RR 0.08, 95% CI 0.1 to 0.59; RR 0.23, 95% CI 0.10 to 0.51, respectively).
+Similarly, oral lactobacillus combined with metronidazole was more effective than metronidazole alone (RR 0.33, 95% CI 0.14 to 0.77).
+Metronidazole caused a metallic taste, nausea, and vomiting.
+Six trials (N = 658) did not report any of the outcomes of interest for this review.
+The remaining 78 trials excluded 210 participants after randomisation.
+Apart from the comparison of antibiotics versus control, which included a large proportion of participants with pancreatitis, the remaining comparisons had only a small proportion of patients with this condition.
+Most trials included either only participants with severe acute pancreatitis or included a mixture of participants with mild acute pancreatitis and severe acute pancreatitis (75 trials).
+Overall, the risk of bias in most trials was unclear or high, except for one trial.
+Pharmaceutical companies partially or fully funded 21 trials.
+There was no evidence of any differences in short-term death in any of the comparisons (very low-quality evidence).
+Very low-quality evidence suggests that none of the pharmacological treatments studied decrease short-term mortality in people with acute pancreatitis.
+We included eight studies with 646 participants, most of whom had poor methodological quality.
+All of these biomarkers were assessed in small individual studies and could not be statistically evaluated in a meaningful way.
+None of the biomarkers met the criteria for a replacement test or a triage test.
+Three studies evaluated three biomarkers that did not distinguish women with endometriosis from disease-free controls.
+The review included 184 studies for analysis based on 191 included papers.
+Studies covered 37 countries, with a nearly even split between high-income countries and low- and middle-income countries.
+Within the health streams, the review checked the scope of the interventions as full or partial integration.
+The wide range of healthcare workers who participated in the implementation of integration interventions was mapped and these included policymakers, senior managers, middle and frontline managers, clinicians, allied healthcare professionals, lay healthcare workers, and health system support staff.
+We mapped the range of client targets.
+This scoping review provides a systematic, descriptive overview of the diversity in qualitative literature on healthcare workers' perceptions and experience of primary health care integration, pointing to differences based on country settings, study types, client populations, healthcare worker populations, and intervention focus, scope, and strategies.
+It would be important for researchers and decision-makers to understand how the diversity in PHC integration intervention design, implementation, and context may influence how healthcare workers shape PHC integration impact.
+Classifying studies on various dimensions (such as integration focus, scope, strategy, and types of healthcare workers and client populations) helps researchers understand how literature varies and identify potential questions for future qualitative evidence syntheses.
+We included three randomised trials that compared intramedullary nailing versus plating in 213 participants, with usable data from 173 participants of whom 112 were male.
+There were no trials comparing surgery with non-surgical treatment.
+Overall, the quality of available evidence was rated as very low for all outcomes, meaning that we are very unsure about the estimates for all outcomes.
+Overall, there is either no or insufficient evidence to draw definitive conclusions on the use of surgery or the best surgical intervention for fractures of the distal end of the tibia in adults.
+The available evidence, which is of very low quality, found no clinically important differences in function or pain, and did not confirm a difference in the need for re-operation or risk of complications between nailing and plating.
+Adding evidence from two ongoing trials of nailing versus plating should inform this question in future updates.
+Further randomised trials are needed on other issues, but they should be preceded by research to identify priority questions.
+We identified four new studies for the review update; the review now includes seven studies with 420 participants.
+Four small studies with 20 to 30 children each, and two larger studies of 80 children each, showed an improvement of congestive heart failure with beta-blocker therapy.
+A larger study with 161 participants showed no evidence of benefit over a sugar pill in a composite measure of heart failure outcomes.
+No serious or harmful events were reported with beta-blockers, except for one brief episode of complete heart block.
+There is not enough evidence to support or discourage the use of beta-blockers in children with heart failure, or to propose a pediatric dosing scheme.
+However, the limited data on hand suggested that children with heart failure might benefit from beta-blocker treatment.
+Eight trials compared ursodeoxycholic acid with a sugar pill or no treatment, involving 592 patients.
+The eight randomised clinical trials have a high chance of bias.
+The dosage of ursodeoxycholic acid used in the trials ranged from low (10 mg per kilogram of body weight per day) to high (28 to 30 mg per kilogram of body weight per day).
+Ursodeoxycholic acid was safe and well tolerated by patients with primary sclerosing cholangitis.
+Progression from mild cognitive impairment to attention-deficit/hyperactivity disorder was evaluated in 448 participants.
+The studies reported data on 401 participants with 1.6 years of follow-up and in 47 participants with three years of follow-up.
+About the flow and timing, two studies were considered at high risk of bias.
+MCI to ADD;
+Progression from MCI to ADD in those with a follow-up between two and less than four years had a sensitivity of 67% (95% CI 30 to 93) and a specificity of 71% (95% CI 54 to 85) by visual assessment (n = 47, 1 study).
+Those who returned to see their doctor within one to less than two years of the initial visit had a sensitivity of 89% (95% confidence interval 78 to 95) and a specificity of 58% (95% confidence interval 53 to 64) for visual assessment, and a sensitivity of 87% (95% confidence interval 76 to 94) and a specificity of 51% (95% confidence interval 45 to 56) for quantitative assessment using standardised uptake value ratio (SUVR) (n = 401, 1 study).
+MCI to any other forms of dementia (non-ADD);
+There was no information regarding the progression from MCI to any other form of dementia (non-ADD).
+Although one study showed good sensitivity, we cannot recommend routine use of 18F-florbetapir PET in clinical practice to predict progression from mild cognitive impairment to Alzheimer's disease because the test has poor specificity and the data available in the literature is limited.
+All participants had dementia and in the 12 trials which described the setting, all were resident in institutional care facilities.
+The fragrances used were lavender (eight studies); lemon balm (four studies); lavender and lemon balm, lavender and orange, and cedar extracts (one study each).
+Ten trials assessed agitation using various scales.
+Among the five trials where our confidence in the results was moderate or low, four trials reported no significant effect on agitation and one trial reported a significant benefit of aromatherapy.
+Of these, four reported a significant benefit from aromatherapy and one reported no significant effect.
+Most trials had poor or no reporting of adverse events.
+No more than two trials assessed each of our secondary outcomes of quality of life, mood, sleep, activities of daily living, and caregiver burden.
+We did not find evidence of help on these outcomes.
+Results from the other studies were inconsistent.
+Reports of harm were very poorly described in the included studies.
+Four studies with 231 participants are included in the review.
+The studies compared different types of surgery versus various types and doses of systemic and topical steroids and antibiotics.
+Two studies reported endoscopic scores.
+One study compared systemic steroids to surgery and found a large, significant effect. The surgery group had a mean score difference of -1.5 (95% confidence interval -1.78 to -1.22, n = 95) on a scale of 0 to 3, where 0 means no polyposis and 3 means severe polyposis.
+In the other study, there was no difference between the group that received topical steroids and the group that received antibiotics plus high-dose topical steroids (mean difference 2.3%, 95% confidence interval -17.4% to 12.8%, n = 34).
+No differences were found for any objective measurements or olfactory tests in those studies in which they were measured.
+The evidence about the effectiveness of different types of surgery versus medical treatment for adults with chronic rhinosinusitis with nasal polyps is of very low quality.
+As the overall evidence is of very low quality due to serious methodological limitations, reporting bias, indirectness, and imprecision, and is insufficient to draw firm conclusions, further research to investigate this problem is justified.
+We included 17 randomized controlled trials with a total of 2264 participants; 13 trials included 1954 adult participants, and four trials included 310 children.
+This update included 12 new studies, excluded one previously included study, and excluded five new trials.
+All trials included only patients who were hospitalized with community-acquired pneumonia (CAP), whether or not they also had healthcare-associated pneumonia (HCAP).
+Corstocosteroids reduced the time to clinical cure, shortened hospital and intensive care unit stays, and prevented pneumonia complications.
+Among children with bacterial pneumonia, corticosteroids reduced early clinical failure rates (defined as for adults, RR 0.41, 95% CI 0.24 to 0.70; high-quality evidence) based on two small, clinically heterogeneous trials, and reduced time to clinical cure.
+Corticosteroid treatment reduced the number of sick adults and children with non-severe community-acquired pneumonia, but it did not reduce the number of deaths.
+Corticosteroid treatment was associated with more adverse events, particularly hyperglycaemia, but the harms did not seem to outweigh the benefits.
+There is some limited evidence to suggest that self-management education may improve knowledge in patients with cystic fibrosis but not in parents or caregivers.
+There is also some limited evidence to suggest that self-management education may result in positively changing a small number of behaviours in both patients and caregivers.
+The available evidence from this review is not enough to draw any firm conclusions about the effects of self-management education for cystic fibrosis.
+Further trials are needed to investigate the effects of self-management education on a range of clinical and behavioural outcomes in children, adolescents and adults with cystic fibrosis and their caregivers.
+One trial involving 38,546 subjects compared vaccination with a sugar pill and met our inclusion criteria.
+The vaccine was effective at reducing the number of people with herpes zoster, but there was no evidence it worked better than its effect on reducing herpes zoster cases for preventing postherpetic neuralgia.
+There is not enough direct evidence from specialized trials to prove the vaccine is effective at preventing postherpetic neuralgia beyond its effect on reducing herpes zoster, although vaccination may be effective and safe for preventing herpes zoster and thus reduce the number of people with postherpetic neuralgia in adults aged 60 years or older.
+We included six randomized controlled trials with a total of 3753 participants and graded the quality of the included studies as moderate.
+All studies included women with a sign for COS as part of an IVF/ICSI cycle with age ranging from 18 to 41 years.
+There was evidence of a reduced live birth rate in women who received lower doses (60 to 120 μg) of long-acting FSH compared to daily FSH.
+There was no evidence of a difference in live births between the groups in the medium dose (150 to 180 μg) subgroup, which included 1685 participants across four studies.
+There was no evidence of a difference between the groups in the clinical pregnancy rate, ongoing pregnancy rate, multiple pregnancy rate, miscarriage rate, ectopic pregnancy rate, or congenital malformation rate for any dose, major or minor.
+Using a medium dose (150 to 180 μg) of long-acting FSH is a safe treatment option and equally effective compared to daily FSH in women with unexplained subfertility.
+There was evidence of reduced live birth rates in women receiving a low dose (60 to 120 micrograms) of long-acting FSH compared to daily FSH.
+Five studies met the inclusion criteria.
+Extended-field radiotherapy versus pelvic radiotherapy alone probably reduces the risk of death and para-aortic lymph node recurrence compared to pelvic radiotherapy alone, although there may or may not have been improvement in the risk of disease progression or severe adverse events.
+In a comparison of extended-field radiotherapy versus pelvic chemoradiotherapy, women given pelvic chemoradiotherapy probably had a lower risk of death and disease progression.
+Participants who received extended-field radiation therapy may or may not have had a lower chance of recurrence in the para-aortic lymph node (HR 0.44, 95% CI 0.20 to 0.99; 1 study; 389 participants; low-certainty evidence) and acute severe adverse events (RR 0.05, 95% CI 0.02 to 0.11; 1 study; 388 participants; moderate-certainty evidence).
+There were no clear differences in terms of late severe adverse events among the comparison groups (RR 1.06, 95% CI 0.69 to 1.62; 1 study; 386 participants; moderate-certainty evidence).
+There were no clear differences between the groups in the risks of para-aortic lymph node recurrence (RR 0.19, 95% CI 0.02 to 1.54; very low-certainty evidence) and severe adverse events (acute: RR 0.95, 95% CI 0.20 to 4.39; late: RR 0.95, 95% CI 0.06 to 14.59; very low-certainty evidence).
+Moderate-certainty evidence shows that, compared with pelvic radiation alone, extended-field radiation probably improves overall survival and reduces the risk of recurrence in the para-aortic lymph node.
+However, pelvic radiation therapy alone would now be considered substandard treatment, so this result cannot be extrapolated to modern standards of care.
+Low- to moderate-certainty evidence suggests that pelvic radiation therapy may increase overall and progression-free survival compared to extended-field radiation, although there may or may not be a higher rate of recurrence in women who have given birth and acute adverse events.
+Extended-field CRT versus pelvic CRT may improve overall or progression-free survival, but these findings should be interpreted with caution due to very low-certainty evidence.
+We included four trials (three parallel-group randomized controlled trials and one cross-over trial) involving a total of 139 participants.
+This result was unchanged from the review published in 2019.
+We observed a decrease in the elbow's spasticity at the end of follow-up when comparing rPMS plus rehabilitation versus sham rPMS plus rehabilitation.
+Based on the GRADE approach, we judged the certainty of evidence related to the primary outcome as low, owing to the small sample size of the studies.
+There is not enough evidence to permit any conclusions about the routine use of rPMS for people after stroke.
+More trials with large sample sizes are needed to provide robust evidence for rPMS after stroke.
+Our search found 17 records about 11 unique studies with 297,994 participants; these studies examined academic outcomes, sleep quality and amount, mental health, attendance, and student alertness.
+Four studies looked at how later school start times affect academic outcomes, but the results were mixed.
+Six studies examined effects on total sleep and reported significant, positive relationships between later school start times and the amount of sleep.
+One study provided information about mental health outcomes, reporting an association between fewer depressive symptoms and later school start times.
+Because of the insufficient evidence, we cannot draw firm conclusions about harmful effects at this time.
+We included 10 randomised trials with 836 participants in this review.
+The quality of evidence for the effects of cognitive behavioral therapy on patients with chronic non-psychotic neurodevelopmental disorder was from very low to moderate.
+Finally, there was very low quality evidence that CBT in addition to another intervention did not make a difference in terms of pain or disability compared to the other intervention alone at short-term follow-up.
+None of the included studies reported on harmful effects.
+For chronic neck pain, cognitive behavioral therapy was found to be statistically significantly more effective for short-term pain reduction only when compared to no treatment, but these effects could not be considered clinically meaningful.
+When comparing both CBT to other types of interventions and CBT in addition to another intervention to the other intervention alone, no differences were found.
+The review now includes 24 relevant studies, with 2126 participants.
+Overall, the evidence was very weak.
+We found no significant differences in the primary outcomes of relapse, hospitalisation, and general functioning between supportive therapy and standard care.
+There were very limited data to compare supportive therapy with family therapy and psychoeducation, and no studies provided data regarding clinically important change in general functioning, one of our primary outcomes of interest.
+Future research would benefit from larger trials that use supportive therapy as the main treatment arm rather than the control group.

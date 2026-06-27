@@ -1,0 +1,27 @@
+{
+  "metrics": {
+    "sari": 47.8839595021942,
+    "bleu": 25.231364580900756,
+    "bertscore_f1": 0.9179407261658287,
+    "n_evaluated": 667
+  },
+  "metadata": {
+    "split": "test",
+    "baseline": "identity",
+    "model": "identity_copy",
+    "adapter_path": null,
+    "prompt": "default_zero_shot",
+    "data_size": 667,
+    "example_mode": false,
+    "batch_size": 8,
+    "do_sample": false,
+    "temperature": null,
+    "skip_bertscore": false,
+    "rephrase_only": true,
+    "seed": 42,
+    "run_name": "identity-copy-test",
+    "output_dir": "/raid/thuaduc/simple_text/experiments/sentence_level/results/identity-copy-test",
+    "timestamp": "2026-06-27T11:38:44.289633",
+    "evaluation": "SARI, BLEU, BERTScore (automatic metrics)"
+  }
+}

@@ -128,8 +128,10 @@ Poster output by end of week 4:
 - [x] Week 2: Build exact-match biomedical glossary retrieval and definition-augmented prompting.
 - [x] Week 2: Report RAG coverage and compare with SARI, BLEU, and BERTScore.
 - [x] Week 3: Fine-tune Qwen3.5 with QLoRA on the rephrase-only train split (`default_zero_shot`, 46.50 SARI on test).
-- [ ] Week 3: Train or recover the `few_shot` QLoRA adapter at `experiments/sentence_level/lora_adapter/qwen35-2b-few-shot`.
-- [ ] Week 3: Compare fine-tuned models against prompt-only and RAG winners with the same split and decoding settings.
+- [x] Week 3: Train the `few_shot` QLoRA adapter — did not improve over `default_zero_shot`, so training reverted to `default_zero_shot` in `run_finetune.sh`.
+- [x] Week 3: Compare fine-tuned models against prompt-only and RAG winners with the same split and decoding settings.
+- [x] Week 4: Add external biomedical data (PLABA + Med-EASi) filtered to 1→1 rephrase (+8,587 pairs, 2.64× train).
+- [ ] Week 4: Fine-tune with `--extra_data` and compare against the 5,239-pair baseline adapter on `val`/`test`.
 - [ ] Week 4: Run final selected systems on `test`.
 - [ ] Week 4: Add candidate generation only if time remains.
 
@@ -225,17 +227,56 @@ python experiments/sentence_level/run_baseline.py \
 - Compared with Week 2 RAG test result, QLoRA improves by +5.00 SARI, +7.51 BLEU, and +0.0080 BERTScore
 - RAG does not stack with the fine-tuned adapter in this run: adding `definition_augmented` to the QLoRA adapter reduces SARI by 0.63 and BLEU by 0.49 versus plain QLoRA.
 
+### Week 4 Implementation: External Data Augmentation (Complete)
+
+**Motivation:** the rephrase-only train split is small (5,239 pairs) and QLoRA overfits within ~1 epoch. To add more in-domain supervision without leaving the rephrase scope, we pull external biomedical sentence-simplification corpora and filter them to a strict 1→1 reword shape.
+
+**Data gained:**
+
+| Source | Kept pairs |
+|--------|-----------:|
+| Cochrane rephrase train (baseline) | 5,239 |
+| PLABA (external) | 7,218 |
+| Med-EASi (external) | 1,369 |
+| **External total added** | **8,587** |
+| **Combined train** | **13,826** |
+
+- External data adds **+8,587 pairs (+164%)**, taking the train set from 5,239 → **13,826 (~2.64×)**.
+- Filtering kept 8,587 of 11,212 raw pairs; main drops: splits (1,723), near-identical copies (296), empty/deletions (234), identity (184), near-total rewrites (120).
+
+**Resources:**
+- **PLABA** — Plain Language Adaptation of Biomedical Abstracts (Attal et al. 2023). 750 PubMed abstracts, sentence-aligned plain-language adaptations. Sentence-level `data.json` from OSF project [rnpmf](https://osf.io/rnpmf/) (auto-downloaded and cached to `cochrane/data/plaba_data.json`).
+- **Med-EASi** — Finely annotated medical text simplification (Basu et al. 2023). HuggingFace dataset [`cbasu/Med-EASi`](https://huggingface.co/datasets/cbasu/Med-EASi); `Expert`→`Simple` pairs, all splits used (no overlap with the Cochrane eval sets).
+
+**Implementation:**
+- `experiments/sentence_level/build_external_rephrase.py` — fetches both sources, filters to 1→1 rephrase pairs (drop empty/deletions, identity copies, 1→many splits, and char Levenshtein ratio outside `[0.30, 0.95]`; length sanity + dedup), and writes `cochrane/data/external_rephrase_train.csv` in the Cochrane schema (`pair_id, complex, label='rephrase', simple, source`).
+- `src/utils/data_loader.py` — added `load_rephrase_csv()` to read any such CSV into the standard loader tuple.
+- `experiments/sentence_level/finetune.py` — added `--extra_data` to append external CSV(s) to **train only**; `val`/`test` remain pure Cochrane rephrase so eval stays comparable.
+
+**How to run:**
+```bash
+# Build the augmentation CSV (one-time; caches PLABA download)
+python experiments/sentence_level/build_external_rephrase.py
+
+# Fine-tune with external data mixed into train
+./run_finetune.sh --extra_data cochrane/data/external_rephrase_train.csv
+```
+
+**Notes / risks:** PLABA and Med-EASi are sometimes more abstractive than Cochrane's light rephrases. If SARI drifts, tighten the band (e.g. `--max_sim 0.9 --min_sim 0.4`) or rebuild with `--sources plaba` only.
+
 ### Next Steps
 
 1. ~~Run Week 1 validation to compare all prompt variants~~ ✅ Complete (N=50)
 2. ~~Run Week 2 RAG evaluation~~ ✅ Complete (41.50 SARI on test)
 3. ~~Run first QLoRA evaluation~~ ✅ Complete (`default_zero_shot`, 46.50 SARI on test)
 4. ~~Test RAG + QLoRA stacking~~ ✅ Complete (`definition_augmented`, 45.87 SARI; worse than plain QLoRA)
-5. **Evaluate the few-shot QLoRA adapter** on the same test split/settings once the adapter exists, then compare against the current `default_zero_shot` QLoRA result.
+5. ~~Evaluate the few-shot QLoRA adapter~~ ✅ Done — few-shot fine-tuning did not improve over `default_zero_shot`; `run_finetune.sh` reverted to `default_zero_shot`.
+6. **Retrain `default_zero_shot` QLoRA with `--extra_data`** (PLABA + Med-EASi) and compare against the 46.50 SARI baseline adapter on `val`/`test`.
 
 **Current standings:**
 - Week 1 `few_shot` (N=50): 39.06 SARI
 - Week 2 RAG (N=667 test): 41.50 SARI
-- Week 3 QLoRA `default_zero_shot` (N=667 test): 46.50 SARI
+- Week 3 QLoRA `default_zero_shot` (N=667 test): 46.50 SARI ← best so far
 - Week 3 QLoRA + RAG `definition_augmented` (N=667 test): 45.87 SARI
-- Next decision: train/evaluate the missing `qwen35-2b-few-shot` adapter before changing the final system.
+- Week 3 QLoRA `few_shot`: no improvement over `default_zero_shot` (dropped)
+- Next decision: retrain `default_zero_shot` QLoRA with external data augmentation and re-evaluate.

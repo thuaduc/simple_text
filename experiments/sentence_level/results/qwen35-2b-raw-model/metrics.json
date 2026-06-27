@@ -1,0 +1,27 @@
+{
+  "metrics": {
+    "sari": 41.82577991864692,
+    "bleu": 21.18796470939535,
+    "bertscore_f1": 0.9182974138538698,
+    "n_evaluated": 667
+  },
+  "metadata": {
+    "split": "test",
+    "baseline": "model",
+    "model": "Qwen/Qwen3.5-2B",
+    "adapter_path": null,
+    "prompt": "default_zero_shot",
+    "data_size": 667,
+    "example_mode": false,
+    "batch_size": 8,
+    "do_sample": false,
+    "temperature": null,
+    "skip_bertscore": false,
+    "rephrase_only": true,
+    "seed": 42,
+    "run_name": "qwen35-2b-raw-model",
+    "output_dir": "/raid/thuaduc/simple_text/experiments/sentence_level/results/qwen35-2b-raw-model",
+    "timestamp": "2026-06-27T12:05:54.580601",
+    "evaluation": "SARI, BLEU, BERTScore (automatic metrics)"
+  }
+}

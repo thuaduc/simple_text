@@ -24,7 +24,7 @@ _SCRIPT_DIR = Path(__file__).resolve().parent
 sys.path.insert(0, str(_SCRIPT_DIR.parent.parent))
 
 from src.config import DATA_DIR
-from src.utils.data_loader import load_cochrane_sentences
+from src.utils.data_loader import load_cochrane_sentences, load_rephrase_csv
 from src.prompts.templates import create_prompt
 from src.retrieval import FewShotRetriever
 
@@ -49,6 +49,12 @@ def parse_args():
     )
     parser.add_argument('--data_dir', type=str, default=DATA_DIR)
     parser.add_argument(
+        '--extra_data',
+        nargs='*',
+        default=[],
+        help='Extra rephrase CSV(s) (build_external_rephrase.py output) added to TRAIN only'
+    )
+    parser.add_argument(
         '--prompt',
         type=str,
         choices=['default_zero_shot', 'few_shot'],
@@ -65,12 +71,11 @@ def parse_args():
     return parser.parse_args()
 
 
-def build_examples(split, data_dir, tokenizer, max_seq_len, prompt_name, num_shots, retriever):
+def examples_from_pairs(
+    complex_sents, references, tokenizer, max_seq_len, prompt_name, num_shots,
+    retriever, tag, exclude_self
+):
     """Tokenize each pair as prompt + target, masking prompt tokens in the labels."""
-    complex_sents, references, _, _ = load_cochrane_sentences(
-        split=split, data_dir=data_dir, rephrase_only=True
-    )
-
     examples = []
     skipped_too_long = 0
     truncated_prompts = 0
@@ -82,7 +87,7 @@ def build_examples(split, data_dir, tokenizer, max_seq_len, prompt_name, num_sho
             examples_for_prompt = retriever.retrieve(
                 complex_sent,
                 k=num_shots,
-                exclude_self=(split == "train")
+                exclude_self=exclude_self
             )
         prompt = create_prompt(
             prompt_name,
@@ -108,13 +113,24 @@ def build_examples(split, data_dir, tokenizer, max_seq_len, prompt_name, num_sho
         labels = [-100] * len(prompt_ids) + target_ids
         examples.append({"input_ids": input_ids, "labels": labels})
 
-    print(f"Built {len(examples)} {split} examples")
+    print(f"Built {len(examples)} {tag} examples")
     if truncated_prompts or skipped_too_long:
         print(
             f"  Truncated {truncated_prompts} prompts; "
             f"skipped {skipped_too_long} examples with targets longer than max_seq_len"
         )
     return examples
+
+
+def build_examples(split, data_dir, tokenizer, max_seq_len, prompt_name, num_shots, retriever):
+    """Load a Cochrane rephrase split and turn it into training examples."""
+    complex_sents, references, _, _ = load_cochrane_sentences(
+        split=split, data_dir=data_dir, rephrase_only=True
+    )
+    return examples_from_pairs(
+        complex_sents, references, tokenizer, max_seq_len, prompt_name, num_shots,
+        retriever, tag=split, exclude_self=(split == "train")
+    )
 
 
 def main():
@@ -162,6 +178,24 @@ def main():
         args.num_shots,
         retriever
     )
+
+    for extra_path in args.extra_data:
+        extra_complex, extra_refs, _, _ = load_rephrase_csv(extra_path)
+        extra_examples = examples_from_pairs(
+            extra_complex,
+            extra_refs,
+            tokenizer,
+            args.max_length,
+            args.prompt,
+            args.num_shots,
+            retriever,
+            tag=f"extra:{Path(extra_path).name}",
+            exclude_self=False,
+        )
+        train_examples += extra_examples
+    if args.extra_data:
+        print(f"Total train examples after augmentation: {len(train_examples)}")
+
     val_examples = build_examples(
         "val",
         args.data_dir,
