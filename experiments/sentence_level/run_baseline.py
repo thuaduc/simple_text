@@ -95,6 +95,22 @@ def parse_args():
     )
 
     parser.add_argument(
+        "--rag_postedit",
+        action="store_true",
+        help="Run a retrieval-augmented post-editing pass on the model output: "
+        "retrieve glossary definitions for jargon still in each prediction, then "
+        "regenerate a revised sentence (only applies to --baseline model)",
+    )
+
+    parser.add_argument(
+        "--rag_glossary_path",
+        type=str,
+        default=None,
+        help="Glossary CSV for --rag_postedit (default: --glossary_path, else "
+        "cochrane/data/MedSimplify.csv)",
+    )
+
+    parser.add_argument(
         "--output_dir",
         type=Path,
         default=_DEFAULT_OUTPUT_DIR,
@@ -194,6 +210,26 @@ def main():
             print(f"Error: Glossary file not found: {args.glossary_path}")
             sys.exit(1)
 
+    # Resolve glossary for the RAG post-editing stage
+    if args.rag_postedit:
+        if args.baseline != "model":
+            print(
+                f"Warning: --rag_postedit only applies to --baseline model; "
+                f"ignoring it for baseline '{args.baseline}'."
+            )
+            args.rag_postedit = False
+        else:
+            if args.rag_glossary_path is None:
+                args.rag_glossary_path = args.glossary_path or str(
+                    Path(args.data_dir) / "MedSimplify.csv"
+                )
+            if not Path(args.rag_glossary_path).exists():
+                print(
+                    f"Error: --rag_postedit requires a glossary. "
+                    f"File not found: {args.rag_glossary_path}"
+                )
+                sys.exit(1)
+
     output_dir = resolve_output_dir(args.output_dir, args.run_name)
     baseline_model_name = {
         "model": MODEL_NAME,
@@ -217,6 +253,8 @@ def main():
         print(f"  Max definitions per sentence: {args.max_definitions}")
     if args.prompt == "few_shot":
         print(f"  Number of shots: {args.num_shots}")
+    if args.rag_postedit:
+        print(f"  RAG post-edit: enabled (glossary: {args.rag_glossary_path})")
     print(
         f"  Data size: {args.test_size or 'all'}{' (example mode)' if args.example else ''}"
     )
@@ -252,6 +290,10 @@ def main():
         pair_ids = pair_ids[: args.test_size]
 
     print(f"Total examples: {len(complex_sentences)}")
+
+    # RAG post-editing tracking (populated only when --rag_postedit is set)
+    rag_postedit_data = []
+    rag_postedit_stats = None
 
     # Initialize glossary retriever if needed
     retriever = None
@@ -356,6 +398,69 @@ def main():
 
         print(f"Generated {len(predictions)} simplifications")
 
+        # RAG post-editing: retrieve definitions for jargon still in each
+        # prediction, then regenerate a revised sentence.
+        if args.rag_postedit:
+            from src.retrieval import GlossaryRetriever
+
+            print(
+                f"\n[RAG post-edit] Initializing glossary retriever from "
+                f"{args.rag_glossary_path}..."
+            )
+            postedit_retriever = GlossaryRetriever(args.rag_glossary_path)
+
+            print("[RAG post-edit] Retrieving definitions from model outputs...")
+            postedit_definitions = []
+            for i, pred in enumerate(predictions):
+                matches = postedit_retriever.retrieve(
+                    pred, max_definitions=args.max_definitions
+                )
+                postedit_definitions.append(matches)
+                rag_postedit_data.append(
+                    {
+                        "index": i,
+                        "draft": pred,
+                        "matched_terms": [term for term, _ in matches],
+                        "num_matches": len(matches),
+                    }
+                )
+
+            num_to_edit = sum(1 for d in postedit_definitions if d)
+            print(
+                f"[RAG post-edit] {num_to_edit}/{len(predictions)} outputs contain "
+                f"glossary terms; running second pass on those..."
+            )
+
+            drafts_before_postedit = list(predictions)
+            predictions = simplifier.postedit_batch(
+                original_sentences=complex_sentences,
+                draft_simplifications=drafts_before_postedit,
+                definitions_list=postedit_definitions,
+                batch_size=args.batch_size,
+            )
+
+            num_changed = sum(
+                1
+                for before, after in zip(drafts_before_postedit, predictions)
+                if before != after
+            )
+            print(
+                f"[RAG post-edit] Revised {num_changed}/{len(predictions)} predictions"
+            )
+            for entry, before, after in zip(
+                rag_postedit_data, drafts_before_postedit, predictions
+            ):
+                entry["revised"] = after
+                entry["changed"] = before != after
+
+            rag_postedit_stats = {
+                "glossary_path": args.rag_glossary_path,
+                "max_definitions": args.max_definitions,
+                "total_glossary_terms": len(postedit_retriever.glossary),
+                "outputs_with_terms": num_to_edit,
+                "predictions_changed": num_changed,
+            }
+
     # Evaluate
     print("\nEvaluating predictions...")
 
@@ -398,6 +503,14 @@ def main():
             for match_data in glossary_matches_data:
                 f.write(json.dumps(match_data) + "\n")
 
+    # Save RAG post-edit traces if used
+    if args.rag_postedit and rag_postedit_data:
+        postedit_file = output_dir / "rag_postedit.jsonl"
+        print(f"Saving RAG post-edit traces to {postedit_file}...")
+        with postedit_file.open("w", encoding="utf-8") as f:
+            for entry in rag_postedit_data:
+                f.write(json.dumps(entry) + "\n")
+
     # Save results
     results_file = output_dir / "metrics.json"
     print(f"Saving metrics to {results_file}...")
@@ -416,6 +529,7 @@ def main():
             "batch_size": args.batch_size,
             "do_sample": args.sample,
             "temperature": args.temperature if args.sample else None,
+            "rag_postedit": args.rag_postedit,
             "skip_bertscore": args.skip_bertscore,
             "rephrase_only": rephrase_only,
             "seed": args.seed,
@@ -447,6 +561,10 @@ def main():
             "top_10_terms": coverage["top_10_terms"],
         }
 
+    # Add RAG post-edit stats if used
+    if rag_postedit_stats:
+        results_with_metadata["rag_postedit"] = rag_postedit_stats
+
     with results_file.open("w", encoding="utf-8") as f:
         json.dump(results_with_metadata, f, indent=2)
 
@@ -459,6 +577,8 @@ def main():
     print(f"  - metrics.json: All evaluation metrics")
     if args.prompt == "definition_augmented":
         print(f"  - glossary_matches.jsonl: Matched terms per sentence")
+    if args.rag_postedit:
+        print(f"  - rag_postedit.jsonl: Draft, retrieved terms, and revised output")
     print()
 
 

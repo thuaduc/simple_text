@@ -16,6 +16,13 @@ NIH_K8_SYSTEM_PROMPT = (
     "while staying faithful to the original meaning."
 )
 
+RAG_POSTEDIT_SYSTEM_PROMPT = (
+    "You are a careful editor. You are given an original biomedical sentence, a "
+    "draft simplification of it, and plain-language definitions for technical "
+    "terms that still appear in the draft. Improve the draft only where needed so "
+    "a general reader understands it, without changing the meaning of the original."
+)
+
 
 def _chat_prompt_no_think(system: str, user: str, tokenizer) -> str:
     """Build a chat prompt with model-specific formatting and thinking disabled."""
@@ -102,6 +109,56 @@ def create_definition_augmented_prompt(
         return _chat_prompt_no_think(DEFAULT_SYSTEM_PROMPT, user_prompt, tokenizer)
 
     return f"{DEFAULT_SYSTEM_PROMPT}\n\n{user_prompt}"
+
+
+def create_rag_postedit_prompt(
+    original_sentence: str,
+    draft_simplification: str,
+    definitions: List[Tuple[str, str]],
+    tokenizer=None,
+) -> str:
+    """
+    Create a retrieval-augmented post-editing prompt.
+
+    Used as a second pass *after* the model has produced a draft simplification.
+    Retrieved definitions correspond to technical terms that still appear in the
+    draft, so the model can replace remaining jargon while staying faithful to
+    the original sentence.
+
+    Args:
+        original_sentence: The original complex sentence (for faithfulness)
+        draft_simplification: The model's first-pass simplification
+        definitions: List of (term, definition) tuples retrieved from the draft
+        tokenizer: Optional tokenizer for chat template formatting
+
+    Returns:
+        Formatted prompt string
+    """
+    definitions_block = ""
+    if definitions:
+        definitions_block = "Plain-language definitions for terms still in the draft:\n"
+        for term, definition in definitions:
+            definitions_block += f"- {term}: {definition}\n"
+        definitions_block += "\n"
+
+    user_prompt = (
+        "Revise the draft simplification so a lay reader can understand it.\n"
+        "Rules:\n"
+        "- Replace any remaining medical jargon with plain words, using the definitions below\n"
+        "- Do NOT add facts that are not in the original sentence\n"
+        "- Keep all key facts and numbers from the original\n"
+        "- If the draft is already clear, return it unchanged\n"
+        "- Output ONLY the revised sentence\n\n"
+        f"{definitions_block}"
+        f"Original sentence: {original_sentence}\n"
+        f"Draft simplification: {draft_simplification}\n"
+        "Revised:"
+    )
+
+    if tokenizer is not None and hasattr(tokenizer, "apply_chat_template") and tokenizer.chat_template:
+        return _chat_prompt_no_think(RAG_POSTEDIT_SYSTEM_PROMPT, user_prompt, tokenizer)
+
+    return f"{RAG_POSTEDIT_SYSTEM_PROMPT}\n\n{user_prompt}"
 
 
 def create_nih_k8_prompt(input_sentence: str, tokenizer=None) -> str:

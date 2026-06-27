@@ -131,8 +131,8 @@ Poster output by end of week 4:
 - [x] Week 3: Train the `few_shot` QLoRA adapter — did not improve over `default_zero_shot`, so training reverted to `default_zero_shot` in `run_finetune.sh`.
 - [x] Week 3: Compare fine-tuned models against prompt-only and RAG winners with the same split and decoding settings.
 - [x] Week 4: Add external biomedical data (PLABA + Med-EASi) filtered to 1→1 rephrase (+8,587 pairs, 2.64× train).
-- [ ] Week 4: Fine-tune with `--extra_data` and compare against the 5,239-pair baseline adapter on `val`/`test`.
-- [ ] Week 4: Run final selected systems on `test`.
+- [x] Week 4: Fine-tune with `--extra_data` and compare against the baseline adapter on `test` — external data did **not** help (46.80 vs 47.38 SARI).
+- [x] Week 4: Run final selected systems on `test` (full ladder, N=667, 2026-06-27).
 - [ ] Week 4: Add candidate generation only if time remains.
 
 ## Success Criteria
@@ -264,19 +264,38 @@ python experiments/sentence_level/build_external_rephrase.py
 
 **Notes / risks:** PLABA and Med-EASi are sometimes more abstractive than Cochrane's light rephrases. If SARI drifts, tighten the band (e.g. `--max_sim 0.9 --min_sim 0.4`) or rebuild with `--sources plaba` only.
 
+### Latest Full Test Ladder (2026-06-27, N=667)
+
+Refreshed end-to-end run of every candidate system on the Cochrane-auto rephrase-only **test** split (N=667), Qwen3.5-2B, greedy decoding, `seed=42`. These numbers supersede the earlier per-week figures above (which were from earlier runs / smaller N).
+
+| System | Run name | Adapter | Prompt | SARI | BLEU | BERTScore |
+|--------|----------|---------|--------|-----:|-----:|----------:|
+| Identity copy | `identity-copy-test` | — | — | 47.88 | 25.23 | 0.9179 |
+| Raw model | `qwen35-2b-raw-model` | — | `default_zero_shot` | 41.83 | 21.19 | 0.9183 |
+| Raw model + RAG | `qwen35-2b-raw-model-rag` | — | `definition_augmented` | 43.18 | 23.31 | 0.9188 |
+| QLoRA | `qwen35-2b-lora` | `qwen35-2b-best/checkpoint-328` | `default_zero_shot` | **47.38** | **28.39** | **0.9248** |
+| QLoRA + extra data | `qwen35-2b-zero-shot-extra-data` | `…-extra-data/checkpoint-433` | `default_zero_shot` | 46.80 | 28.16 | 0.9244 |
+
+**Key findings:**
+- **QLoRA is the best LLM system**: 47.38 SARI, and it clearly dominates on BLEU (28.39) and BERTScore (0.9248). Over the raw model it adds **+5.55 SARI / +7.20 BLEU / +0.0065 BERTScore**.
+- **Identity copy is a deceptively strong SARI baseline** (47.88, nominally above QLoRA). This is a known SARI quirk on light-rephrase data where keeping tokens is rewarded; QLoRA still wins decisively on BLEU and BERTScore and produces genuinely simplified text, so it remains the system of record. Worth flagging on the poster as a metric caveat.
+- **RAG helps the raw model**: `definition_augmented` adds **+1.35 SARI / +2.12 BLEU** over the raw zero-shot model (43.18 vs 41.83), with 84.3% glossary coverage (avg 2.51 terms/sentence, 349 unique terms; top: risk, adverse, effects, treatment). RAG remains a raw-model intervention only — it is not paired with the fine-tuned adapter, which was never trained on the definitions block.
+- **External data did not help**: adding PLABA + Med-EASi (`checkpoint-433`) gave 46.80 SARI, **−0.58 vs plain QLoRA** (and slightly lower BLEU/BERTScore). The larger, more abstractive external pairs drift away from Cochrane's light rephrases; the 5,239-pair in-domain adapter stays the winner.
+
 ### Next Steps
 
 1. ~~Run Week 1 validation to compare all prompt variants~~ ✅ Complete (N=50)
-2. ~~Run Week 2 RAG evaluation~~ ✅ Complete (41.50 SARI on test)
-3. ~~Run first QLoRA evaluation~~ ✅ Complete (`default_zero_shot`, 46.50 SARI on test)
-4. ~~Test RAG + QLoRA stacking~~ ✅ Complete (`definition_augmented`, 45.87 SARI; worse than plain QLoRA)
+2. ~~Run Week 2 RAG evaluation~~ ✅ Complete (raw model + RAG: 43.18 SARI on test)
+3. ~~Run first QLoRA evaluation~~ ✅ Complete (`default_zero_shot`, 47.38 SARI on test) ← best system
+4. ~~Test RAG + QLoRA stacking~~ ✅ Complete — RAG does not stack with the fine-tuned adapter (prompt mismatch); RAG kept as a raw-model intervention.
 5. ~~Evaluate the few-shot QLoRA adapter~~ ✅ Done — few-shot fine-tuning did not improve over `default_zero_shot`; `run_finetune.sh` reverted to `default_zero_shot`.
-6. **Retrain `default_zero_shot` QLoRA with `--extra_data`** (PLABA + Med-EASi) and compare against the 46.50 SARI baseline adapter on `val`/`test`.
+6. ~~Retrain `default_zero_shot` QLoRA with `--extra_data`~~ ✅ Done — external data did not help (46.80 vs 47.38 SARI).
+7. Freeze QLoRA (`checkpoint-328`) as the final system; optionally add candidate generation if time remains.
 
-**Current standings:**
-- Week 1 `few_shot` (N=50): 39.06 SARI
-- Week 2 RAG (N=667 test): 41.50 SARI
-- Week 3 QLoRA `default_zero_shot` (N=667 test): 46.50 SARI ← best so far
-- Week 3 QLoRA + RAG `definition_augmented` (N=667 test): 45.87 SARI
-- Week 3 QLoRA `few_shot`: no improvement over `default_zero_shot` (dropped)
-- Next decision: retrain `default_zero_shot` QLoRA with external data augmentation and re-evaluate.
+**Current standings (N=667 test, 2026-06-27):**
+- Identity copy: 47.88 SARI / 25.23 BLEU / 0.9179 BERTScore (SARI-only artifact baseline)
+- Raw model `default_zero_shot`: 41.83 SARI / 21.19 BLEU / 0.9183 BERTScore
+- Raw model + RAG `definition_augmented`: 43.18 SARI / 23.31 BLEU / 0.9188 BERTScore
+- QLoRA + extra data: 46.80 SARI / 28.16 BLEU / 0.9244 BERTScore
+- **QLoRA `default_zero_shot` (`checkpoint-328`): 47.38 SARI / 28.39 BLEU / 0.9248 BERTScore ← best system of record**
+- Decision: freeze QLoRA `checkpoint-328` as the final system.
