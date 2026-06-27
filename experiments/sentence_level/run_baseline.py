@@ -62,13 +62,7 @@ def parse_args():
     parser.add_argument(
         "--prompt",
         type=str,
-        choices=[
-            "default_zero_shot",
-            "nih_k8",
-            "plan_guided",
-            "few_shot",
-            "definition_augmented",
-        ],
+        choices=["default_zero_shot", "few_shot"],
         default="default_zero_shot",
         help="Prompt variant to use (default: default_zero_shot)",
     )
@@ -81,10 +75,27 @@ def parse_args():
     )
 
     parser.add_argument(
+        "--rag",
+        action="store_true",
+        help="Enable retrieval-augmented generation using a glossary "
+        "(only applies to --baseline model). See --rag_mode for timing.",
+    )
+
+    parser.add_argument(
+        "--rag_mode",
+        type=str,
+        choices=["before", "after"],
+        default="before",
+        help="When to apply RAG relative to the model: 'before' injects retrieved "
+        "definitions for the input into the prompt; 'after' post-edits the model "
+        "output by retrieving definitions for jargon still present (default: before)",
+    )
+
+    parser.add_argument(
         "--glossary_path",
         type=str,
         default=None,
-        help="Path to glossary CSV (default: cochrane/data/MedSimplify.csv if using definition_augmented)",
+        help="Path to glossary CSV used by --rag (default: cochrane/data/MedSimplify.csv)",
     )
 
     parser.add_argument(
@@ -92,22 +103,6 @@ def parse_args():
         type=int,
         default=10,
         help="Maximum definitions to include per sentence (default: 10)",
-    )
-
-    parser.add_argument(
-        "--rag_postedit",
-        action="store_true",
-        help="Run a retrieval-augmented post-editing pass on the model output: "
-        "retrieve glossary definitions for jargon still in each prediction, then "
-        "regenerate a revised sentence (only applies to --baseline model)",
-    )
-
-    parser.add_argument(
-        "--rag_glossary_path",
-        type=str,
-        default=None,
-        help="Glossary CSV for --rag_postedit (default: --glossary_path, else "
-        "cochrane/data/MedSimplify.csv)",
     )
 
     parser.add_argument(
@@ -195,39 +190,23 @@ def main():
     if args.example:
         args.test_size = 10
 
-    # Handle glossary path defaults
-    if args.prompt == "definition_augmented":
-        if args.glossary_path is None:
-            # Default to MedSimplify in data directory
-            default_glossary = Path(args.data_dir) / "MedSimplify.csv"
-            if not default_glossary.exists():
-                print(f"Error: definition_augmented requires a glossary.")
-                print(f"Expected default path: {default_glossary}")
-                print(f"Please download MedSimplify.csv or specify --glossary_path")
-                sys.exit(1)
-            args.glossary_path = str(default_glossary)
-        elif not Path(args.glossary_path).exists():
-            print(f"Error: Glossary file not found: {args.glossary_path}")
-            sys.exit(1)
-
-    # Resolve glossary for the RAG post-editing stage
-    if args.rag_postedit:
+    # Resolve glossary path for RAG (applies to both before/after modes)
+    if args.rag:
         if args.baseline != "model":
             print(
-                f"Warning: --rag_postedit only applies to --baseline model; "
+                f"Warning: --rag only applies to --baseline model; "
                 f"ignoring it for baseline '{args.baseline}'."
             )
-            args.rag_postedit = False
+            args.rag = False
         else:
-            if args.rag_glossary_path is None:
-                args.rag_glossary_path = args.glossary_path or str(
-                    Path(args.data_dir) / "MedSimplify.csv"
-                )
-            if not Path(args.rag_glossary_path).exists():
+            if args.glossary_path is None:
+                args.glossary_path = str(Path(args.data_dir) / "MedSimplify.csv")
+            if not Path(args.glossary_path).exists():
                 print(
-                    f"Error: --rag_postedit requires a glossary. "
-                    f"File not found: {args.rag_glossary_path}"
+                    f"Error: --rag requires a glossary. "
+                    f"File not found: {args.glossary_path}"
                 )
+                print("Please download MedSimplify.csv or specify --glossary_path")
                 sys.exit(1)
 
     output_dir = resolve_output_dir(args.output_dir, args.run_name)
@@ -248,13 +227,12 @@ def main():
     print(f"  Baseline: {args.baseline}")
     print(f"  Model: {baseline_model_name}")
     print(f"  Prompt: {args.prompt}")
-    if args.prompt == "definition_augmented":
-        print(f"  Glossary: {args.glossary_path}")
-        print(f"  Max definitions per sentence: {args.max_definitions}")
     if args.prompt == "few_shot":
         print(f"  Number of shots: {args.num_shots}")
-    if args.rag_postedit:
-        print(f"  RAG post-edit: enabled (glossary: {args.rag_glossary_path})")
+    if args.rag:
+        print(f"  RAG: enabled (mode: {args.rag_mode})")
+        print(f"  Glossary: {args.glossary_path}")
+        print(f"  Max definitions per sentence: {args.max_definitions}")
     print(
         f"  Data size: {args.test_size or 'all'}{' (example mode)' if args.example else ''}"
     )
@@ -291,7 +269,7 @@ def main():
 
     print(f"Total examples: {len(complex_sentences)}")
 
-    # RAG post-editing tracking (populated only when --rag_postedit is set)
+    # RAG post-editing tracking (populated only when --rag --rag_mode after)
     rag_postedit_data = []
     rag_postedit_stats = None
 
@@ -300,7 +278,7 @@ def main():
     definitions_list = None
     glossary_matches_data = []
 
-    if args.prompt == "definition_augmented":
+    if args.rag and args.rag_mode == "before":
         from src.retrieval import GlossaryRetriever
 
         print(f"\nInitializing glossary retriever from {args.glossary_path}...")
@@ -398,16 +376,16 @@ def main():
 
         print(f"Generated {len(predictions)} simplifications")
 
-        # RAG post-editing: retrieve definitions for jargon still in each
+        # RAG (after mode): retrieve definitions for jargon still in each
         # prediction, then regenerate a revised sentence.
-        if args.rag_postedit:
+        if args.rag and args.rag_mode == "after":
             from src.retrieval import GlossaryRetriever
 
             print(
                 f"\n[RAG post-edit] Initializing glossary retriever from "
-                f"{args.rag_glossary_path}..."
+                f"{args.glossary_path}..."
             )
-            postedit_retriever = GlossaryRetriever(args.rag_glossary_path)
+            postedit_retriever = GlossaryRetriever(args.glossary_path)
 
             print("[RAG post-edit] Retrieving definitions from model outputs...")
             postedit_definitions = []
@@ -454,7 +432,7 @@ def main():
                 entry["changed"] = before != after
 
             rag_postedit_stats = {
-                "glossary_path": args.rag_glossary_path,
+                "glossary_path": args.glossary_path,
                 "max_definitions": args.max_definitions,
                 "total_glossary_terms": len(postedit_retriever.glossary),
                 "outputs_with_terms": num_to_edit,
@@ -495,16 +473,16 @@ def main():
             f.write(f"References: {refs}\n")
             f.write("-" * 80 + "\n\n")
 
-    # Save glossary matches if using RAG
-    if args.prompt == "definition_augmented" and glossary_matches_data:
+    # Save glossary matches if using RAG (before mode)
+    if args.rag and args.rag_mode == "before" and glossary_matches_data:
         matches_file = output_dir / "glossary_matches.jsonl"
         print(f"Saving glossary matches to {matches_file}...")
         with matches_file.open("w", encoding="utf-8") as f:
             for match_data in glossary_matches_data:
                 f.write(json.dumps(match_data) + "\n")
 
-    # Save RAG post-edit traces if used
-    if args.rag_postedit and rag_postedit_data:
+    # Save RAG post-edit traces if used (after mode)
+    if args.rag and args.rag_mode == "after" and rag_postedit_data:
         postedit_file = output_dir / "rag_postedit.jsonl"
         print(f"Saving RAG post-edit traces to {postedit_file}...")
         with postedit_file.open("w", encoding="utf-8") as f:
@@ -529,7 +507,9 @@ def main():
             "batch_size": args.batch_size,
             "do_sample": args.sample,
             "temperature": args.temperature if args.sample else None,
-            "rag_postedit": args.rag_postedit,
+            "rag": args.rag,
+            "rag_mode": args.rag_mode if args.rag else None,
+            "glossary_path": args.glossary_path if args.rag else None,
             "skip_bertscore": args.skip_bertscore,
             "rephrase_only": rephrase_only,
             "seed": args.seed,
@@ -542,8 +522,8 @@ def main():
         },
     }
 
-    # Add glossary metadata if using RAG
-    if args.prompt == "definition_augmented" and retriever:
+    # Add glossary metadata if using RAG (before mode)
+    if args.rag and args.rag_mode == "before" and retriever:
         coverage = retriever.get_coverage_stats(
             complex_sentences, max_definitions=args.max_definitions
         )
@@ -575,9 +555,9 @@ def main():
     print(f"  - predictions.txt: Generated simplifications")
     print(f"  - input_output_pairs.txt: Side-by-side comparison")
     print(f"  - metrics.json: All evaluation metrics")
-    if args.prompt == "definition_augmented":
+    if args.rag and args.rag_mode == "before":
         print(f"  - glossary_matches.jsonl: Matched terms per sentence")
-    if args.rag_postedit:
+    if args.rag and args.rag_mode == "after":
         print(f"  - rag_postedit.jsonl: Draft, retrieved terms, and revised output")
     print()
 

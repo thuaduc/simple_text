@@ -38,7 +38,7 @@ class SentenceSimplifier:
             max_new_tokens: Maximum tokens to generate (defaults to MAX_NEW_TOKENS from .env)
             temperature: Sampling temperature (defaults to TEMPERATURE from .env)
             do_sample: Whether to use sampling
-            prompt_name: Prompt variant to use ('default_zero_shot' or 'definition_augmented')
+            prompt_name: Prompt variant to use ('default_zero_shot' or 'few_shot')
         """
         self.model_name = model_name or MODEL_NAME
         self.max_new_tokens = max_new_tokens or MAX_NEW_TOKENS
@@ -112,7 +112,7 @@ class SentenceSimplifier:
 
         Args:
             complex_sentence: The complex sentence to simplify
-            definitions: Optional list of (term, definition) tuples for definition_augmented
+            definitions: Optional list of (term, definition) tuples to inject (RAG before mode)
             examples: Optional list of (complex, simple) tuples for few_shot
 
         Returns:

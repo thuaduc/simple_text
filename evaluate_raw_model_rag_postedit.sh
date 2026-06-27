@@ -10,6 +10,7 @@ export DATA_DIR=cochrane/data
 python experiments/sentence_level/run_baseline.py \
   --split test \
   --prompt default_zero_shot \
-  --rag_postedit \
+  --rag \
+  --rag_mode after \
   --run_name qwen35-2b-raw-model-rag-postedit \
   "$@"

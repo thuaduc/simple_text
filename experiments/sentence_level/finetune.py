@@ -26,7 +26,7 @@ sys.path.insert(0, str(_SCRIPT_DIR.parent.parent))
 from src.config import DATA_DIR
 from src.utils.data_loader import load_cochrane_sentences, load_rephrase_csv
 from src.prompts.templates import create_prompt
-from src.retrieval import FewShotRetriever
+from src.retrieval import FewShotRetriever, GlossaryRetriever
 
 
 def parse_args():
@@ -67,13 +67,32 @@ def parse_args():
         default=3,
         help='Number of retrieved examples for few_shot prompts'
     )
+    parser.add_argument(
+        '--rag',
+        action='store_true',
+        help='Apply RAG before the input: inject retrieved glossary definitions for '
+             'each complex sentence into the training prompt (before-generation mode). '
+             'Train this way so the adapter learns to use the definitions block.'
+    )
+    parser.add_argument(
+        '--glossary_path',
+        type=str,
+        default=None,
+        help='Glossary CSV used by --rag (default: <data_dir>/MedSimplify.csv)'
+    )
+    parser.add_argument(
+        '--max_definitions',
+        type=int,
+        default=10,
+        help='Maximum definitions to inject per sentence when --rag is set (default: 10)'
+    )
     parser.add_argument('--seed', type=int, default=42)
     return parser.parse_args()
 
 
 def examples_from_pairs(
     complex_sents, references, tokenizer, max_seq_len, prompt_name, num_shots,
-    retriever, tag, exclude_self
+    retriever, tag, exclude_self, glossary_retriever=None, max_definitions=10
 ):
     """Tokenize each pair as prompt + target, masking prompt tokens in the labels."""
     examples = []
@@ -89,10 +108,16 @@ def examples_from_pairs(
                 k=num_shots,
                 exclude_self=exclude_self
             )
+        definitions = None
+        if glossary_retriever is not None:
+            definitions = glossary_retriever.retrieve(
+                complex_sent, max_definitions=max_definitions
+            )
         prompt = create_prompt(
             prompt_name,
             complex_sent,
             tokenizer,
+            definitions=definitions,
             examples=examples_for_prompt
         )
         target = refs[0].strip() + tokenizer.eos_token
@@ -122,14 +147,18 @@ def examples_from_pairs(
     return examples
 
 
-def build_examples(split, data_dir, tokenizer, max_seq_len, prompt_name, num_shots, retriever):
+def build_examples(
+    split, data_dir, tokenizer, max_seq_len, prompt_name, num_shots, retriever,
+    glossary_retriever=None, max_definitions=10
+):
     """Load a Cochrane rephrase split and turn it into training examples."""
     complex_sents, references, _, _ = load_cochrane_sentences(
         split=split, data_dir=data_dir, rephrase_only=True
     )
     return examples_from_pairs(
         complex_sents, references, tokenizer, max_seq_len, prompt_name, num_shots,
-        retriever, tag=split, exclude_self=(split == "train")
+        retriever, tag=split, exclude_self=(split == "train"),
+        glossary_retriever=glossary_retriever, max_definitions=max_definitions
     )
 
 
@@ -169,6 +198,19 @@ def main():
         retriever = FewShotRetriever(train_complex, train_references, method="lexical")
         print(f"Using few_shot prompts with {args.num_shots} retrieved examples")
 
+    glossary_retriever = None
+    if args.rag:
+        if args.glossary_path is None:
+            args.glossary_path = str(Path(args.data_dir) / "MedSimplify.csv")
+        if not Path(args.glossary_path).exists():
+            print(f"Error: --rag requires a glossary. File not found: {args.glossary_path}")
+            sys.exit(1)
+        glossary_retriever = GlossaryRetriever(args.glossary_path)
+        print(
+            f"Applying RAG before input: injecting up to {args.max_definitions} "
+            f"glossary definitions per sentence from {args.glossary_path}"
+        )
+
     train_examples = build_examples(
         "train",
         args.data_dir,
@@ -176,7 +218,9 @@ def main():
         args.max_length,
         args.prompt,
         args.num_shots,
-        retriever
+        retriever,
+        glossary_retriever=glossary_retriever,
+        max_definitions=args.max_definitions,
     )
 
     for extra_path in args.extra_data:
@@ -191,6 +235,8 @@ def main():
             retriever,
             tag=f"extra:{Path(extra_path).name}",
             exclude_self=False,
+            glossary_retriever=glossary_retriever,
+            max_definitions=args.max_definitions,
         )
         train_examples += extra_examples
     if args.extra_data:
@@ -203,7 +249,9 @@ def main():
         args.max_length,
         args.prompt,
         args.num_shots,
-        retriever
+        retriever,
+        glossary_retriever=glossary_retriever,
+        max_definitions=args.max_definitions,
     )
 
     collator = DataCollatorForSeq2Seq(tokenizer, padding=True, label_pad_token_id=-100)

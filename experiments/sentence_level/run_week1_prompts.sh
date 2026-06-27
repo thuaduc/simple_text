@@ -19,7 +19,7 @@ else
 fi
 
 # Array of prompts to test
-PROMPTS=("default_zero_shot" "nih_k8" "plan_guided" "few_shot")
+PROMPTS=("default_zero_shot" "few_shot")
 
 echo "================================"
 echo "Week 1 Prompt Evaluation"
