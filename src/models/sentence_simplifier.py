@@ -26,7 +26,7 @@ class SentenceSimplifier:
         temperature: Optional[float] = None,
         do_sample: bool = True,
         prompt_name: str = "default_zero_shot",
-        adapter_path: Optional[str] = None
+        adapter_path: Optional[str] = None,
     ):
         """
         Initialize the sentence simplification model.
@@ -53,7 +53,17 @@ class SentenceSimplifier:
 
         logger.info(f"Loading {self.model_name} on {self.device}...")
 
-        self.tokenizer = AutoTokenizer.from_pretrained(self.model_name)
+        tokenizer_source = adapter_path or self.model_name
+        try:
+            self.tokenizer = AutoTokenizer.from_pretrained(tokenizer_source)
+        except OSError:
+            if adapter_path:
+                logger.info(
+                    f"Tokenizer not found at {adapter_path}; falling back to base tokenizer {self.model_name}."
+                )
+                self.tokenizer = AutoTokenizer.from_pretrained(self.model_name)
+            else:
+                raise
         if self.tokenizer.pad_token is None:
             self.tokenizer.pad_token = self.tokenizer.eos_token
         self.tokenizer.padding_side = "left"
@@ -66,19 +76,19 @@ class SentenceSimplifier:
                 load_in_4bit=True,
                 bnb_4bit_compute_dtype=torch.float16,
                 bnb_4bit_use_double_quant=True,
-                bnb_4bit_quant_type="nf4"
+                bnb_4bit_quant_type="nf4",
             )
 
             self.model = AutoModelForCausalLM.from_pretrained(
                 self.model_name,
                 quantization_config=quantization_config,
                 device_map="auto",
-                torch_dtype=torch.float16
+                torch_dtype=torch.float16,
             )
         else:
             self.model = AutoModelForCausalLM.from_pretrained(
                 self.model_name,
-                torch_dtype=torch.float16 if self.device == "cuda" else torch.float32
+                torch_dtype=torch.float16 if self.device == "cuda" else torch.float32,
             )
             self.model.to(self.device)
 
@@ -95,7 +105,7 @@ class SentenceSimplifier:
         self,
         complex_sentence: str,
         definitions: Optional[List] = None,
-        examples: Optional[List] = None
+        examples: Optional[List] = None,
     ) -> str:
         """
         Simplify a single sentence.
@@ -113,14 +123,11 @@ class SentenceSimplifier:
             complex_sentence,
             self.tokenizer,
             definitions=definitions,
-            examples=examples
+            examples=examples,
         )
 
         inputs = self.tokenizer(
-            prompt,
-            return_tensors="pt",
-            truncation=True,
-            max_length=2048
+            prompt, return_tensors="pt", truncation=True, max_length=2048
         ).to(self.device)
 
         generate_kwargs = {
@@ -135,7 +142,7 @@ class SentenceSimplifier:
         with torch.no_grad():
             outputs = self.model.generate(**inputs, **generate_kwargs)
 
-        new_tokens = outputs[0][inputs.input_ids.shape[1]:]
+        new_tokens = outputs[0][inputs.input_ids.shape[1] :]
         simplified = self.tokenizer.decode(new_tokens, skip_special_tokens=True).strip()
 
         if "\n\n" in simplified:
@@ -148,7 +155,7 @@ class SentenceSimplifier:
         complex_sentences: List[str],
         batch_size: int = 8,
         definitions_list: Optional[List[List]] = None,
-        examples_list: Optional[List[List]] = None
+        examples_list: Optional[List[List]] = None,
     ) -> List[str]:
         """
         Simplify multiple sentences in batches.
@@ -169,26 +176,26 @@ class SentenceSimplifier:
 
         if batch_size < 1:
             raise ValueError(f"batch_size must be >= 1, got {batch_size}")
-        
+
         if len(definitions_list) != len(complex_sentences):
             raise ValueError(
                 f"definitions_list length ({len(definitions_list)}) must match "
                 f"complex_sentences length ({len(complex_sentences)})"
             )
-        
+
         if len(examples_list) != len(complex_sentences):
             raise ValueError(
                 f"examples_list length ({len(examples_list)}) must match "
                 f"complex_sentences length ({len(complex_sentences)})"
             )
-        
+
         simplified = []
         for start in tqdm(
             range(0, len(complex_sentences), batch_size),
             desc="Simplifying",
             unit="batch",
             mininterval=1.0,
-            total=(len(complex_sentences) + batch_size - 1) // batch_size
+            total=(len(complex_sentences) + batch_size - 1) // batch_size,
         ):
             end = start + batch_size
             prompts = [
@@ -197,12 +204,12 @@ class SentenceSimplifier:
                     sentence,
                     self.tokenizer,
                     definitions=definitions,
-                    examples=examples
+                    examples=examples,
                 )
                 for sentence, definitions, examples in zip(
                     complex_sentences[start:end],
                     definitions_list[start:end],
-                    examples_list[start:end]
+                    examples_list[start:end],
                 )
             ]
 
@@ -211,7 +218,7 @@ class SentenceSimplifier:
                 return_tensors="pt",
                 padding=True,
                 truncation=True,
-                max_length=2048
+                max_length=2048,
             ).to(self.device)
 
             generate_kwargs = {
@@ -229,7 +236,9 @@ class SentenceSimplifier:
             prompt_length = inputs.input_ids.shape[1]
             for output in outputs:
                 new_tokens = output[prompt_length:]
-                text = self.tokenizer.decode(new_tokens, skip_special_tokens=True).strip()
+                text = self.tokenizer.decode(
+                    new_tokens, skip_special_tokens=True
+                ).strip()
                 if "\n\n" in text:
                     text = text.split("\n\n")[0].strip()
                 simplified.append(text)
@@ -240,9 +249,7 @@ class SentenceSimplifier:
 if __name__ == "__main__":
     print("Testing Sentence Simplifier...")
 
-    simplifier = SentenceSimplifier(
-        load_in_4bit=torch.cuda.is_available()
-    )
+    simplifier = SentenceSimplifier(load_in_4bit=torch.cuda.is_available())
 
     test_sentence = "Resuscitation with a nasal interface may reduce the rate of intubation in the DR, but the evidence is very uncertain."
 

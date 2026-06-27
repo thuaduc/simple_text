@@ -9,8 +9,6 @@ export DATA_DIR=cochrane/data
 
 python experiments/sentence_level/run_baseline.py \
   --split test \
-  --prompt few_shot \
-  --num_shots 3 \
-  --adapter_path experiments/sentence_level/lora_adapter/qwen35-2b-few-shot/checkpoint-328 \
-  --run_name qwen35-2b-few-shot-lora-new \
+  --baseline identity \
+  --run_name identity-copy-test \
   "$@"

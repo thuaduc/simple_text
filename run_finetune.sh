@@ -12,8 +12,7 @@ export DATA_DIR=cochrane/data
 
 python experiments/sentence_level/finetune.py \
   --model "$MODEL_NAME" \
-  --prompt few_shot \
-  --num_shots 3 \
+  --prompt default_zero_shot \
   --max_length 1024 \
   --num_epochs 3 \
   --patience 1 \
@@ -21,5 +20,6 @@ python experiments/sentence_level/finetune.py \
   --lora_r 16 \
   --lora_alpha 32 \
   --lora_dropout 0.05 \
-  --output "experiments/sentence_level/lora_adapter/qwen35-2b-zero-shot-low-lr" \
+  --extra_data cochrane/data/external_rephrase_train.csv \
+  --output "experiments/sentence_level/lora_adapter/qwen35-2b-zero-shot-extra-data" \
   "$@"

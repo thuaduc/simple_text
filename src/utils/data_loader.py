@@ -82,6 +82,49 @@ def load_cochrane_sentences(
     return complex_sentences, simple_references, labels, pair_ids
 
 
+def load_rephrase_csv(
+    csv_path: str,
+) -> Tuple[List[str], List[List[str]], List[str], List[str]]:
+    """
+    Load an arbitrary rephrase CSV with the same schema as the Cochrane files.
+
+    Expected columns: 'complex', 'simple' (string repr of a list), and optionally
+    'label' and 'pair_id'. Intended for external augmentation data produced by
+    experiments/sentence_level/build_external_rephrase.py.
+
+    Args:
+        csv_path: Path to the CSV file.
+
+    Returns:
+        Tuple of (complex_sentences, simple_references, labels, pair_ids), matching
+        the output of load_cochrane_sentences().
+    """
+    print(f"Loading rephrase data from {csv_path}...")
+    df = pd.read_csv(csv_path)
+
+    complex_sentences = []
+    simple_references = []
+    labels = []
+    pair_ids = []
+
+    for idx, row in df.iterrows():
+        complex_sent = row["complex"]
+        simple_list = parse_simple_column(row["simple"])
+        label = row["label"] if "label" in df.columns else "rephrase"
+        pair_id = row["pair_id"] if "pair_id" in df.columns else f"row_{idx}"
+
+        if pd.isna(complex_sent) or str(complex_sent).strip() == "":
+            continue
+
+        complex_sentences.append(str(complex_sent).strip())
+        simple_references.append(simple_list)
+        labels.append(label)
+        pair_ids.append(pair_id)
+
+    print(f"Loaded {len(complex_sentences)} rephrase pairs from {csv_path}")
+    return complex_sentences, simple_references, labels, pair_ids
+
+
 if __name__ == "__main__":
     # Test the data loader
     print("Testing data loader...")
