@@ -147,6 +147,31 @@ def parse_args():
     )
 
     parser.add_argument(
+        "--num_candidates",
+        type=int,
+        default=1,
+        help="Number of sampled candidates per sentence for candidate-generation "
+        "+ reranking (default: 1 = no reranking; uses normal greedy/sample path)",
+    )
+
+    parser.add_argument(
+        "--rerank",
+        type=str,
+        choices=["mbr", "readability", "oracle"],
+        default="mbr",
+        help="Reranking method when --num_candidates > 1: 'mbr' (self-consensus), "
+        "'readability' (FKGL filter + fidelity), or 'oracle' (max-SARI ceiling, "
+        "uses gold references; not deployable). Default: mbr",
+    )
+
+    parser.add_argument(
+        "--rerank_temperature",
+        type=float,
+        default=None,
+        help="Sampling temperature for candidate generation (default: --temperature)",
+    )
+
+    parser.add_argument(
         "--seed",
         type=int,
         default=RANDOM_SEED,
@@ -237,9 +262,24 @@ def main():
         f"  Data size: {args.test_size or 'all'}{' (example mode)' if args.example else ''}"
     )
     print(f"  Batch size: {args.batch_size}")
-    print(f"  Generation: {'sampling' if args.sample else 'greedy'}")
-    if args.sample:
-        print(f"  Temperature: {args.temperature}")
+    if args.num_candidates > 1:
+        print(
+            f"  Generation: candidate sampling x{args.num_candidates} "
+            f"(rerank: {args.rerank})"
+        )
+        print(
+            f"  Candidate temperature: "
+            f"{args.rerank_temperature if args.rerank_temperature is not None else args.temperature}"
+        )
+        if args.rerank == "oracle":
+            print(
+                "  NOTE: --rerank oracle uses gold references (ceiling only, "
+                "NOT a deployable system)."
+            )
+    else:
+        print(f"  Generation: {'sampling' if args.sample else 'greedy'}")
+        if args.sample:
+            print(f"  Temperature: {args.temperature}")
     print(f"  Output directory: {output_dir}")
     if args.run_name:
         print(f"  Run name: {args.run_name}")
@@ -367,14 +407,58 @@ def main():
         print("\nGenerating simplifications...")
         print(f"Processing {len(complex_sentences)} sentences...")
 
-        predictions = simplifier.simplify_batch(
-            complex_sentences,
-            batch_size=args.batch_size,
-            definitions_list=definitions_list,
-            examples_list=examples_list,
-        )
+        if args.num_candidates > 1:
+            print(
+                f"\nCandidate-generation + reranking: sampling "
+                f"{args.num_candidates} candidates/sentence, rerank='{args.rerank}'"
+            )
+            candidates_list = simplifier.simplify_candidates_batch(
+                complex_sentences,
+                num_candidates=args.num_candidates,
+                batch_size=args.batch_size,
+                temperature=args.rerank_temperature,
+                definitions_list=definitions_list,
+                examples_list=examples_list,
+            )
 
-        print(f"Generated {len(predictions)} simplifications")
+            from src.rerank import rerank_candidates
+
+            references_list = simple_references if args.rerank == "oracle" else None
+            predictions = rerank_candidates(
+                sources=complex_sentences,
+                candidates_list=candidates_list,
+                method=args.rerank,
+                references_list=references_list,
+            )
+
+            # Persist the full candidate pool + selection for inspection.
+            candidates_file = output_dir / "candidates.jsonl"
+            print(f"Saving candidate pools to {candidates_file}...")
+            with candidates_file.open("w", encoding="utf-8") as f:
+                for i, (src, cands, sel) in enumerate(
+                    zip(complex_sentences, candidates_list, predictions)
+                ):
+                    f.write(
+                        json.dumps(
+                            {
+                                "index": i,
+                                "source": src,
+                                "candidates": cands,
+                                "selected": sel,
+                            }
+                        )
+                        + "\n"
+                    )
+            print(f"Generated {len(predictions)} simplifications (reranked)")
+        else:
+            predictions = simplifier.simplify_batch(
+                complex_sentences,
+                batch_size=args.batch_size,
+                definitions_list=definitions_list,
+                examples_list=examples_list,
+            )
+
+            print(f"Generated {len(predictions)} simplifications")
 
         # RAG (after mode): retrieve definitions for jargon still in each
         # prediction, then regenerate a revised sentence.
@@ -505,8 +589,15 @@ def main():
             "data_size": len(complex_sentences),
             "example_mode": args.example,
             "batch_size": args.batch_size,
-            "do_sample": args.sample,
+            "do_sample": args.sample or args.num_candidates > 1,
             "temperature": args.temperature if args.sample else None,
+            "num_candidates": args.num_candidates,
+            "rerank": args.rerank if args.num_candidates > 1 else None,
+            "rerank_temperature": (
+                args.rerank_temperature
+                if args.num_candidates > 1
+                else None
+            ),
             "rag": args.rag,
             "rag_mode": args.rag_mode if args.rag else None,
             "glossary_path": args.glossary_path if args.rag else None,

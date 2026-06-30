@@ -245,6 +245,102 @@ class SentenceSimplifier:
 
         return simplified
 
+    def simplify_candidates_batch(
+        self,
+        complex_sentences: List[str],
+        num_candidates: int,
+        batch_size: int = 8,
+        temperature: Optional[float] = None,
+        definitions_list: Optional[List[List]] = None,
+        examples_list: Optional[List[List]] = None,
+    ) -> List[List[str]]:
+        """Generate ``num_candidates`` sampled simplifications per sentence.
+
+        Used by the candidate-generation + reranking pipeline. Sampling is
+        forced on here (regardless of ``self.do_sample``) so the candidate pool
+        is diverse; pass ``temperature`` to control diversity.
+
+        Returns:
+            A list (one entry per input sentence) of candidate-string lists,
+            each of length ``num_candidates``.
+        """
+        if num_candidates < 1:
+            raise ValueError(f"num_candidates must be >= 1, got {num_candidates}")
+        if batch_size < 1:
+            raise ValueError(f"batch_size must be >= 1, got {batch_size}")
+
+        if definitions_list is None:
+            definitions_list = [None] * len(complex_sentences)
+        if examples_list is None:
+            examples_list = [None] * len(complex_sentences)
+        if len(definitions_list) != len(complex_sentences):
+            raise ValueError("definitions_list length must match complex_sentences")
+        if len(examples_list) != len(complex_sentences):
+            raise ValueError("examples_list length must match complex_sentences")
+
+        temp = temperature if temperature is not None else self.temperature
+        candidates: List[List[str]] = []
+        for start in tqdm(
+            range(0, len(complex_sentences), batch_size),
+            desc=f"Sampling x{num_candidates}",
+            unit="batch",
+            mininterval=1.0,
+            total=(len(complex_sentences) + batch_size - 1) // batch_size,
+        ):
+            end = start + batch_size
+            prompts = [
+                create_prompt(
+                    self.prompt_name,
+                    sentence,
+                    self.tokenizer,
+                    definitions=definitions,
+                    examples=examples,
+                )
+                for sentence, definitions, examples in zip(
+                    complex_sentences[start:end],
+                    definitions_list[start:end],
+                    examples_list[start:end],
+                )
+            ]
+
+            inputs = self.tokenizer(
+                prompts,
+                return_tensors="pt",
+                padding=True,
+                truncation=True,
+                max_length=2048,
+            ).to(self.device)
+
+            generate_kwargs = {
+                "max_new_tokens": self.max_new_tokens,
+                "do_sample": True,
+                "temperature": temp,
+                "num_return_sequences": num_candidates,
+                "pad_token_id": self.tokenizer.pad_token_id,
+                "eos_token_id": self.tokenizer.eos_token_id,
+            }
+
+            with torch.no_grad():
+                outputs = self.model.generate(**inputs, **generate_kwargs)
+
+            prompt_length = inputs.input_ids.shape[1]
+            n_prompts = len(prompts)
+            # outputs is (n_prompts * num_candidates, seq_len), grouped per prompt.
+            for p in range(n_prompts):
+                cand_texts: List[str] = []
+                for c in range(num_candidates):
+                    row = outputs[p * num_candidates + c]
+                    new_tokens = row[prompt_length:]
+                    text = self.tokenizer.decode(
+                        new_tokens, skip_special_tokens=True
+                    ).strip()
+                    if "\n\n" in text:
+                        text = text.split("\n\n")[0].strip()
+                    cand_texts.append(text)
+                candidates.append(cand_texts)
+
+        return candidates
+
     def postedit_batch(
         self,
         original_sentences: List[str],

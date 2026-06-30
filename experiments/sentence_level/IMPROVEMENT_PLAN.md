@@ -133,7 +133,7 @@ Poster output by end of week 4:
 - [x] Week 4: Add external biomedical data (PLABA + Med-EASi) filtered to 1→1 rephrase (+8,587 pairs, 2.64× train).
 - [x] Week 4: Fine-tune with `--extra_data` and compare against the baseline adapter on `test` — external data did **not** help (46.80 vs 47.38 SARI).
 - [x] Week 4: Run final selected systems on `test` (full ladder, N=667, 2026-06-27).
-- [ ] Week 4: Add candidate generation only if time remains.
+- [~] Week 4: Add candidate generation — **code complete** (candidate sampling + MBR/readability/oracle reranking; 18/18 offline tests pass). GPU runs (val ceiling → selector pick → test) still pending.
 
 ## Success Criteria
 
@@ -291,6 +291,28 @@ Refreshed end-to-end run of every candidate system on the Cochrane-auto rephrase
 5. ~~Evaluate the few-shot QLoRA adapter~~ ✅ Done — few-shot fine-tuning did not improve over `default_zero_shot`; `run_finetune.sh` reverted to `default_zero_shot`.
 6. ~~Retrain `default_zero_shot` QLoRA with `--extra_data`~~ ✅ Done — external data did not help (46.80 vs 47.38 SARI).
 7. Freeze QLoRA (`checkpoint-328`) as the final system; optionally add candidate generation if time remains.
+
+### Week 4 Implementation: Candidate Generation + Reranking (Code complete, runs pending)
+
+**Motivation:** the generator did single greedy decode only — no candidate pool, no selection. This was the only unfinished checklist item. Literature support: the *winning* TSAR 2025 simplification system (EhiMeNLP, https://aclanthology.org/2025.tsar-1.18/) used candidate generation + readability/similarity reranking; MBR decoding gives "reliable several-point improvements across metrics ... without any additional data or training" at K× inference cost (https://aclanthology.org/2023.bigpicture-1.9.pdf). Full plan: `outputs/simpletext-task1-improvement.md`.
+
+**What was added (no new dependencies):**
+- `src/rerank/reranker.py` + `src/rerank/__init__.py` — reference-free selectors:
+  - `select_mbr` (self-consensus; token-F1 utility by default, pluggable to BERTScore)
+  - `select_readability` (EhiMeNLP/TSAR style: drop degenerate → FKGL-drop filter → rank by source-fidelity within a band, avoiding the identity-copy trap)
+  - `select_oracle` (max-SARI per sentence; **ceiling measurement only**, uses gold refs)
+  - `fkgl()` lightweight Flesch-Kincaid (no `textstat` dep), `token_f1()` pure-Python
+- `src/models/sentence_simplifier.py` — new `simplify_candidates_batch(...)` using `num_return_sequences=K` (sampling forced on).
+- `run_baseline.py` — new flags `--num_candidates`, `--rerank {mbr,readability,oracle}`, `--rerank_temperature`; saves the full candidate pool + selection to `candidates.jsonl`; records rerank settings in `metrics.json`. `--num_candidates 1` keeps the existing greedy path unchanged.
+- `evaluate_rerank.sh` — launcher on top of `checkpoint-328` (K=8, MBR default; comments give the val oracle/mbr/readability ladder).
+- `experiments/sentence_level/test_reranker.py` — 18 offline unit checks (fkgl, token_f1, mbr, readability, oracle via injected SARI, batch). **All 18 pass** (`python3 experiments/sentence_level/test_reranker.py`), no GPU/model needed.
+
+**Verification done so far (2026-06-30):** `py_compile` clean on all four changed/added modules; 18/18 reranker unit checks pass offline. **Not yet run on GPU** — SARI/BLEU/BERTScore for K/temperature/selector are NOT measured yet.
+
+**Recommended next runs (tune on `val`, then one `test` run):**
+1. `./evaluate_rerank.sh --split val --num_candidates 8 --rerank oracle --run_name qwen35-2b-lora-oracle-val` → read the max-SARI ceiling. **Decision gate:** if oracle barely beats 47.38, abandon this bet.
+2. Compare `--rerank mbr` vs `--rerank readability` on `val` (K=8, T=0.7); watch empty-output rate + BERTScore.
+3. Run the winning config once on `test` and add a row to the test ladder below.
 
 **Current standings (N=667 test, 2026-06-27):**
 - Identity copy: 47.88 SARI / 25.23 BLEU / 0.9179 BERTScore (SARI-only artifact baseline)
