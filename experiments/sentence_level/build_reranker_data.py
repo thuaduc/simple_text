@@ -41,7 +41,11 @@ def parse_args():
     p.add_argument("--temperature", type=float, default=0.7)
     p.add_argument("--adapter_path", type=str, required=True)
     p.add_argument("--prompt", type=str, default="default_zero_shot")
-    p.add_argument("--batch_size", type=int, default=8)
+    p.add_argument("--batch_size", type=int, default=1,
+                   help="#sentences per generate() call; total parallel "
+                        "sequences = batch_size * num_candidates (keep small to fit GPU)")
+    p.add_argument("--max_new_tokens", type=int, default=None,
+                   help="cap generated tokens (lower = less scores/KV memory)")
     p.add_argument("--test_size", type=int, default=None, help="limit #sentences")
     p.add_argument("--seed", type=int, default=RANDOM_SEED)
     p.add_argument("--data_dir", type=str, default=DATA_DIR)
@@ -70,6 +74,7 @@ def main():
     simplifier = SentenceSimplifier(
         prompt_name=args.prompt, adapter_path=args.adapter_path,
         do_sample=True, temperature=args.temperature,
+        max_new_tokens=args.max_new_tokens,
     )
 
     out = simplifier.simplify_candidates_batch(

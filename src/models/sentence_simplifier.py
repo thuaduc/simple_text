@@ -350,6 +350,9 @@ class SentenceSimplifier:
                 tok_counts = mask.sum(dim=1).clamp(min=1)
                 summed = (transition * mask).sum(dim=1)
                 seq_logprobs = (summed / tok_counts).tolist()
+                # Free the per-step full-vocab logits tuple ASAP: with a large
+                # vocab it can dominate GPU memory across the batch loop.
+                del transition, gen.scores
 
             # sequences is (n_prompts * num_candidates, seq_len), grouped per prompt.
             for p in range(n_prompts):
@@ -369,6 +372,12 @@ class SentenceSimplifier:
                 candidates.append(cand_texts)
                 if return_scores:
                     scores.append(cand_scores)
+
+            # Release this batch's GPU tensors (generated sequences + KV cache
+            # activations) before allocating the next batch.
+            del inputs, gen, sequences
+            if self.device == "cuda":
+                torch.cuda.empty_cache()
 
         if return_scores:
             return candidates, scores
