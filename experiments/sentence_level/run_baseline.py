@@ -157,11 +157,12 @@ def parse_args():
     parser.add_argument(
         "--rerank",
         type=str,
-        choices=["mbr", "readability", "oracle"],
-        default="mbr",
-        help="Reranking method when --num_candidates > 1: 'mbr' (self-consensus), "
-        "'readability' (FKGL filter + fidelity), or 'oracle' (max-SARI ceiling, "
-        "uses gold references; not deployable). Default: mbr",
+        choices=["oracle", "learned"],
+        default="oracle",
+        help="Reranking method when --num_candidates > 1: 'oracle' (max-SARI "
+        "ceiling, uses gold references; not deployable), or 'learned' (trained "
+        "reranker via --reranker_path). Reference-free selectors (mbr, sari_mbr, "
+        "readability) were removed after all lost to greedy. Default: oracle",
     )
 
     parser.add_argument(
@@ -169,6 +170,13 @@ def parse_args():
         type=float,
         default=None,
         help="Sampling temperature for candidate generation (default: --temperature)",
+    )
+
+    parser.add_argument(
+        "--reranker_path",
+        type=str,
+        default=None,
+        help="Path to a trained learned-reranker model (required for --rerank learned)",
     )
 
     parser.add_argument(
@@ -412,23 +420,39 @@ def main():
                 f"\nCandidate-generation + reranking: sampling "
                 f"{args.num_candidates} candidates/sentence, rerank='{args.rerank}'"
             )
-            candidates_list = simplifier.simplify_candidates_batch(
+            want_scores = args.rerank == "learned"
+            gen_out = simplifier.simplify_candidates_batch(
                 complex_sentences,
                 num_candidates=args.num_candidates,
                 batch_size=args.batch_size,
                 temperature=args.rerank_temperature,
                 definitions_list=definitions_list,
                 examples_list=examples_list,
+                return_scores=want_scores,
             )
+            if want_scores:
+                candidates_list, scores_list = gen_out
+            else:
+                candidates_list, scores_list = gen_out, None
 
             from src.rerank import rerank_candidates
 
             references_list = simple_references if args.rerank == "oracle" else None
+            scorer = None
+            if args.rerank == "learned":
+                if not args.reranker_path:
+                    print("Error: --rerank learned requires --reranker_path")
+                    sys.exit(1)
+                from src.rerank.features import load_reranker_scorer
+
+                scorer = load_reranker_scorer(args.reranker_path)
             predictions = rerank_candidates(
                 sources=complex_sentences,
                 candidates_list=candidates_list,
                 method=args.rerank,
                 references_list=references_list,
+                scorer=scorer,
+                scores_list=scores_list,
             )
 
             # Persist the full candidate pool + selection for inspection.

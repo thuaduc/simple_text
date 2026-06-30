@@ -309,10 +309,39 @@ Refreshed end-to-end run of every candidate system on the Cochrane-auto rephrase
 
 **Verification done so far (2026-06-30):** `py_compile` clean on all four changed/added modules; 18/18 reranker unit checks pass offline. **Not yet run on GPU** — SARI/BLEU/BERTScore for K/temperature/selector are NOT measured yet.
 
-**Recommended next runs (tune on `val`, then one `test` run):**
-1. `./evaluate_rerank.sh --split val --num_candidates 8 --rerank oracle --run_name qwen35-2b-lora-oracle-val` → read the max-SARI ceiling. **Decision gate:** if oracle barely beats 47.38, abandon this bet.
-2. Compare `--rerank mbr` vs `--rerank readability` on `val` (K=8, T=0.7); watch empty-output rate + BERTScore.
-3. Run the winning config once on `test` and add a row to the test ladder below.
+**Val runs complete (2026-07-01, N=758, K=8, T=0.7, `checkpoint-328`):**
+
+| Selector | SARI | BLEU | BERTScore | Empty | vs greedy | Verdict |
+|----------|-----:|-----:|----------:|------:|----------:|---------|
+| **Greedy (baseline)** | **47.42** | 27.88 | 0.9256 | 0% | — | system of record |
+| MBR self-consensus | 45.39 | 25.77 | 0.9245 | 0% | −2.03 | hurts |
+| Readability filter | 41.52 | 24.36 | 0.9191 | 0% | −5.90 | hurts badly |
+| Oracle (max-SARI of 8) | 55.62 | 30.26 | 0.9279 | 0% | +8.20 | ceiling only (gold refs) |
+
+**Verdict (NEGATIVE for current selectors):** both deployable selectors are *below* greedy QLoRA on val — do **not** ship them; greedy `checkpoint-328` (47.38 test) remains the system of record. BUT the oracle is **+8.20** over greedy, so the candidate pool genuinely contains much better outputs; the failure is entirely in **selection**. Token-F1 consensus (MBR) drifts conservative and loses SARI's edit reward; FKGL+fidelity (readability) over-edits and loses SARI's keep reward — both reference-free proxies are anti-correlated with SARI on light-rephrase data.
+
+**Next experiment (highest value) — COMPLETED (2026-07-01, offline):** SARI-as-utility MBR (pseudo-reference). `--rerank sari_mbr` scores each candidate with SARI using the other K−1 candidates as pseudo-references and picks the max — reference-free but metric-aligned, unlike token-F1/FKGL. Computed offline by re-selecting from the shared K=8 candidate pool (`oracle-val/candidates.jsonl`; pools are identical across the val rerank runs), so no GPU was needed. Offline pipeline was validated by reproducing the published numbers from the same pool: **oracle=55.62 (exact), readability=41.52 (exact), mbr=45.51 vs published 45.39 (Δ0.12)** — see `experiments/sentence_level/finish_sarimbr_offline.py`.
+
+| Selector | SARI | BLEU | vs greedy (47.42) |
+|----------|-----:|-----:|------------------:|
+| Greedy (baseline) | **47.42** | 27.88 | — |
+| sari_mbr (NEW) | 46.33 | 27.40 | **−1.09** |
+| MBR (token-F1) | 45.51 | 25.81 | −1.91 |
+| Readability | 41.52 | 24.36 | −5.90 |
+| Oracle (ceiling) | 55.62 | 30.26 | +8.20 |
+
+SARI-aligned selection is the **best deployable selector** (46.33 > token-F1 MBR 45.51 > readability 41.52), confirming the hypothesis that aligning the selection objective to SARI helps. But it **still does not beat greedy** (−1.09 SARI, −0.48 BLEU). BERTScore was not recomputed offline (no torch on the CPU box); SARI is the decision gate. Results in `results/qwen35-2b-lora-sarimbr-val/`.
+
+**FINAL VERDICT — candidate-generation + reference-free reranking does NOT beat greedy for `checkpoint-328`.** All three deployable selectors (sari_mbr, MBR, readability) score below greedy QLoRA on val. Per the decision gate, **none is promoted to test**; greedy `checkpoint-328` (47.38 test) remains the frozen system of record. The oracle ceiling (+8.20 over greedy) shows the K=8 pool *contains* much better outputs, so the bottleneck is purely **selection**: even a SARI-aligned reference-free utility cannot recover the gain because the pseudo-references (the other samples) are themselves conservative/noisy and the per-sentence SARI signal from them is too weak to identify the oracle pick. Closing the oracle gap would require a *supervised* reranker (trained on val SARI) or an external reference/quality signal — out of scope for the current rephrase-only, no-new-training bet.
+
+_Bet closed. To reproduce: `python experiments/sentence_level/finish_sarimbr_offline.py` (offline, CPU). To run end-to-end on GPU instead: `./evaluate_rerank.sh --split val --num_candidates 8 --rerank sari_mbr --run_name qwen35-2b-lora-sarimbr-val`._
+
+**Recommended next runs — ALL COMPLETED (see ladder above):**
+1. ~~Oracle ceiling on `val`~~ → 55.62 (large headroom, bet not abandoned at this gate).
+2. ~~Compare `mbr` vs `readability` on `val`~~ → both below greedy; sari_mbr added and also below greedy.
+3. ~~Run the winning config on `test`~~ → **no selector won on val, so no test promotion.** Greedy `checkpoint-328` stays the system of record.
+
+**If revisited later (out of current scope):** a supervised/learned reranker trained on val per-sentence SARI, or an external quality model, to actually capture the +8.20 oracle headroom; optionally K>8 or 4B-QLoRA candidate pools.
 
 **Current standings (N=667 test, 2026-06-27):**
 - Identity copy: 47.88 SARI / 25.23 BLEU / 0.9179 BERTScore (SARI-only artifact baseline)
@@ -321,3 +350,128 @@ Refreshed end-to-end run of every candidate system on the Cochrane-auto rephrase
 - QLoRA + extra data: 46.80 SARI / 28.16 BLEU / 0.9244 BERTScore
 - **QLoRA `default_zero_shot` (`checkpoint-328`): 47.38 SARI / 28.39 BLEU / 0.9248 BERTScore ← best system of record**
 - Decision: freeze QLoRA `checkpoint-328` as the final system.
+
+---
+
+## Plan: Supervised / Learned Reranker (closing the oracle gap)
+
+**Scope note:** this introduces a *new trained component* (the reranker), which the
+original CLAUDE.md scope excluded. We opt in deliberately because the reference-free
+selectors are exhausted and the evidence justifies it: every deployable selector loses
+to greedy, yet the oracle ceiling is +8.20 SARI. The QLoRA generator itself is NOT
+retrained — only a small scorer is learned on top of frozen candidate pools.
+
+### Motivation (measured)
+| Selector | val SARI | vs greedy |
+|----------|---------:|----------:|
+| Greedy QLoRA (baseline) | 47.42 | — |
+| sari_mbr (best reference-free) | 46.33 | −1.09 |
+| mbr / readability | 45.39 / 41.52 | −2.03 / −5.90 |
+| **Oracle (max-SARI of 8)** | **55.62** | **+8.20** |
+
+The pool contains far better candidates than any reference-free rule can pick. A learned
+reranker scores each candidate from **reference-free features** but is *trained* with the
+true-SARI label (refs used only at train time), so it can align with SARI where pseudo-
+reference proxies cannot.
+
+### Target & decision gate
+- **Pass condition:** learned reranker, applied to *val* candidate pools, gives corpus
+  SARI > **47.42** (greedy) by a margin that survives a seed re-run. Stretch: recover
+  ≥25% of the 8.20 gap → ≈49.4 SARI (would also genuinely clear the 47.88 identity-copy
+  artifact on BLEU/BERTScore as well).
+- Only then run **once** on test. If it cannot beat greedy on val, freeze greedy and
+  write reranking up as a negative result + oracle-ceiling caveat.
+
+### Phase 1 — Build labeled candidate data (the main cost)
+1. Generate K=8 candidates per sentence for **train** (N≈5,239) and reuse existing **val**
+   pools; generate **test** pools later only if Phase 4 is reached. Same adapter
+   (`checkpoint-328`), sampling T=0.7, fixed seed, so train/test feature distributions match.
+   - Add `--dump_candidates` path (already saved as `candidates.jsonl` by the rerank runs).
+2. For every candidate compute **true SARI vs its gold reference** → per-candidate label.
+   The per-group oracle-best index is the listwise target.
+   - Output: `cochrane/data/reranker_train.jsonl` (and val), one row per (sentence, candidate).
+
+### Phase 2 — Reference-free feature extractor (`src/rerank/features.py`)
+All computable at test time without gold refs:
+- **Source↔candidate:** token-F1, char Levenshtein ratio, length ratio, added/deleted/kept
+  token counts, n-gram novelty, BERTScore(cand, source).
+- **Candidate intrinsic:** FKGL, word count, mean syllables/word, % complex words,
+  number-consistency vs source (do numeric tokens survive?).
+- **Pool-relative:** mean token-F1 to other candidates (consensus), length rank in pool,
+  the `sari_mbr` pseudo-reference SARI score.
+- **Model signal (high value):** length-normalized sequence log-prob from generation
+  → requires `simplify_candidates_batch` to optionally return scores (`output_scores=True`,
+  `return_dict_in_generate=True`). Add as `--return_scores`.
+
+### Phase 3 — Train the scorer (`experiments/sentence_level/train_reranker.py`)
+- **Model:** start with a **LambdaMART / gradient-boosted ranker** over groups
+  (LightGBM `lambdarank`, or sklearn `GradientBoostingRegressor` pointwise if avoiding a
+  new dep). Listwise ranking matches the "pick the argmax-SARI candidate" objective best.
+- **Objective:** rank candidates within each sentence-group by true SARI; predict a score,
+  select argmax at inference.
+- **Selection of reranker hyperparams:** by the **downstream** metric — apply to val pools,
+  measure corpus SARI of selected outputs (not by feature-regression loss).
+- **Leakage controls:** train reranker on **train pools only**; tune on **val**; touch
+  **test** once. Features never include gold refs. Numeric-consistency feature guards
+  against the model picking fluent-but-wrong candidates.
+
+### Phase 4 — Integrate & evaluate
+- `run_baseline.py`: add `--rerank learned --reranker_path <model>`; load scorer, extract
+  features for each candidate, select argmax. Save selected + scores to `candidates.jsonl`.
+- Ladder on val: greedy 47.42 vs learned reranker vs oracle 55.62. If pass → one test run,
+  add a row to the test ladder; else freeze greedy.
+
+### Risks
+- **Overfitting val** (only ~758 groups for tuning): keep feature set small, regularize,
+  use train-internal CV; report a seed re-run.
+- **Proxy ceiling:** even a good reranker typically recovers only 30–60% of the oracle gap.
+- **New dependency** (LightGBM) — avoid by using sklearn first; add LightGBM only if the
+  linear/GBDT baseline shows promise.
+- **Compute:** Phase 1 train-pool generation (5,239×8 samples) is the main GPU cost; one-time.
+
+### Effort estimate
+~1 focused week: 0.5d data gen, 1d features, 1d training+tuning, 0.5d integration, 1d
+analysis/seed re-run. Largest single cost is train-pool generation.
+
+---
+
+## Learned Reranker — Phase 1–2 scaffolding + codebase cleanup (2026-07-01)
+
+**Cleanup (failed reference-free selectors removed):**
+- Deleted `select_mbr`, `select_readability`, `select_sari_mbr` from `src/rerank/reranker.py`
+  (all lost to greedy on val). Kept `select_oracle` (ceiling + label generation) and the
+  scoring primitives `fkgl`, `token_f1`, `quiet_sari` (now reused as features).
+- `--rerank` choices reduced to `{oracle, learned}` in `run_baseline.py`.
+- Deleted obsolete `experiments/sentence_level/finish_sarimbr_offline.py` (imported the
+  removed selectors; its results remain in this log above).
+- `evaluate_rerank.sh` rewritten for the oracle/learned workflow.
+- Result-folder `metrics.json` files for the old mbr/sari_mbr runs are left as historical
+  artifacts (not code).
+
+**Phase 1 — labeled data builder (`build_reranker_data.py`):** generates K candidates per
+sentence from `checkpoint-328` (with optional length-normalized log-prob via the new
+`simplify_candidates_batch(return_scores=True)`), computes each candidate's TRUE SARI vs gold
+(label + `is_oracle_best`), extracts reference-free features, and writes one JSONL row per
+(sentence, candidate). Refs used only for the label, never as a feature.
+
+**Phase 2 — feature extractor (`src/rerank/features.py`):** 17 reference-free features
+(`FEATURE_NAMES`): fidelity (token-F1, Levenshtein, len ratio/diff, add/del/keep fractions,
+bigram novelty), simplicity (cand FKGL, FKGL drop, wordcount, mean syllables, complex-word
+fraction), safety (numeric-consistency vs source), pool-relative (consensus, length rank), and
+the model log-prob. `load_reranker_scorer()` returns a deployable scorer; logprob is threaded
+end-to-end (`run_baseline --rerank learned` generates scores and passes them) so train/inference
+features match.
+
+**Phase 3 — trainer skeleton (`train_reranker.py`):** sklearn `GradientBoostingRegressor`
+(pointwise SARI regression), small hyperparameter sweep selected by **downstream val
+selected-SARI** (not regression loss), reports % of the oracle gap recovered, pickles
+`{model, feature_names}`. Needs `pip install scikit-learn` (kept out of pyproject until proven).
+
+**Tests:** `experiments/sentence_level/test_reranker.py` — 23 offline checks (oracle, learned
+dispatch + logprob threading, all 17 features incl. numeric-consistency, schema), all pass;
+all modules `py_compile` clean. No GPU/data yet → no reranker trained, no new val/test numbers.
+
+**Next (GPU):**
+1. `build_reranker_data.py --split train …` and `--split val …` → `cochrane/data/reranker_{train,val}.jsonl`.
+2. `train_reranker.py` → `reranker.pkl`; check val selected-SARI vs greedy-val **47.42** (decision gate).
+3. If it clears 47.42, run `run_baseline.py --rerank learned --reranker_path reranker.pkl` once on test.

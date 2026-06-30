@@ -1,0 +1,27 @@
+{
+  "metrics": {
+    "sari": 46.33,
+    "bleu": 27.40,
+    "bertscore_f1": null,
+    "n_evaluated": 758
+  },
+  "metadata": {
+    "split": "val",
+    "baseline": "model",
+    "model": "Qwen/Qwen3.5-2B",
+    "adapter_path": "experiments/sentence_level/lora_adapter/qwen35-2b-best/checkpoint-328",
+    "prompt": "default_zero_shot",
+    "data_size": 758,
+    "num_candidates": 8,
+    "rerank": "sari_mbr",
+    "rerank_temperature": 0.7,
+    "rephrase_only": true,
+    "seed": 42,
+    "run_name": "qwen35-2b-lora-sarimbr-val",
+    "computed": "offline reselection from shared K=8 candidate pool (oracle-val/candidates.jsonl); no GPU",
+    "bertscore_note": "not computed offline (torch unavailable on CPU box); SARI is the decision gate",
+    "sanity_check": "offline pipeline reproduces oracle=55.62 and readability=41.52 exactly; mbr=45.51 vs published 45.39 (delta 0.12)",
+    "timestamp": "2026-07-01T00:30:00",
+    "evaluation": "SARI, BLEU (offline); BERTScore pending"
+  }
+}

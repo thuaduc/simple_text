@@ -253,16 +253,24 @@ class SentenceSimplifier:
         temperature: Optional[float] = None,
         definitions_list: Optional[List[List]] = None,
         examples_list: Optional[List[List]] = None,
-    ) -> List[List[str]]:
+        return_scores: bool = False,
+    ):
         """Generate ``num_candidates`` sampled simplifications per sentence.
 
         Used by the candidate-generation + reranking pipeline. Sampling is
         forced on here (regardless of ``self.do_sample``) so the candidate pool
         is diverse; pass ``temperature`` to control diversity.
 
+        Args:
+            return_scores: if True, also return per-candidate length-normalized
+                sequence log-probabilities (the model-confidence feature used by
+                the learned reranker).
+
         Returns:
-            A list (one entry per input sentence) of candidate-string lists,
-            each of length ``num_candidates``.
+            If ``return_scores`` is False: a list (one per sentence) of
+            candidate-string lists of length ``num_candidates``.
+            If True: a tuple ``(candidates, scores)`` with matching shapes,
+            where ``scores[i][c]`` is the mean token log-prob of candidate c.
         """
         if num_candidates < 1:
             raise ValueError(f"num_candidates must be >= 1, got {num_candidates}")
@@ -280,6 +288,7 @@ class SentenceSimplifier:
 
         temp = temperature if temperature is not None else self.temperature
         candidates: List[List[str]] = []
+        scores: List[List[float]] = []
         for start in tqdm(
             range(0, len(complex_sentences), batch_size),
             desc=f"Sampling x{num_candidates}",
@@ -319,26 +328,50 @@ class SentenceSimplifier:
                 "pad_token_id": self.tokenizer.pad_token_id,
                 "eos_token_id": self.tokenizer.eos_token_id,
             }
+            if return_scores:
+                generate_kwargs["output_scores"] = True
+                generate_kwargs["return_dict_in_generate"] = True
 
             with torch.no_grad():
-                outputs = self.model.generate(**inputs, **generate_kwargs)
+                gen = self.model.generate(**inputs, **generate_kwargs)
 
+            sequences = gen.sequences if return_scores else gen
             prompt_length = inputs.input_ids.shape[1]
             n_prompts = len(prompts)
-            # outputs is (n_prompts * num_candidates, seq_len), grouped per prompt.
+
+            seq_logprobs = None
+            if return_scores:
+                # Length-normalized mean token log-prob per returned sequence.
+                transition = self.model.compute_transition_scores(
+                    gen.sequences, gen.scores, normalize_logits=True
+                )
+                gen_tokens = sequences[:, prompt_length:]
+                mask = gen_tokens != self.tokenizer.pad_token_id
+                tok_counts = mask.sum(dim=1).clamp(min=1)
+                summed = (transition * mask).sum(dim=1)
+                seq_logprobs = (summed / tok_counts).tolist()
+
+            # sequences is (n_prompts * num_candidates, seq_len), grouped per prompt.
             for p in range(n_prompts):
                 cand_texts: List[str] = []
+                cand_scores: List[float] = []
                 for c in range(num_candidates):
-                    row = outputs[p * num_candidates + c]
-                    new_tokens = row[prompt_length:]
+                    flat = p * num_candidates + c
+                    new_tokens = sequences[flat][prompt_length:]
                     text = self.tokenizer.decode(
                         new_tokens, skip_special_tokens=True
                     ).strip()
                     if "\n\n" in text:
                         text = text.split("\n\n")[0].strip()
                     cand_texts.append(text)
+                    if return_scores:
+                        cand_scores.append(seq_logprobs[flat])
                 candidates.append(cand_texts)
+                if return_scores:
+                    scores.append(cand_scores)
 
+        if return_scores:
+            return candidates, scores
         return candidates
 
     def postedit_batch(

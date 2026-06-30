@@ -1,19 +1,30 @@
 #!/bin/bash
 # Candidate generation + reranking on top of the frozen QLoRA adapter.
-# Implements outputs/simpletext-task1-improvement.md.
 #
-# Recommended workflow (tune on val, run once on test):
-#   1) Measure the achievable ceiling on val:
-#        ./evaluate_rerank.sh --split val --num_candidates 8 --rerank oracle \
-#          --run_name qwen35-2b-lora-oracle-val
-#   2) Compare deployable selectors on val:
-#        ./evaluate_rerank.sh --split val --num_candidates 8 --rerank mbr \
-#          --run_name qwen35-2b-lora-mbr-val
-#        ./evaluate_rerank.sh --split val --num_candidates 8 --rerank readability \
-#          --run_name qwen35-2b-lora-read-val
-#   3) Run the winning config once on test (override --split/--run_name via "$@").
+# Reference-free selectors (mbr, readability, sari_mbr) were REMOVED after all
+# lost to greedy on val (see outputs/simpletext-task1-rerank-experiment.md).
+# Remaining methods:
+#   --rerank oracle    max-SARI ceiling (uses gold refs; NOT deployable)
+#   --rerank learned   trained reranker via --reranker_path (see below)
 #
-# Defaults below: test split, K=8, MBR self-consensus.
+# Learned-reranker workflow:
+#   1) Build labeled candidate data (GPU; once per split):
+#        python experiments/sentence_level/build_reranker_data.py \
+#          --split train --adapter_path experiments/sentence_level/lora_adapter/qwen35-2b-best/checkpoint-328 \
+#          --output cochrane/data/reranker_train.jsonl
+#        python experiments/sentence_level/build_reranker_data.py \
+#          --split val   --adapter_path experiments/sentence_level/lora_adapter/qwen35-2b-best/checkpoint-328 \
+#          --output cochrane/data/reranker_val.jsonl
+#   2) Train + tune the reranker (CPU; needs scikit-learn):
+#        python experiments/sentence_level/train_reranker.py \
+#          --train cochrane/data/reranker_train.jsonl --val cochrane/data/reranker_val.jsonl \
+#          --out experiments/sentence_level/reranker.pkl
+#   3) Evaluate the learned reranker on val, then once on test if it beats greedy (47.42):
+#        ./evaluate_rerank.sh --split val --rerank learned \
+#          --reranker_path experiments/sentence_level/reranker.pkl \
+#          --run_name qwen35-2b-lora-learned-val
+#
+# Default below: oracle ceiling on test.
 
 set -euo pipefail
 
@@ -27,6 +38,6 @@ python experiments/sentence_level/run_baseline.py \
   --prompt default_zero_shot \
   --adapter_path experiments/sentence_level/lora_adapter/qwen35-2b-best/checkpoint-328 \
   --num_candidates 8 \
-  --rerank mbr \
-  --run_name qwen35-2b-lora-rerank \
+  --rerank oracle \
+  --run_name qwen35-2b-lora-oracle-test \
   "$@"
