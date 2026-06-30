@@ -11,3 +11,4 @@ uv.lock
 .pytest_cache/
 *.egg-info/
 logs/
+experiments/sentence_level/results/archive
