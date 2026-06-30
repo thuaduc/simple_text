@@ -11,6 +11,7 @@ python experiments/sentence_level/run_baseline.py \
   --split test \
   --prompt default_zero_shot \
   --rag \
-  --rag_mode after \
-  --run_name qwen35-2b-raw-model-rag-postedit \
+  --rag_mode before \
+  --adapter_path experiments/sentence_level/lora_adapter/qwen35-2b-zero-shot-rag/checkpoint-433 \
+  --run_name qwen35-2b-zero-shot-rag \
   "$@"

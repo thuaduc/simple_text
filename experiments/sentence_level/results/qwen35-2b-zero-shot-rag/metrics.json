@@ -1,0 +1,82 @@
+{
+  "metrics": {
+    "sari": 46.86874446040254,
+    "bleu": 28.320840407990676,
+    "bertscore_f1": 0.9243960049913741,
+    "n_evaluated": 667
+  },
+  "metadata": {
+    "split": "test",
+    "baseline": "model",
+    "model": "Qwen/Qwen3.5-2B",
+    "adapter_path": "experiments/sentence_level/lora_adapter/qwen35-2b-zero-shot-rag/checkpoint-433",
+    "prompt": "default_zero_shot",
+    "data_size": 667,
+    "example_mode": false,
+    "batch_size": 8,
+    "do_sample": false,
+    "temperature": null,
+    "rag": true,
+    "rag_mode": "before",
+    "glossary_path": "cochrane/data/MedSimplify.csv",
+    "skip_bertscore": false,
+    "rephrase_only": true,
+    "seed": 42,
+    "run_name": "qwen35-2b-zero-shot-rag",
+    "output_dir": "/raid/thuaduc/simple_text/experiments/sentence_level/results/qwen35-2b-zero-shot-rag",
+    "timestamp": "2026-06-29T02:11:14.244710",
+    "evaluation": "SARI, BLEU, BERTScore (automatic metrics)"
+  },
+  "glossary_coverage": {
+    "glossary_path": "cochrane/data/MedSimplify.csv",
+    "max_definitions": 10,
+    "total_glossary_terms": 3113,
+    "sentences_with_matches": 562,
+    "coverage_rate": 0.8425787106446777,
+    "avg_matches_per_sentence": 2.5112443778110944,
+    "avg_matches_per_matched_sentence": 2.9804270462633453,
+    "unique_matched_terms": 349,
+    "top_10_terms": [
+      [
+        "risk",
+        84
+      ],
+      [
+        "adverse",
+        48
+      ],
+      [
+        "effects",
+        46
+      ],
+      [
+        "treatment",
+        46
+      ],
+      [
+        "significant",
+        45
+      ],
+      [
+        "effect",
+        39
+      ],
+      [
+        "review",
+        37
+      ],
+      [
+        "placebo",
+        34
+      ],
+      [
+        "interval",
+        29
+      ],
+      [
+        "therapy",
+        29
+      ]
+    ]
+  }
+}
