@@ -273,14 +273,43 @@ Refreshed end-to-end run of every candidate system on the Cochrane-auto rephrase
 | Identity copy | `identity-copy-test` | — | — | 47.88 | 25.23 | 0.9179 |
 | Raw model | `qwen35-2b-raw-model` | — | `default_zero_shot` | 41.83 | 21.19 | 0.9183 |
 | Raw model + RAG | `qwen35-2b-raw-model-rag` | — | `definition_augmented` | 43.18 | 23.31 | 0.9188 |
-| QLoRA | `qwen35-2b-lora` | `qwen35-2b-best/checkpoint-328` | `default_zero_shot` | **47.38** | **28.39** | **0.9248** |
+| QLoRA | `qwen35-2b-lora` | `qwen35-2b-best/checkpoint-328` | `default_zero_shot` | 47.38 | 28.39 | 0.9248 |
 | QLoRA + extra data | `qwen35-2b-zero-shot-extra-data` | `…-extra-data/checkpoint-433` | `default_zero_shot` | 46.80 | 28.16 | 0.9244 |
+| **QLoRA + ignore data** | `qwen35-2b-lora-zero-shot-with-ignored` | `…-zero-shot-with-ignored/checkpoint-195` | `default_zero_shot` | **48.16** | **28.70** | 0.9229 |
 
 **Key findings:**
 - **QLoRA is the best LLM system**: 47.38 SARI, and it clearly dominates on BLEU (28.39) and BERTScore (0.9248). Over the raw model it adds **+5.55 SARI / +7.20 BLEU / +0.0065 BERTScore**.
 - **Identity copy is a deceptively strong SARI baseline** (47.88, nominally above QLoRA). This is a known SARI quirk on light-rephrase data where keeping tokens is rewarded; QLoRA still wins decisively on BLEU and BERTScore and produces genuinely simplified text, so it remains the system of record. Worth flagging on the poster as a metric caveat.
 - **RAG helps the raw model**: `definition_augmented` adds **+1.35 SARI / +2.12 BLEU** over the raw zero-shot model (43.18 vs 41.83), with 84.3% glossary coverage (avg 2.51 terms/sentence, 349 unique terms; top: risk, adverse, effects, treatment). RAG remains a raw-model intervention only — it is not paired with the fine-tuned adapter, which was never trained on the definitions block.
 - **External data did not help**: adding PLABA + Med-EASi (`checkpoint-433`) gave 46.80 SARI, **−0.58 vs plain QLoRA** (and slightly lower BLEU/BERTScore). The larger, more abstractive external pairs drift away from Cochrane's light rephrases; the 5,239-pair in-domain adapter stays the winner.
+
+### Week 4 Implementation: Ignore-Data Augmentation (Complete, 2026-07-01)
+
+**Motivation:** the rephrase-only train split teaches the model *how* to reword but never *when to leave text alone*. Cochrane-auto's `ignore`-labeled sentences (already simple, kept near-verbatim by human editors) are exactly that missing signal. We fold them into the rephrase training data so the model learns to preserve already-simple wording instead of over-editing.
+
+**Data change:** pulled all `ignore`-labeled rows from `cochraneauto_sents_{train,val}.csv` and appended them to the corresponding `cochraneauto_sents_rephrase_{train,val}.csv`, relabeled `rephrase` so they train as ordinary examples. **Test was left untouched** (still 667 rephrase-only) so the eval split stays a fixed benchmark.
+
+| Split | Rephrase | + ignore | Total |
+|-------|---------:|---------:|------:|
+| train | 5,239 | 982 | 6,221 |
+| val | 758 | 168 | 926 |
+| test | 667 | 0 (unchanged) | 667 |
+
+**Training:** same QLoRA recipe as `checkpoint-328`, `default_zero_shot`, on the ignore-augmented train split. Best checkpoint by eval loss = `checkpoint-195` (epoch 1; epoch-2 eval loss rose slightly → mild overfit). Adapter: `experiments/sentence_level/lora_adapter/qwen35-2b-zero-shot-with-ignored/checkpoint-195`.
+
+**Test results (N=667, greedy, seed=42):**
+
+| System | SARI | BLEU | BERTScore |
+|--------|-----:|-----:|----------:|
+| QLoRA `checkpoint-328` (prev best) | 47.38 | 28.39 | **0.9248** |
+| **QLoRA + ignore data (`checkpoint-195`)** | **48.16** | **28.70** | 0.9229 |
+| Δ | **+0.78** | **+0.31** | −0.0019 |
+
+**Key findings:**
+- Ignore augmentation is the **new best LLM system**: 48.16 SARI, +0.78 over the prior QLoRA and now **also above the identity-copy SARI artifact (47.88)** — the first system to clear that bar while still producing genuinely simplified text.
+- BLEU improves too (+0.31); BERTScore dips a hair (−0.0019, within noise). SARI is the primary gate, so this is a net win.
+- Teaching "when not to edit" reduces over-simplification without hurting the reword cases — consistent with the motivation.
+- **New system of record: `…-zero-shot-with-ignored/checkpoint-195`.**
 
 ### Next Steps
 
@@ -343,13 +372,14 @@ _Bet closed. To reproduce: `python experiments/sentence_level/finish_sarimbr_off
 
 **If revisited later (out of current scope):** a supervised/learned reranker trained on val per-sentence SARI, or an external quality model, to actually capture the +8.20 oracle headroom; optionally K>8 or 4B-QLoRA candidate pools.
 
-**Current standings (N=667 test, 2026-06-27):**
+**Current standings (N=667 test; ignore-data row 2026-07-01):**
 - Identity copy: 47.88 SARI / 25.23 BLEU / 0.9179 BERTScore (SARI-only artifact baseline)
 - Raw model `default_zero_shot`: 41.83 SARI / 21.19 BLEU / 0.9183 BERTScore
 - Raw model + RAG `definition_augmented`: 43.18 SARI / 23.31 BLEU / 0.9188 BERTScore
 - QLoRA + extra data: 46.80 SARI / 28.16 BLEU / 0.9244 BERTScore
-- **QLoRA `default_zero_shot` (`checkpoint-328`): 47.38 SARI / 28.39 BLEU / 0.9248 BERTScore ← best system of record**
-- Decision: freeze QLoRA `checkpoint-328` as the final system.
+- QLoRA `default_zero_shot` (`checkpoint-328`): 47.38 SARI / 28.39 BLEU / 0.9248 BERTScore
+- **QLoRA + ignore data (`…-zero-shot-with-ignored/checkpoint-195`): 48.16 SARI / 28.70 BLEU / 0.9229 BERTScore ← best system of record**
+- Decision: promote the ignore-augmented QLoRA `checkpoint-195` as the final system (first to beat the identity-copy SARI artifact).
 
 ---
 

@@ -13,6 +13,7 @@ training rows (true SARI), never as a feature.
 from __future__ import annotations
 
 import difflib
+import math
 import re
 from typing import Dict, List, Optional, Sequence
 
@@ -127,9 +128,16 @@ def extract_features(
     }
 
 
+def _finite(x: float) -> float:
+    """Coerce NaN/inf to 0.0 (the same default used for missing features).
+    Guards the trained estimator, which rejects non-finite inputs."""
+    x = float(x)
+    return x if math.isfinite(x) else 0.0
+
+
 def features_to_vector(feats: Dict[str, float]) -> List[float]:
     """Flatten a feature dict to a vector in FEATURE_NAMES order."""
-    return [float(feats.get(name, 0.0)) for name in FEATURE_NAMES]
+    return [_finite(feats.get(name, 0.0)) for name in FEATURE_NAMES]
 
 
 def load_reranker_scorer(path: str):
@@ -153,7 +161,7 @@ def load_reranker_scorer(path: str):
 
     def scorer(source, candidate, pool, logprob=None) -> float:
         feats = extract_features(source, candidate, pool, logprob=logprob)
-        vec = [float(feats.get(n, 0.0)) for n in names]
+        vec = [_finite(feats.get(n, 0.0)) for n in names]
         return float(predict([vec])[0])
 
     return scorer

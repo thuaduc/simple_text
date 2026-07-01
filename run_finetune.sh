@@ -14,12 +14,11 @@ python experiments/sentence_level/finetune.py \
   --model "$MODEL_NAME" \
   --prompt default_zero_shot \
   --max_length 1024 \
-  --num_epochs 3 \
+  --num_epochs 5 \
   --patience 1 \
   --learning_rate 5e-5 \
   --lora_r 16 \
   --lora_alpha 32 \
   --lora_dropout 0.05 \
-  --extra_data cochrane/data/external_rephrase_train.csv \
-  --output "experiments/sentence_level/lora_adapter/qwen35-2b-zero-shot-extra-data" \
+  --output "experiments/sentence_level/lora_adapter/qwen35-2b-zero-shot-with-ignored" \
   "$@"

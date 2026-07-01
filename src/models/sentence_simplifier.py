@@ -348,7 +348,9 @@ class SentenceSimplifier:
                 gen_tokens = sequences[:, prompt_length:]
                 mask = gen_tokens != self.tokenizer.pad_token_id
                 tok_counts = mask.sum(dim=1).clamp(min=1)
-                summed = (transition * mask).sum(dim=1)
+                # Zero padded positions with masked_fill, not multiplication:
+                # transition can be -inf at pads, and -inf * 0 == NaN.
+                summed = transition.masked_fill(~mask, 0.0).sum(dim=1)
                 seq_logprobs = (summed / tok_counts).tolist()
                 # Free the per-step full-vocab logits tuple ASAP: with a large
                 # vocab it can dominate GPU memory across the batch loop.
