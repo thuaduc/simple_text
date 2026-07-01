@@ -1,0 +1,33 @@
+{
+  "metrics": {
+    "sari": 48.29458302179113,
+    "bleu": 28.85584180748373,
+    "bertscore_f1": 0.9235613254950322,
+    "n_evaluated": 667
+  },
+  "metadata": {
+    "split": "test",
+    "baseline": "model",
+    "model": "Qwen/Qwen3.5-2B",
+    "adapter_path": "experiments/sentence_level/lora_adapter/qwen35-2b-zero-shot-with-ignored/checkpoint-195",
+    "prompt": "default_zero_shot",
+    "data_size": 667,
+    "example_mode": false,
+    "batch_size": 2,
+    "do_sample": true,
+    "temperature": null,
+    "num_candidates": 8,
+    "rerank": "learned",
+    "rerank_temperature": null,
+    "rag": false,
+    "rag_mode": null,
+    "glossary_path": null,
+    "skip_bertscore": false,
+    "rephrase_only": true,
+    "seed": 42,
+    "run_name": "qwen35-2b-lora-learned-test",
+    "output_dir": "/raid/thuaduc/simple_text/experiments/sentence_level/results/qwen35-2b-lora-learned-test",
+    "timestamp": "2026-07-01T12:38:59.486741",
+    "evaluation": "SARI, BLEU, BERTScore (automatic metrics)"
+  }
+}

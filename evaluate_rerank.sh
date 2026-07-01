@@ -36,8 +36,10 @@ export DATA_DIR=cochrane/data
 python experiments/sentence_level/run_baseline.py \
   --split test \
   --prompt default_zero_shot \
-  --adapter_path experiments/sentence_level/lora_adapter/qwen35-2b-best/checkpoint-328 \
+  --adapter_path experiments/sentence_level/lora_adapter/qwen35-2b-zero-shot-with-ignored/checkpoint-195 \
   --num_candidates 8 \
-  --rerank oracle \
-  --run_name qwen35-2b-lora-oracle-test \
+  --rerank learned \
+  --reranker_path experiments/sentence_level/reranker.pkl \
+  --run_name qwen35-2b-lora-learned-test \
+  --batch_size 2 \
   "$@"
